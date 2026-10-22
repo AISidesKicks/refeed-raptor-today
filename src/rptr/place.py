@@ -7,6 +7,7 @@ gold document is missing or a document is malformed.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import tomllib
 from dataclasses import dataclass, field
@@ -74,6 +75,19 @@ class Place:
     @property
     def doc_ids(self) -> set[str]:
         return {doc.id for doc in self.documents}
+
+    @property
+    def fingerprint(self) -> str:
+        """Content hash for the index, so a restart does not wipe vectors."""
+
+        digest = hashlib.sha256()
+        digest.update(f"{self.id}:{self.version}".encode())
+        for doc in sorted(self.documents, key=lambda item: item.id):
+            digest.update(b"\0")
+            digest.update(doc.id.encode())
+            digest.update(b"\0")
+            digest.update(doc.text.encode())
+        return digest.hexdigest()
 
     def summary(self) -> dict[str, Any]:
         return {

@@ -7,10 +7,13 @@ one file so the reader, the replay player, and the eval can share them.
 
 from __future__ import annotations
 
+import json
 import sqlite3
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
+
+import numpy as np
 
 from .chunking import Chunk
 from .place import Place
@@ -26,7 +29,8 @@ CREATE TABLE IF NOT EXISTS places (
     documents INTEGER NOT NULL,
     words INTEGER NOT NULL,
     questions INTEGER NOT NULL,
-    loaded_at TEXT NOT NULL
+    loaded_at TEXT NOT NULL,
+    fingerprint TEXT NOT NULL DEFAULT ''
 );
 
 CREATE TABLE IF NOT EXISTS documents (
@@ -54,9 +58,36 @@ CREATE TABLE IF NOT EXISTS chunks (
     PRIMARY KEY (place_id, id)
 );
 
+CREATE TABLE IF NOT EXISTS embeddings (
+    place_id TEXT NOT NULL,
+    node_id TEXT NOT NULL,
+    kind TEXT NOT NULL,
+    model TEXT NOT NULL,
+    dim INTEGER NOT NULL,
+    vector BLOB NOT NULL,
+    updated_at TEXT NOT NULL,
+    PRIMARY KEY (place_id, node_id, kind)
+);
+
+CREATE TABLE IF NOT EXISTS tree_nodes (
+    place_id TEXT NOT NULL,
+    id TEXT NOT NULL,
+    level INTEGER NOT NULL,
+    kind TEXT NOT NULL,
+    title TEXT NOT NULL,
+    text TEXT NOT NULL,
+    doc_ids TEXT NOT NULL,
+    children TEXT NOT NULL,
+    cluster INTEGER NOT NULL,
+    created_at TEXT NOT NULL,
+    PRIMARY KEY (place_id, id)
+);
+
 CREATE INDEX IF NOT EXISTS idx_documents_place ON documents(place_id);
 CREATE INDEX IF NOT EXISTS idx_chunks_place ON chunks(place_id);
 CREATE INDEX IF NOT EXISTS idx_chunks_doc ON chunks(place_id, doc_id);
+CREATE INDEX IF NOT EXISTS idx_embeddings_place ON embeddings(place_id, kind);
+CREATE INDEX IF NOT EXISTS idx_tree_place ON tree_nodes(place_id, level);
 """
 
 
@@ -72,6 +103,11 @@ def connect(path: Path) -> sqlite3.Connection:
 
 def init_db(conn: sqlite3.Connection) -> None:
     conn.executescript(SCHEMA)
+    columns = {row["name"] for row in conn.execute("PRAGMA table_info(places)")}
+    if "fingerprint" not in columns:
+        conn.execute(
+            "ALTER TABLE places ADD COLUMN fingerprint TEXT NOT NULL DEFAULT ''"
+        )
     conn.commit()
 
 
@@ -82,17 +118,30 @@ def index_place(
 ) -> int:
     """Replace one place in the index and return the number of chunks."""
 
+    expected = sum(len(items) for items in chunks_by_doc.values())
+    existing = conn.execute(
+        "SELECT fingerprint FROM places WHERE id = ?", (place.id,)
+    ).fetchone()
+    if existing is not None and existing["fingerprint"] == place.fingerprint:
+        row = conn.execute(
+            "SELECT COUNT(*) AS count FROM chunks WHERE place_id = ?", (place.id,)
+        ).fetchone()
+        if row is not None and int(row["count"]) == expected:
+            return expected
+
     loaded_at = datetime.now(UTC).isoformat()
     total_chunks = 0
     with conn:
         conn.execute("DELETE FROM chunks WHERE place_id = ?", (place.id,))
         conn.execute("DELETE FROM documents WHERE place_id = ?", (place.id,))
+        conn.execute("DELETE FROM embeddings WHERE place_id = ?", (place.id,))
+        conn.execute("DELETE FROM tree_nodes WHERE place_id = ?", (place.id,))
         conn.execute("DELETE FROM places WHERE id = ?", (place.id,))
         conn.execute(
             """
             INSERT INTO places
-                (id, title, blurb, root, version, license, documents, words, questions, loaded_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                (id, title, blurb, root, version, license, documents, words, questions, loaded_at, fingerprint)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 place.id,
@@ -105,6 +154,7 @@ def index_place(
                 place.words,
                 len(place.questions),
                 loaded_at,
+                place.fingerprint,
             ),
         )
         for document in place.documents:
@@ -217,5 +267,136 @@ def chunk_count(conn: sqlite3.Connection, place_id: str) -> int:
     row = conn.execute(
         "SELECT COUNT(*) AS count FROM chunks WHERE place_id = ?",
         (place_id,),
+    ).fetchone()
+    return int(row["count"]) if row is not None else 0
+
+
+def save_embeddings(
+    conn: sqlite3.Connection,
+    place_id: str,
+    kind: str,
+    model: str,
+    node_ids: list[str],
+    matrix: np.ndarray,
+) -> int:
+    """Upsert one row of floats per node. Vectors are stored as float32 blobs."""
+
+    if len(node_ids) != len(matrix):
+        raise ValueError("node_ids and matrix must have the same length")
+    if matrix.size == 0:
+        return 0
+    rows = matrix.astype(np.float32, copy=False)
+    updated_at = datetime.now(UTC).isoformat()
+    with conn:
+        for node_id, vector in zip(node_ids, rows, strict=True):
+            conn.execute(
+                """
+                INSERT INTO embeddings
+                    (place_id, node_id, kind, model, dim, vector, updated_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+                ON CONFLICT(place_id, node_id, kind) DO UPDATE SET
+                    model = excluded.model,
+                    dim = excluded.dim,
+                    vector = excluded.vector,
+                    updated_at = excluded.updated_at
+                """,
+                (
+                    place_id,
+                    node_id,
+                    kind,
+                    model,
+                    int(vector.shape[0]),
+                    vector.tobytes(),
+                    updated_at,
+                ),
+            )
+    return len(node_ids)
+
+
+def delete_embeddings(conn: sqlite3.Connection, place_id: str, kind: str) -> int:
+    with conn:
+        cursor = conn.execute(
+            "DELETE FROM embeddings WHERE place_id = ? AND kind = ?",
+            (place_id, kind),
+        )
+    return cursor.rowcount
+
+
+def load_embeddings(
+    conn: sqlite3.Connection,
+    place_id: str,
+    kind: str,
+) -> tuple[list[str], np.ndarray]:
+    """Return node ids and a normalized matrix for one kind of node."""
+
+    rows = conn.execute(
+        """
+        SELECT node_id, dim, vector
+        FROM embeddings
+        WHERE place_id = ? AND kind = ?
+        ORDER BY node_id
+        """,
+        (place_id, kind),
+    ).fetchall()
+    if not rows:
+        return [], np.zeros((0, 0), dtype=np.float32)
+    ids = [str(row["node_id"]) for row in rows]
+    matrix = np.vstack(
+        [np.frombuffer(row["vector"], dtype=np.float32, count=int(row["dim"])) for row in rows]
+    )
+    norms = np.linalg.norm(matrix, axis=1, keepdims=True)
+    return ids, matrix / np.maximum(norms, 1e-12)
+
+
+def replace_tree(conn: sqlite3.Connection, place_id: str, nodes: list[dict[str, Any]]) -> int:
+    created_at = datetime.now(UTC).isoformat()
+    with conn:
+        conn.execute("DELETE FROM tree_nodes WHERE place_id = ?", (place_id,))
+        for node in nodes:
+            conn.execute(
+                """
+                INSERT INTO tree_nodes
+                    (place_id, id, level, kind, title, text, doc_ids, children, cluster, created_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    place_id,
+                    node["id"],
+                    int(node["level"]),
+                    node["kind"],
+                    node.get("title", ""),
+                    node["text"],
+                    json.dumps(sorted(node.get("doc_ids", [])), separators=(",", ":")),
+                    json.dumps(node.get("children", []), separators=(",", ":")),
+                    int(node.get("cluster", 0)),
+                    created_at,
+                ),
+            )
+    return len(nodes)
+
+
+def tree_nodes(conn: sqlite3.Connection, place_id: str) -> list[dict[str, Any]]:
+    rows = conn.execute(
+        """
+        SELECT id, level, kind, title, text, doc_ids, children, cluster
+        FROM tree_nodes
+        WHERE place_id = ?
+        ORDER BY level, id
+        """,
+        (place_id,),
+    ).fetchall()
+    nodes: list[dict[str, Any]] = []
+    for row in rows:
+        node = dict(row)
+        node["doc_ids"] = json.loads(node["doc_ids"])
+        node["children"] = json.loads(node["children"])
+        nodes.append(node)
+    return nodes
+
+
+def embedding_count(conn: sqlite3.Connection, place_id: str, kind: str) -> int:
+    row = conn.execute(
+        "SELECT COUNT(*) AS count FROM embeddings WHERE place_id = ? AND kind = ?",
+        (place_id, kind),
     ).fetchone()
     return int(row["count"]) if row is not None else 0
