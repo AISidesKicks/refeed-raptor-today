@@ -73,6 +73,23 @@ pixi run record
 
 Each recording keeps the answer, citations, retrieval results, and the full decision trace. Recorded replay is the mode for the demo video and for readers who only want to click through the pipeline.
 
+## Deep dives
+
+One file per technology, in `mds/`:
+
+| File | Topic |
+| --- | --- |
+| `mds/metrics.md` | Retrieval, answer, calibration, and cost metrics |
+| `mds/systemone.md` | The decision model, the confidence band, and the delegation |
+| `mds/refeed.md` | The loop: retrieve, judge, rewrite, retry, cite, check |
+| `mds/raptor.md` | The RAPTOR summary tree |
+| `mds/umap-gmm.md` | UMAP and GMM for the clusters |
+| `mds/llamacpp.md` | The local llama.cpp router |
+| `mds/models.md` | EmbeddingGemma 2, LFM2.5, d1-3B |
+| `mds/sqlite-numpy.md` | SQLite, numpy, and the corpus fingerprint |
+| `mds/fastapi-app.md` | The app, the tabs, the recorded replay |
+| `mds/place-contract.md` | The demo place format for coding agents |
+
 ## Development
 
 ```bash

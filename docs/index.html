@@ -334,7 +334,7 @@
   <p>Retrieval, answer quality, calibration, and cost. The lab compares keyword search, one-shot RAPTOR retrieval, and RAPTOR plus the refeed loop on the same 50 questions. The report includes the failures, not just the wins.</p>
   <p>Retrieval: Recall@k, MRR, and nDCG. Answer: faithfulness, correctness, and citation accuracy. Calibration: Brier, ECE, and the delegation rate. System: tokens, latency, and peak VRAM.</p>
   <p>On the 50 questions, the keyword floor gets Recall@5 0.98 and MRR 0.829. RAPTOR gets Recall@5 0.96, Recall@10 0.98, Recall@20 1.00, and MRR 0.861. RAPTOR ranks the right passage better, and finds every gold document by rank 20. Keyword wins Recall@5 by one question.</p>
-  <p>Two questions explain the gap. <code>q29</code> reaches its gold document at rank 6. <code>q47</code> reaches the first gold document at rank 14, but stays inside Recall@20. The full reference lives in <code>mds/metrics.md</code> in the repository.</p>
+  <p>Two questions explain the gap. <code>q29</code> reaches its gold document at rank 6. <code>q47</code> reaches the first gold document at rank 14, but stays inside Recall@20. The full reference lives in <a href="https://github.com/AISidesKicks/refeed-raptor-report/blob/master/mds/metrics.md">mds/metrics.md</a> in the repository.</p>
 </section>
 
 <section id="local">
@@ -352,6 +352,23 @@
     <li>The reader supports live RAPTOR, committed recorded runs, and a model-free keyword replay. The recorded runs live in <code>lab/demos/raptor-reserve/runs/</code>.</li>
     <li>The corpus generator is the source of truth. The Markdown in <code>corpus/</code> is the build output.</li>
     <li>The current demo video is a silent walkthrough with burned-in captions. A narrated version is the next media artifact.</li>
+  </ul>
+</section>
+
+<section id="dives">
+  <h2>Deep dives</h2>
+  <p>One file per technology, written by hand, with the numbers from this lab.</p>
+  <ul>
+    <li><a href="https://github.com/AISidesKicks/refeed-raptor-report/blob/master/mds/metrics.md">Metrics</a> - retrieval, answer, calibration, and cost metrics, and how to read them</li>
+    <li><a href="https://github.com/AISidesKicks/refeed-raptor-report/blob/master/mds/systemone.md">System 1 decisions</a> - typed questions, the confidence band, and when the writer takes over</li>
+    <li><a href="https://github.com/AISidesKicks/refeed-raptor-report/blob/master/mds/refeed.md">The refeed loop</a> - retrieve, judge, rewrite, retry, cite, check</li>
+    <li><a href="https://github.com/AISidesKicks/refeed-raptor-report/blob/master/mds/raptor.md">The RAPTOR tree</a> - the build, the summaries, and what the tree really buys</li>
+    <li><a href="https://github.com/AISidesKicks/refeed-raptor-report/blob/master/mds/umap-gmm.md">UMAP and GMM</a> - the clustering behind the clusters</li>
+    <li><a href="https://github.com/AISidesKicks/refeed-raptor-report/blob/master/mds/llamacpp.md">The local router</a> - one llama.cpp server, three presets, a pinned build</li>
+    <li><a href="https://github.com/AISidesKicks/refeed-raptor-report/blob/master/mds/models.md">The model stack</a> - EmbeddingGemma 2, LFM2.5, and d1-3B</li>
+    <li><a href="https://github.com/AISidesKicks/refeed-raptor-report/blob/master/mds/sqlite-numpy.md">SQLite and numpy</a> - the database, the vectors, and the fingerprint</li>
+    <li><a href="https://github.com/AISidesKicks/refeed-raptor-report/blob/master/mds/fastapi-app.md">The app</a> - the four tabs, the recorded replay, and the tests</li>
+    <li><a href="https://github.com/AISidesKicks/refeed-raptor-report/blob/master/mds/place-contract.md">The place contract</a> - the demo format and how an agent adds a place</li>
   </ul>
 </section>
 
