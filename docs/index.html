@@ -188,7 +188,7 @@
   <p class="eyebrow">A local RAG lab</p>
   <h1>Refeed Raptor</h1>
   <p class="lede">A RAPTOR summary tree, a small refeed loop, and a System-1 judge. No cloud model, no API key, no hidden state.</p>
-  <p class="status">Status: corpus and eval set are in place. The app, Docker stack, and replay player are next.</p>
+  <p class="status">Status: the model-free reader and keyword baseline are in place. The embedding retriever, RAPTOR tree, and refeed loop are next.</p>
 </header>
 
 <img class="hero" src="refeed-raptor.png" alt="A paper raptor being fed documents by a robot arm in a server room">
@@ -245,7 +245,7 @@
   <h2>What we measure</h2>
   <p>Retrieval, answer quality, calibration, and cost. The lab compares one-shot RAG, RAPTOR retrieval, and RAPTOR plus the refeed loop on the same 50 questions. The report includes the failures, not just the wins.</p>
   <p>Retrieval: Recall@k, MRR, and nDCG. Answer: faithfulness, correctness, and citation accuracy. Calibration: Brier, ECE, and the delegation rate. System: tokens, latency, and peak VRAM.</p>
-  <p>The full reference lives in <code>mds/metrics.md</code> in the repository.</p>
+  <p>The keyword baseline already gets Recall@5 0.98 and MRR 0.83 on the 50 questions. That is the floor the model pipeline has to beat. The full reference lives in <code>mds/metrics.md</code> in the repository.</p>
 </section>
 
 <section id="local">
@@ -260,7 +260,7 @@
   </div>
   <ul>
     <li>No cloud model and no API key. The only network call is the local llama.cpp router.</li>
-    <li>The plan is a recorded video first, then interactive use, replay without models, and new places that follow the contract.</li>
+    <li>The reader supports interactive use and a model-free script replay. The recorded model-backed replay is next.</li>
     <li>The corpus generator is the source of truth. The Markdown in <code>corpus/</code> is the build output.</li>
   </ul>
 </section>
