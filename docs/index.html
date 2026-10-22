@@ -263,7 +263,7 @@
   <p class="eyebrow">Refeed Raptor - a local RAG lab</p>
   <h1><span class="domain">refeed.raptor.report</span> <a class="gh" href="https://github.com/AISidesKicks/refeed-raptor-report">github</a></h1>
   <p class="lede">A RAPTOR summary tree, a small refeed loop, and a System-1 judge. No cloud model, no API key, no hidden state.</p>
-  <p class="status">Status: the local stack is running. 100 documents, 200 chunks, a 23-node RAPTOR tree, the refeed loop, and committed recorded replays.</p>
+  <p class="status">Status: the local stack is running. 100 documents, 200 chunks, a 23-node RAPTOR tree, the refeed loop, OpenTelemetry traces, and seven recorded turns.</p>
 </header>
 
 <img class="hero" src="refeed-raptor.png" alt="A paper raptor being fed documents by a robot arm in a server room">
@@ -272,7 +272,7 @@
 
 <section id="watch">
   <h2>Watch the loop</h2>
-  <p>A short silent walkthrough: recorded replay, the live question, and the retrieval eval on the same 50 questions.</p>
+  <p>A 23 second silent walkthrough: recorded replay, the refeed turn, the live question, and the retrieval eval on the same 50 questions.</p>
   <video class="video" controls playsinline preload="metadata" poster="assets/videos/refeed-loop-poster.jpg">
     <source src="assets/videos/refeed-loop.mp4" type="video/mp4">
     Your browser does not support the video tag. <a href="assets/videos/refeed-loop.mp4">Download the MP4.</a>
@@ -281,11 +281,12 @@
   <details class="transcript">
     <summary>Transcript</summary>
     <p><strong>0:00</strong> A local RAG lab. One llama.cpp router, three models, no cloud.</p>
-    <p><strong>0:02</strong> Recorded replay needs no GPU. Turn 1 returns 21 osprey chicks.</p>
-    <p><strong>0:06</strong> Turn 3: 35 km/h against the 28 km/h limit. The answer is No.</p>
-    <p><strong>0:11</strong> Live mode: retrieve, judge, write, cite, check grounding.</p>
-    <p><strong>0:15</strong> RAPTOR on 50 questions: Recall@20 100%, MRR 0.861.</p>
-    <p><strong>0:18</strong> refeed.raptor.report - local models, visible loop.</p>
+    <p><strong>0:03</strong> Recorded replay needs no GPU. Turn 1 returns 21 osprey chicks.</p>
+    <p><strong>0:07</strong> Turn 3: 35 km/h against the 28 km/h limit. The answer is No.</p>
+    <p><strong>0:12</strong> Turn 7: two documents, one question. The loop splits it and looks again.</p>
+    <p><strong>0:17</strong> Live mode: retrieve, judge, write, cite, check grounding.</p>
+    <p><strong>0:21</strong> RAPTOR on 50 questions: Recall@20 100%, MRR 0.861.</p>
+    <p><strong>0:23</strong> refeed.raptor.report - local models, visible loop.</p>
   </details>
 </section>
 
@@ -313,9 +314,9 @@
   <ol>
     <li>Embed the question with EmbeddingGemma 2.</li>
     <li>Retrieve the top 20 chunks and tree summaries with cosine similarity.</li>
-    <li>Score each result with d1-3B and keep the top 8. Leaf chunks are preferred as evidence; a summary is used only when no chunk passes the floor.</li>
+    <li>Score each result with d1-3B and keep the top 8. A passage is judged against the query that found it, so a rewrite does not throw away the passage it found. Leaf chunks are preferred as evidence; a summary is used only when no chunk passes the floor.</li>
     <li>Ask d1 whether the evidence is sufficient. On a low-confidence answer, delegate the call to LFM2.5. If the evidence is still thin, d1 picks an action, LFM rewrites the query, and the loop retries. The limit is two refeeds.</li>
-    <li>Give the writer up to three leaf chunks whose titles match the question. LFM2.5 writes at temperature 0, with validated citations.</li>
+    <li>Give the writer up to four leaf chunks whose titles match the question. LFM2.5 writes at temperature 0, and every sentence without a citation gets one, or a sources footer when nothing matches.</li>
     <li>Ask d1 whether the answer is grounded. One repair pass is allowed, then the answer ships with a warning if needed.</li>
   </ol>
   <p>Every decision is a typed question with a probability. The trace shows the probability, the confidence band, and whether a low-confidence call was delegated. Replay can run the stored trace with no model at all.</p>
@@ -332,7 +333,7 @@
     <tr><td>Decisions</td><td>d1-3B, Q8_0, typed <code>noul</code> and <code>choice</code> calls</td></tr>
     <tr><td>Storage</td><td>SQLite plus numpy cosine</td></tr>
     <tr><td>App</td><td>FastAPI, WebSocket, static HTML</td></tr>
-    <tr><td>Traces</td><td>Arize Phoenix, optional local container</td></tr>
+    <tr><td>Traces</td><td>OpenTelemetry export, Arize Phoenix as the local collector</td></tr>
   </table>
   <p>About 8.3 GB of model weights. The test card is a 12 GB GPU and the three loaded presets use about 11.1 GB.</p>
 </section>
@@ -342,6 +343,7 @@
   <p>Retrieval, answer quality, calibration, and cost. The lab compares keyword search, one-shot RAPTOR retrieval, and RAPTOR plus the refeed loop on the same 50 questions. The report includes the failures, not just the wins.</p>
   <p>Retrieval: Recall@k, MRR, and nDCG. Answer: faithfulness, correctness, and citation accuracy. Calibration: Brier, ECE, and the delegation rate. System: tokens, latency, and peak VRAM.</p>
   <p>On the 50 questions, the keyword floor gets Recall@5 0.98 and MRR 0.829. RAPTOR gets Recall@5 0.96, Recall@10 0.98, Recall@20 1.00, and MRR 0.861. RAPTOR ranks the right passage better, and finds every gold document by rank 20. Keyword wins Recall@5 by one question.</p>
+  <p>The third column is the full loop, one answer per question: 50 of 50 answered, a citation hit rate of 0.94, and a mean latency of 1.5 s. No question on the set needs a refeed any more. The script keeps one that does, so the video can show the loop working.</p>
   <p>Two questions explain the gap. <code>q29</code> reaches its gold document at rank 6. <code>q47</code> reaches the first gold document at rank 14, but stays inside Recall@20. The full reference lives in <a href="https://github.com/AISidesKicks/refeed-raptor-report/blob/master/mds/metrics.md">mds/metrics.md</a> in the repository.</p>
 </section>
 
@@ -353,7 +355,7 @@
 <section id="notes">
   <h2>Notes</h2>
   <div class="callout">
-    <p>Raptor Reserve is fictional. The bird species are real. The corpus is CC BY 4.0. The code license is separate.</p>
+    <p>Raptor Reserve is fictional. The bird species are real. The corpus is CC BY 4.0. The code is MIT.</p>
   </div>
   <ul>
     <li>No cloud model and no API key. The only network call is the local llama.cpp router.</li>
@@ -389,6 +391,7 @@
     <li><code>pixi run index</code>, <code>pixi run embed</code>, and <code>pixi run build-tree</code></li>
     <li><code>pixi run serve</code></li>
   </ol>
+  <p>Optional: <code>pixi run phoenix-up</code> starts the local trace collector, and <code>RPTR_OTLP_ENDPOINT=http://127.0.0.1:6006/v1/traces</code> sends every run to it as OpenTelemetry spans.</p>
   <p>Open <code>http://localhost:8000</code>. Ask and live replay need the router. Recorded replay and the keyword floor do not. The corpus can be regenerated with <code>pixi run build-corpus</code>.</p>
 </section>
 

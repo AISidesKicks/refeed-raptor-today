@@ -31,7 +31,7 @@ RPTR_PORT=8765 pixi run serve
 The app has four tabs:
 
 - Ask: live RAPTOR retrieval plus the refeed loop, or the keyword floor.
-- Replay: the six scripted turns. Recorded mode needs no model, no embeddings, and no GPU. Live mode reruns the turn.
+- Replay: the seven scripted turns. Recorded mode needs no model, no embeddings, and no GPU. Live mode reruns the turn.
 - Corpus: read all 100 documents.
 - Eval: run the keyword baseline or RAPTOR retrieval on the 50 questions.
 
@@ -61,7 +61,26 @@ On the 50-question eval set:
 | Keyword | 0.98 | 0.98 | 1.00 | 0.829 |
 | RAPTOR | 0.96 | 0.98 | 1.00 | 0.861 |
 
-RAPTOR ranks the right passage better and finds every gold document by rank 20. The keyword floor wins Recall@5 by one question. The two known misses are documented in `docs/index.html`.
+The full loop, one answer per question: 50 of 50 answered, a citation hit rate of 0.94, a mean latency of 1.5 s, and a mean of 0 refeeds.
+
+RAPTOR ranks the right passage better and finds every gold document by rank 20. The keyword floor wins Recall@5 by one question. The known misses are documented in `docs/index.html`.
+
+Reproduce it with:
+
+```bash
+pixi run eval -- --place raptor-reserve --answers --output scratch/answers.json
+```
+
+## Traces
+
+Every run exports OpenTelemetry spans when a collector is configured:
+
+```bash
+pixi run phoenix-up
+RPTR_OTLP_ENDPOINT=http://127.0.0.1:6006/v1/traces pixi run serve
+```
+
+The parent span is the run, the child spans are the steps of the decision trace, and the API result carries the trace id. See `mds/opentelemetry.md`.
 
 ## Recordings
 
@@ -101,4 +120,4 @@ The corpus generator is the source of truth. The Markdown in `corpus/` is the bu
 
 ## License
 
-The corpus is CC BY 4.0. The models keep their own licenses. The code license is separate and not chosen yet. See `NOTICE.md`.
+The code is MIT (`LICENSE`). The corpus is CC BY 4.0. The models keep their own licenses. See `NOTICE.md` for the full list.

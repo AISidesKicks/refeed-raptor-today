@@ -2,7 +2,7 @@
 
 > A small, local, funny RAG lab. A raptor gets fed documents, chews them into a summary tree, and refeeds when the answer is not good enough.
 
-**Status:** research complete, the first corpus is built. The local stack, the RAPTOR tree, the refeed loop, the citation path, the recorded replay, and a silent demo video are in place. The first place is a 100-document synthetic corpus called `raptor-reserve`. A narrated video is the next media step.
+**Status:** research complete, the first corpus is built. The local stack, the RAPTOR tree, the refeed loop, the citation path, the recorded replay, the OpenTelemetry export, and a silent demo video are in place. The first place is a 100-document synthetic corpus called `raptor-reserve`. A narrated video is the next media step.
 
 This is an educational project. The goal is not to build the biggest RAG system. The goal is to make the small one legible, then show what the extra machinery buys and what it costs.
 
