@@ -24,6 +24,8 @@
 <meta property="og:image:width" content="1024">
 <meta property="og:image:height" content="635">
 <meta property="og:image:alt" content="A paper raptor eating documents fed by a robot arm in a server room">
+<meta property="og:video" content="https://refeed.raptor.report/assets/videos/refeed-loop.mp4">
+<meta property="og:video:type" content="video/mp4">
 <meta property="og:locale" content="en">
 
 <meta name="twitter:card" content="summary_large_image">
@@ -104,6 +106,20 @@
     margin: 28px 0 8px;
     border: 1px solid var(--line);
     border-radius: 14px;
+  }
+
+  .video {
+    display: block;
+    width: 100%;
+    margin: 16px 0 8px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #000;
+  }
+
+  .video-note {
+    color: var(--muted);
+    font-size: 0.9rem;
   }
 
   section {
@@ -221,6 +237,16 @@
 
 <main>
 
+<section id="watch">
+  <h2>Watch the loop</h2>
+  <p>A short silent walkthrough: recorded replay, the live question, and the retrieval eval on the same 50 questions.</p>
+  <video class="video" controls playsinline preload="metadata" poster="assets/videos/refeed-loop-poster.jpg">
+    <source src="assets/videos/refeed-loop.mp4" type="video/mp4">
+    Your browser does not support the video tag. <a href="assets/videos/refeed-loop.mp4">Download the MP4.</a>
+  </video>
+  <p class="video-note">The captions are burned in. The replay turns need no model, so this clip works on a machine without a GPU.</p>
+</section>
+
 <section id="what">
   <h2>What this is</h2>
   <p>Most RAG demos stop at embed, retrieve, answer. This lab asks what happens when the first retrieval is not enough. A small decision model checks the evidence, sends the query back when it is thin, and says when it is unsure. The writer only writes after the evidence passes.</p>
@@ -291,7 +317,7 @@
     <li>No cloud model and no API key. The only network call is the local llama.cpp router.</li>
     <li>The reader supports live RAPTOR, committed recorded runs, and a model-free keyword replay. The recorded runs live in <code>lab/demos/raptor-reserve/runs/</code>.</li>
     <li>The corpus generator is the source of truth. The Markdown in <code>corpus/</code> is the build output.</li>
-    <li>A recorded demo video is the next media artifact. The replay path already works without the GPU.</li>
+    <li>The current demo video is a silent walkthrough with burned-in captions. A narrated version is the next media artifact.</li>
   </ul>
 </section>
 
