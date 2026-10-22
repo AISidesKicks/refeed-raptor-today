@@ -151,7 +151,7 @@ The "delegate" band is the interesting part. If confidence is high, accept the d
 
 | Piece | Choice | Notes |
 |---|---|---|
-| Embeddings | **EmbeddingGemma 2** Q8_0 | 768 dimensions, 4096 context, mean pooling, 310 MB, multimodal projector available |
+| Embeddings | **EmbeddingGemma 2** Q8_0 | 768 dimensions, 8K max context, mean pooling, 310 MB text-only GGUF |
 | Writer | **LFM2.5-8B-A1B** Q4_K_M | 8.3B total, 1.5B active, 128K context, 5.16 GB |
 | Judge | **d1-3B** Q8_0 | 3.1B, 32K context, 2.87 GB, one forward pass per decision |
 | Server | One **llama.cpp router** with three presets | One CUDA context, one port, one set of logs |
@@ -167,7 +167,7 @@ The current `pixi.toml` is a skeleton with Python 3.12 only. The first build ste
 
 llama.cpp can run in router mode. One process serves several models, and the `"model"` field in the request chooses which preset answers. The presets live in an INI file:
 
-- `embeddinggemma-2`: encoder, mean pooling, 4096 context.
+- `embeddinggemma-2`: encoder, mean pooling, 4096 configured context (8K max).
 - `lfm2-8b`: chat, summaries, rewrites, answers.
 - `d1-3b`: decisions, `/v1/systemone`.
 
@@ -210,7 +210,7 @@ That digest is the one verified for this project on 22 October 2026. The tag mov
 EmbeddingGemma 2 is picky:
 
 - `pooling = mean`, not the default.
-- `ctx-size = 4096`.
+- `ctx-size = 4096`. The model supports 8192, but our chunks are about 512 tokens and the smaller context keeps the cache small. Raise it if a chunk grows.
 - `batch-size` and `ubatch-size` both 4096. If the batch is smaller than the longest chunk, the encoder rejects it with `input is too large to process`.
 
 ### 5.5 What we deliberately do not use
@@ -525,7 +525,7 @@ The final choice is a goal for the next session. The project should not pretend 
 - **Model fallback.** If LFM2.5 disappoints on summaries, or tool calling becomes necessary later, try Granite 4.x or Gemma 4 behind the same preset interface. The loop and the metrics should not care which writer answers.
 - **The big loop.** Log failures, turn them into eval cases, rebuild the tree, and compare the new tree with the old one.
 - **Graph RAG comparison.** Build a small entity graph and compare it with the summary tree on the same questions. The point is to show when a graph helps and when it is ceremony.
-- **Multimodal tier.** EmbeddingGemma 2 and d1-3B both accept images. Add an image corpus and a visual question, but only after the text loop is solid.
+- **Multimodal tier.** The full EmbeddingGemma 2 model accepts text, images, video, and audio, and d1-3B accepts images. The 310 MB Q8_0 GGUF is the text backbone, so a multimodal tier needs a multimodal build or a separate image model. Add it only after the text loop is solid.
 - **Calibration dashboard.** Plot decision confidence against correctness. Show the delegation band. This is the most educational page in the project.
 - **Video automation.** Record the replay with Playwright, convert with ffmpeg, and publish the mp4 and the poster. Keep a manual path for the first video.
 - **QuALITY evaluation.** A credible benchmark run, with the same three configurations as the demo.
@@ -647,7 +647,7 @@ What we borrow from the memory lab:
 What we borrow from the parallax observer:
 
 - The llama.cpp router with INI presets.
-- The EmbeddingGemma 2 configuration: mean pooling, 4096 context, matching batch.
+- The EmbeddingGemma 2 configuration: mean pooling, 4096 configured context, matching batch.
 - The autoplay pattern: scripted turns, live answers, skip and takeover.
 - The docs and lab structure, the prefixes, and the tone.
 
