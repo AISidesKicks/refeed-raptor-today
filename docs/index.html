@@ -106,6 +106,15 @@
     margin-left: 0;
   }
 
+  h1 .domain {
+    color: var(--rust);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.42em;
+    font-weight: 600;
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+
   .lede {
     max-width: 640px;
     margin: 18px 0 0;
@@ -253,7 +262,7 @@
 
 <header>
   <p class="eyebrow">A local RAG lab</p>
-  <h1>Refeed Raptor <a class="gh" href="#measure">report</a> <a class="gh" href="https://github.com/AISidesKicks/refeed-raptor-report">github</a></h1>
+  <h1>Refeed Raptor <span class="domain">.report</span> <a class="gh" href="https://github.com/AISidesKicks/refeed-raptor-report">github</a></h1>
   <p class="lede">A RAPTOR summary tree, a small refeed loop, and a System-1 judge. No cloud model, no API key, no hidden state.</p>
   <p class="status">Status: the local stack is running. 100 documents, 200 chunks, a 23-node RAPTOR tree, the refeed loop, and committed recorded replays.</p>
 </header>
