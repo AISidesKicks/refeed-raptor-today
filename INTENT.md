@@ -2,7 +2,7 @@
 
 > A small, local, funny RAG lab. A raptor gets fed documents, chews them into a summary tree, and refeeds when the answer is not good enough.
 
-**Status:** research complete, nothing built yet. The stack and the loop are locked. The corpus is an open goal.
+**Status:** research complete, the first corpus is built. The stack and the loop are locked. The first place is a 100-document synthetic corpus called `raptor-reserve`. The app, the Docker stack, and the replay player are next.
 
 This is an educational project. The goal is not to build the biggest RAG system. The goal is to make the small one legible, then show what the extra machinery buys and what it costs.
 
@@ -487,35 +487,53 @@ The metrics page must also warn about the ways the numbers lie:
 
 ---
 
-## 11. Open goal: the corpus
+## 11. Chosen direction: the Raptor Reserve corpus
 
-We need data to feed the raptor. This is an open goal, not a decision. The first place should be chosen after the loop works on a tiny sample, so the corpus does not hide the bugs.
+The first place is a 100-document synthetic corpus called `raptor-reserve`. It is English only, and every document is original text written for this project. The corpus has two wings:
 
-### 11.1 Criteria
+| Wing | Docs | What it is | Why |
+|---|---|---|---|
+| Reserve records | 85 | A fictional island reserve: charter, species, patrols, incidents, research, visitors, infrastructure, history | The local model cannot know these facts from pretraining, so retrieval is the only way to answer |
+| Data and methods | 15 | Original summaries of RAPTOR, SearchJev, the local models, the metrics, plus the reserve's data dictionary and evaluation notes | Ties the corpus to the lab and gives the demo a technical layer |
 
-- 20 to 50 documents, or 50k to 200k tokens in total.
-- Owned by the author, public domain, or clearly licensed.
-- Long enough that a summary tree actually helps. A single FAQ page will not show RAPTOR's value.
-- Multi-document, so the tree has something to cluster.
-- Has 20 to 50 questions with gold passages and expected claims.
-- Interesting enough to record a video about.
-- Extensible by an agent: adding a document should be easy, and adding a place should be a folder copy.
+The reserve records use real species (peregrine falcon, osprey, northern harrier, short-eared owl, and so on), but the island, the staff, the counts, and the incidents are fictional. The data and methods wing cites the public sources and does not copy them.
 
-### 11.2 Candidate directions
+### 11.1 Why this corpus
 
-| Candidate | Pros | Cons |
-|---|---|---|
-| **Meta corpus**: the RAPTOR paper, the SearchJev paper, the refeed notes, and the project's own docs | Free, directly relevant, the RAG explains RAG | Technical and dry, citation-heavy |
-| **Fictional place**: a "Raptor Reserve" field guide with 20 to 30 short documents | Fully owned, funny, designed for the demo, obvious "create another place" story | Synthetic, not a real-world RAG test |
-| **QuALITY subset**: the long-document QA benchmark used by the RAPTOR paper | Credible, comparable, long documents | Download and license overhead, not a demo corpus |
+- **License-clean.** All prose is original. The methods wing summarizes public research and links to it. No third-party text is reproduced.
+- **Unknown to the model.** The reserve facts are invented, so LFM2.5 and d1-3B cannot answer from pretraining. A correct answer is evidence that retrieval worked.
+- **Coherent.** One island, one staff, one budget, one set of dates. The tree has something real to cluster.
+- **Extensible.** The generator is a Python script with a seed world. An agent can add a document, a question, or a whole place.
+- **Good for video.** A reserve with drones, storms, lead poisoning, and a lighthouse is more watchable than a pile of API docs.
 
-### 11.3 Leaning
+### 11.2 The shape
 
-1. Start with the **meta corpus** for the first working loop. It is free, small, and the questions write themselves.
-2. Add the **fictional place** as the first agent-generated demo. It proves the harness and gives the video a better story.
-3. Keep **QuALITY** for the evaluation chapter, not the first demo.
+- 10 governance documents.
+- 15 species and ecology documents.
+- 15 field operations documents.
+- 15 research and monitoring documents.
+- 10 visitor and education documents.
+- 10 infrastructure and logistics documents.
+- 10 history and culture documents.
+- 15 data and methods documents.
 
-The final choice is a goal for the next session. The project should not pretend the dataset is settled.
+Every document targets **500 to 800 words** and uses section headings. At 512-token chunks with 64 overlap, that is 2 to 4 chunks per document, or about 200 to 300 chunks for the corpus. That is the minimum for a meaningful three-level RAPTOR tree. A 150-word note is allowed only when it is linked to a longer document, and it does not count toward the length target.
+
+### 11.3 The eval set
+
+`eval.jsonl` has 50 questions:
+
+- 30 reserve-specific questions, whose answers exist only in the fictional records.
+- 10 methods questions about RAPTOR, SearchJev, and the local models.
+- 10 multi-hop questions that need two documents, such as a wind limit plus a flight plan.
+
+Each question lists its gold document ids and a short expected answer. The validate command checks that every gold id exists.
+
+### 11.4 The license
+
+The corpus is released under CC BY 4.0. The `NOTICE.md` in the place folder states that the text is original, names the public sources used for the methods wing, and explains that no third-party text is reproduced. The code license is separate and still to be chosen.
+
+The corpus is a lab artifact, not a final dataset. It is large enough to show the tree and small enough to inspect. The generator is the source of truth; the Markdown files are the build output.
 
 ---
 
@@ -602,6 +620,7 @@ The voice stays informal. The claims stay small. The numbers stay visible.
 - [x] SQLite plus numpy cosine, no vector database.
 - [x] Plain Python plus FastAPI, no agent framework in the loop.
 - [x] Arize Phoenix for traces and evals.
+- [x] 100 original English documents for `raptor-reserve`, 85 reserve records and 15 data and methods, CC BY 4.0.
 - [x] Recorded video first, then interactive, replay, and agent modes.
 - [x] `rptr-` prefix for Docker resources, pixi workspace `rptr`.
 - [x] No tool calling, no fine-tuning, no auth, no multi-user.
@@ -618,6 +637,7 @@ The voice stays informal. The claims stay small. The numbers stay visible.
 - TypeSafe System One API: https://docs.typesafe.ai/api/system-one
 - llama.cpp server documentation: https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md
 - llama.cpp INI presets: https://github.com/ggml-org/llama.cpp/blob/master/docs/preset.md
+- EmbeddingGemma 2 model card: https://huggingface.co/google/embeddinggemma-2
 - EmbeddingGemma 2 GGUF: https://huggingface.co/ggml-org/embeddinggemma-2-GGUF
 - LFM2.5-8B-A1B: https://huggingface.co/LiquidAI/LFM2.5-8B-A1B
 - LFM2.5-8B-A1B GGUF: https://huggingface.co/LiquidAI/LFM2.5-8B-A1B-GGUF
