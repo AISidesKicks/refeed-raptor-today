@@ -13,6 +13,18 @@ SCRATCH = "$PIXI_PROJECT_ROOT/scratch"
 PYTHONPATH = "$PIXI_PROJECT_ROOT/src"
 
 [tasks]
+serve = 'sh -c "uvicorn rptr.app:app --host 0.0.0.0 --port ${RPTR_PORT:-8000}"'
+test = "pytest -q"
+index = "python -m rptr.index"
+build-corpus = "python lab/demos/raptor-reserve/tools/build_corpus.py"
 
 [dependencies]
 python = "==3.12"
+fastapi = ">=0.115"
+uvicorn = ">=0.30"
+numpy = ">=2.0"
+pydantic = ">=2.8"
+httpx = ">=0.27"
+pytest = ">=8.0"
+websockets = ">=12.0"
+ruff = ">=0.6"
