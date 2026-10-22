@@ -1,0 +1,21 @@
+id = "raptor-reserve"
+title = "Raptor Reserve"
+blurb = "A fictional island reserve with 100 documents, 50 eval questions, and enough unknown facts to keep the raptor honest."
+corpus = "corpus"
+script = "script.jsonl"
+eval = "eval.jsonl"
+license = "CC-BY-4.0"
+version = 1
+
+starter_questions = [
+  "How many osprey chicks fledged in 2025?",
+  "Which ranger approved the drone flight on 12 September 2026?",
+  "A drone flight is planned with a 35 km/h wind. May it proceed?",
+  "Which storm damaged the South Beach boardwalk, and what did the repair cost?",
+  "What does RAPTOR stand for?",
+]
+
+[models]
+embedding = "embeddinggemma-2"
+writer = "lfm2-8b"
+judge = "d1-3b"
