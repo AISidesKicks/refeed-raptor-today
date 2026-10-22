@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Refeed Raptor - corpus reader</title>
+  <meta name="description" content="A model-free reader for the Refeed Raptor corpus.">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="shell">
+  <header class="masthead">
+    <p class="eyebrow">Refeed Raptor</p>
+    <h1>Corpus reader</h1>
+    <p class="lede">Ask the reserve. This mode is keyword-only. The local writer and the refeed loop are next.</p>
+  </header>
+
+  <section class="place-bar">
+    <label for="place">Place</label>
+    <select id="place"></select>
+    <span id="stats" class="stats">Loading places...</span>
+  </section>
+
+  <nav class="tabs" aria-label="Reader sections">
+    <button class="tab active" data-tab="ask" type="button">Ask</button>
+    <button class="tab" data-tab="replay" type="button">Replay</button>
+    <button class="tab" data-tab="corpus" type="button">Corpus</button>
+    <button class="tab" data-tab="eval" type="button">Eval</button>
+  </nav>
+
+  <main>
+    <section id="tab-ask" class="panel">
+      <form id="ask-form" class="ask-form">
+        <input id="question" type="text" placeholder="How many osprey chicks fledged in 2025?" autocomplete="off" aria-label="Question">
+        <button type="submit">Ask</button>
+      </form>
+      <div id="starter" class="chips"></div>
+      <div id="answer" class="answer" hidden></div>
+      <div id="results" class="results"></div>
+    </section>
+
+    <section id="tab-replay" class="panel" hidden>
+      <div class="replay-head">
+        <button id="replay-prev" type="button" disabled>Previous</button>
+        <span id="replay-label" class="replay-label">Turn 1</span>
+        <button id="replay-next" type="button">Next</button>
+      </div>
+      <div id="replay-body"></div>
+    </section>
+
+    <section id="tab-corpus" class="panel" hidden>
+      <div class="corpus-layout">
+        <ul id="doc-list" class="doc-list"></ul>
+        <article id="doc-body" class="doc-body">
+          <p>Select a document.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="tab-eval" class="panel" hidden>
+      <p>Run the keyword baseline on the eval questions. This is the comparison floor, not the RAPTOR score.</p>
+      <button id="run-eval" type="button">Run keyword baseline</button>
+      <div id="eval-summary" class="answer" hidden></div>
+      <div id="eval-table" class="table-wrap"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Model-free baseline. The corpus is CC BY 4.0. The code license is separate.</p>
+  </footer>
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>

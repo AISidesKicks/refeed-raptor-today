@@ -1,0 +1,408 @@
+:root {
+  --paper: #f6f1e8;
+  --ink: #1f1b16;
+  --muted: #6b6257;
+  --rust: #b43a1f;
+  --line: #d9cfc0;
+  --panel: #fffaf2;
+  --soft: #efe6d8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.55;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 20px 56px;
+}
+
+.masthead {
+  padding: 16px 0 8px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--rust);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.lede {
+  max-width: 720px;
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.place-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 24px 0 14px;
+  padding: 12px 14px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.place-bar label {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+select {
+  padding: 6px 10px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.stats {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 18px 0 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.tab {
+  padding: 9px 14px;
+  background: transparent;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.tab:hover {
+  color: var(--ink);
+}
+
+.tab.active {
+  border-bottom-color: var(--rust);
+  color: var(--ink);
+}
+
+.panel {
+  padding: 24px 0 8px;
+}
+
+.ask-form {
+  display: flex;
+  gap: 8px;
+}
+
+.ask-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 14px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.ask-form input:focus {
+  outline: 2px solid var(--rust);
+  outline-offset: 1px;
+}
+
+.ask-form button,
+#run-eval {
+  padding: 12px 18px;
+  background: var(--rust);
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.ask-form button:hover,
+#run-eval:hover {
+  background: #8f2e18;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 12px 0 0;
+}
+
+.chips button {
+  padding: 5px 9px;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink);
+  font-size: 0.82rem;
+}
+
+.chips button:hover {
+  border-color: var(--rust);
+}
+
+.answer {
+  margin: 18px 0;
+  padding: 14px 16px;
+  background: var(--panel);
+  border-left: 4px solid var(--rust);
+  border-radius: 0 8px 8px 0;
+}
+
+.answer p {
+  margin: 0;
+}
+
+.results {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.hit {
+  padding: 14px 16px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.hit-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.hit-head strong {
+  font-size: 0.95rem;
+}
+
+.hit-head span {
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+}
+
+.hit p {
+  margin: 0;
+  color: #3b332b;
+  font-size: 0.92rem;
+  white-space: pre-wrap;
+}
+
+.replay-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.replay-head button {
+  padding: 7px 12px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.replay-head button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.replay-label {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.replay-visitor {
+  margin: 0 0 6px;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.replay-note,
+.replay-expected {
+  margin: 0 0 8px;
+  color: var(--muted);
+}
+
+.replay-expected strong {
+  color: var(--ink);
+}
+
+.corpus-layout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 18px;
+}
+
+.doc-list {
+  max-height: 70vh;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  list-style: none;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+}
+
+.doc-list li + li {
+  border-top: 1px solid var(--line);
+}
+
+.doc-list button {
+  width: 100%;
+  padding: 9px 12px;
+  background: transparent;
+  border: 0;
+  color: var(--ink);
+  text-align: left;
+}
+
+.doc-list button:hover {
+  background: var(--soft);
+}
+
+.doc-list .doc-meta {
+  display: block;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.doc-body {
+  min-height: 320px;
+  padding: 20px 22px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.doc-body h2 {
+  margin: 0 0 10px;
+  font-size: 1.3rem;
+}
+
+.doc-body h3 {
+  margin: 20px 0 6px;
+  font-size: 1.02rem;
+}
+
+.doc-body p {
+  margin: 0 0 10px;
+}
+
+.doc-body .doc-metadata {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.table-wrap {
+  margin-top: 14px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--panel);
+  font-size: 0.9rem;
+}
+
+th,
+td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.badge {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.badge.hit {
+  background: #dcebd7;
+  color: #28551f;
+}
+
+.badge.miss {
+  background: #f3d8d1;
+  color: #7a2614;
+}
+
+.footer {
+  margin-top: 30px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.footer p {
+  margin: 0;
+}
+
+@media (max-width: 720px) {
+  .corpus-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .doc-list {
+    max-height: 240px;
+  }
+
+  .ask-form {
+    flex-direction: column;
+  }
+}
