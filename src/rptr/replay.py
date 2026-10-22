@@ -1,16 +1,17 @@
-"""Replay one autoplay turn against the model-free index.
+"""Replay an autoplay turn.
 
-The full player will read recorded traces with the writer and the decision
-model. This helper is the fallback: it runs the same question through the
-keyword baseline and returns the script's expected answer next to the evidence.
+Two paths share the player: a committed recording built by the full pipeline,
+and a model-free keyword fallback that runs the question against the index.
 """
 
 from __future__ import annotations
 
+import json
 import sqlite3
 from dataclasses import dataclass
+from typing import Any
 
-from .place import ScriptTurn
+from .place import Place, ScriptTurn
 from .search import SearchHit, search_rows
 from .store import chunk_rows
 
@@ -38,3 +39,19 @@ def replay_turn(
         expect=script_turn.expect,
         hits=tuple(hits),
     )
+
+
+def recorded_turn(place: Place, turn: int) -> dict[str, Any] | None:
+    """Load one committed recording. No model, no database, no GPU."""
+
+    path = place.root / "runs" / f"turn-{turn:02d}.json"
+    if not path.is_file():
+        return None
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if payload.get("place_id") != place.id or int(payload.get("turn", 0)) != turn:
+        raise ValueError(f"{path}: recording does not match place and turn")
+    return payload
+
+
+def has_recordings(place: Place) -> bool:
+    return any((place.root / "runs").glob("turn-*.json"))

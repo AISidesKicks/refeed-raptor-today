@@ -32,6 +32,7 @@ def test_places_and_detail(tmp_path):
         assert body["documents"] == 100
         assert len(body["starter_questions"]) == 5
         assert len(body["script"]) == 6
+        assert body["capabilities"]["recorded"] is True
 
 
 def test_ask_and_websocket(tmp_path):
@@ -69,6 +70,17 @@ def test_replay_corpus_and_eval(tmp_path):
         assert "osprey" in turn["visitor"].lower()
         assert turn["hits"]
 
+        recorded = client.get("/api/places/raptor-reserve/replay/1?mode=recorded")
+        assert recorded.status_code == 200
+        recording = recorded.json()
+        assert recording["place_id"] == "raptor-reserve"
+        assert recording["turn"] == 1
+        assert "21" in recording["result"]["answer"]
+        assert recording["result"]["citations"]
+
+        missing = client.get("/api/places/raptor-reserve/replay/9?mode=recorded")
+        assert missing.status_code == 404
+
         docs = client.get("/api/places/raptor-reserve/documents")
         assert docs.status_code == 200
         assert len(docs.json()) == 100
@@ -89,4 +101,4 @@ def test_landing_page(tmp_path):
     with make_client(tmp_path) as client:
         response = client.get("/")
         assert response.status_code == 200
-        assert "Corpus reader" in response.text
+        assert "Local RAG reader" in response.text

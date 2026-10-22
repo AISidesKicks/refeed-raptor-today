@@ -191,6 +191,147 @@ select {
   margin: 0;
 }
 
+.answer p + p {
+  margin-top: 10px;
+}
+
+.answer .answer-text {
+  white-space: pre-wrap;
+}
+
+.answer .warning {
+  color: #7a2614;
+  font-weight: 600;
+}
+
+.health {
+  margin-left: auto;
+  padding: 3px 9px;
+  background: var(--soft);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.health.up {
+  background: #dcebd7;
+  color: #28551f;
+}
+
+.health.down {
+  background: #f3d8d1;
+  color: #7a2614;
+}
+
+.mode-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.mode-bar label,
+.replay-mode-label {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.citations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.citation {
+  padding: 2px 8px;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+}
+
+.trace {
+  display: grid;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.trace-title {
+  margin: 4px 0 0;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+.trace-step {
+  padding: 10px 12px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.trace-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.trace-head strong {
+  font-size: 0.88rem;
+  text-transform: capitalize;
+}
+
+.trace-head .stats {
+  font-size: 0.8rem;
+}
+
+.trace-body {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.kind {
+  padding: 1px 7px;
+  background: var(--soft);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.eval-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+#run-eval-raptor {
+  padding: 12px 18px;
+  background: var(--panel);
+  border: 1px solid var(--rust);
+  border-radius: 8px;
+  color: var(--rust);
+  font-weight: 700;
+}
+
+#run-eval-raptor:hover {
+  background: var(--soft);
+}
+
+
 .results {
   display: grid;
   gap: 10px;
