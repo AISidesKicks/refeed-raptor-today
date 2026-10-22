@@ -13,7 +13,7 @@ def test_load_reference_place():
     assert place.id == "raptor-reserve"
     assert len(place.documents) == 100
     assert len(place.questions) == 50
-    assert len(place.script) == 6
+    assert len(place.script) == 7
     assert place.words >= 50000
     assert all(question.gold for question in place.questions)
     assert all(document.words >= 500 for document in place.documents)

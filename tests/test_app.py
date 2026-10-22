@@ -31,7 +31,7 @@ def test_places_and_detail(tmp_path):
         body = detail.json()
         assert body["documents"] == 100
         assert len(body["starter_questions"]) == 5
-        assert len(body["script"]) == 6
+        assert len(body["script"]) == 7
         assert body["capabilities"]["recorded"] is True
 
 

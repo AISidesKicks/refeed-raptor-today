@@ -14,12 +14,19 @@ import time
 from dataclasses import dataclass
 from typing import Any
 
+from . import tracing
 from .llm import Decision, LlamaRouter, choice, noul
 from .place import Place
 from .retrieval import RetrievalHit, collapsed_search
 
 CITATION_RE = re.compile(r"\[([A-Za-z0-9:._-]+)\]")
 BRACKET_RE = re.compile(r"\[([^\[\]\n]{1,80})\]")
+UNBALANCED_BRACKET_RE = re.compile(r"\[([A-Za-z0-9][A-Za-z0-9:._-]*?)(?![0-9A-Za-z:._-])")
+
+# The relevance call gets a neutral state. Each question carries its own
+# search query, and the original question would bias the judgement of the
+# passages that a rewrite found.
+RELEVANCE_STATE = "Relevance check for one search query."
 
 ACTION_OPTIONS = {
     "keep": "The query is good; retrieve more passages with the same question.",
@@ -41,7 +48,7 @@ class PipelineConfig:
     low_confidence: float = 0.30
     delegate_low_confidence: bool = True
     writer_max_tokens: int = 900
-    writer_evidence_limit: int = 3
+    writer_evidence_limit: int = 4
 
 
 def _confidence(probability: float) -> float:
@@ -125,11 +132,17 @@ def _excerpt(hit: RetrievalHit, terms: set[str], max_words: int = 150) -> str:
 def _writer_hits(
     selected: list[RetrievalHit], question: str, limit: int
 ) -> list[RetrievalHit]:
-    """Keep the passages whose titles name the question's topic."""
+    """Keep the passages whose titles name the question's topic first.
+
+    The title matches come first, because they are the passages that talk about
+    the subject of the question. The rest fill the remaining slots, because a
+    passage with an unrelated title can still hold the missing fact.
+    """
 
     terms = _terms(question)
     matched = [hit for hit in selected if terms & _terms(hit.title)]
-    return (matched or selected)[:limit]
+    rest = [hit for hit in selected if hit not in matched]
+    return (matched + rest)[:limit]
 
 
 def _writer_evidence(hits: list[RetrievalHit], question: str) -> str:
@@ -166,21 +179,26 @@ def _relevance(
     model: str,
     question: str,
     hits: list[RetrievalHit],
+    found_query: dict[str, str] | None = None,
     batch_size: int = 4,
 ) -> tuple[dict[str, float], list[dict[str, Any]]]:
     scores: dict[str, float] = {}
     calls: list[dict[str, Any]] = []
     for start in range(0, len(hits), batch_size):
         batch = hits[start : start + batch_size]
-        questions = {
-            f"p{index}": noul(
-                "Is this passage relevant to the question? A passage is relevant "
-                "if it contains a fact, rule, name, number, or claim that helps "
-                "answer the question.\n\nPassage:\n" + hit.text
+        questions = {}
+        for index, hit in enumerate(batch):
+            # A passage is judged against the query that found it. After a
+            # rewrite the query is one part of a bigger question, and the
+            # passage that answers that part is still relevant.
+            query = (found_query or {}).get(hit.node_id, question)
+            questions[f"p{index}"] = noul(
+                "Is this passage relevant to the search query? A passage is "
+                "relevant if it contains a fact, rule, name, number, or claim "
+                "that helps answer the query.\n\n"
+                f"Search query: {query}\n\nPassage:\n" + hit.text
             )
-            for index, hit in enumerate(batch)
-        }
-        decisions = router.systemone(question, questions, model=model)
+        decisions = router.systemone(RELEVANCE_STATE, questions, model=model)
         for index, hit in enumerate(batch):
             decision = decisions.get(f"p{index}")
             if decision is None:
@@ -204,6 +222,7 @@ def _select(
     scores: dict[str, float],
     config: PipelineConfig,
     question: str = "",
+    found_query: dict[str, str] | None = None,
 ) -> list[RetrievalHit]:
     terms = _terms(question)
 
@@ -225,9 +244,34 @@ def _select(
     # rules; keep a summary only when too few chunks pass the floor.
     leaves = [hit for hit in eligible if hit.kind == "chunk"]
     summaries = [hit for hit in eligible if hit.kind != "chunk"]
-    kept = leaves[: config.evidence_limit]
+    kept = _keep_per_query(leaves, config.evidence_limit, found_query)
     if not kept:
         kept = summaries[: config.evidence_limit]
+    return kept
+
+
+def _keep_per_query(
+    leaves: list[RetrievalHit],
+    limit: int,
+    found_query: dict[str, str] | None,
+) -> list[RetrievalHit]:
+    """Keep the best passages of every query, not only the best overall.
+
+    After a rewrite the pool holds passages for every part of the question. A
+    plain top-k would spend every slot on the loudest part, so the passages
+    are taken in rounds, one per query at a time.
+    """
+
+    if not found_query or len(leaves) <= limit:
+        return leaves[:limit]
+    groups: dict[str, list[RetrievalHit]] = {}
+    for hit in leaves:
+        groups.setdefault(found_query.get(hit.node_id, ""), []).append(hit)
+    kept: list[RetrievalHit] = []
+    while len(kept) < limit and any(groups.values()):
+        for key in list(groups):
+            if groups[key] and len(kept) < limit:
+                kept.append(groups[key].pop(0))
     return kept
 
 
@@ -242,6 +286,9 @@ def _delegate(
         f"Question: {question}\n\n"
         f"Criterion: {criterion}\n\n"
         f"Evidence:\n{evidence}\n\n"
+        "Check what the question asks the reader to look up. Reply yes only "
+        "if the evidence holds that rule, name, or number. Facts that the "
+        "question already states do not have to be in the evidence. "
         "Reply with one word: yes or no."
     )
     result = router.chat(
@@ -253,13 +300,23 @@ def _delegate(
             {"role": "user", "content": prompt},
         ],
         model=model,
-        max_tokens=100,
+        max_tokens=128,
         temperature=0.0,
         skip_reasoning=True,
     )
     first = result.text.strip().lower().split()
     answer = first[0].strip(".,:;") if first else ""
     return answer == "yes", result.text.strip()
+
+
+def _clean_query(line: str, action: str) -> str:
+    """Turn a raw rewrite line into a search query."""
+
+    text = re.sub(r"\([^)]*\)", " ", line)
+    text = re.sub(rf"^{re.escape(action)}\b[:\-]?\s*", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"^(new )?(search )?quer(?:y|ies)\b[:\-]\s*", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"\s+", " ", text).strip(" -\"'.,;:")
+    return text
 
 
 def _rewrite(
@@ -274,12 +331,15 @@ def _rewrite(
     titles = "\n".join(f"- {hit.title}" for hit in selected[:6]) or "- none"
     prompt = (
         f"Question: {question}\n"
-        f"Chosen action: {action} ({ACTION_OPTIONS.get(action, '')})\n"
+        f"Action: {action}\n"
+        f"What the action means: {ACTION_OPTIONS.get(action, '')}\n"
         f"Previous search: {previous_query}\n"
         f"Evidence titles so far:\n{titles}\n\n"
-        f"Write {count} search {'queries' if count > 1 else 'query'} for a local "
-        "document index. Use words that are likely to appear in the records. "
-        "Do not answer the question. Return one query per line, no bullets, no quotes."
+        f"Write {count} new search {'queries' if count > 1 else 'query'} for a local "
+        "document index. Use nouns that appear in the records. Do not answer the "
+        "question. Do not copy the action name or the meaning line into the query. "
+        f"Return only the {'queries' if count > 1 else 'query'}, one per line, no "
+        "bullets, no quotes, no explanation."
     )
     result = router.chat(
         [
@@ -294,8 +354,19 @@ def _rewrite(
         temperature=0.2,
         skip_reasoning=True,
     )
-    lines = [line.strip(" -\"'") for line in result.text.splitlines() if line.strip()]
-    queries = [line for line in lines if len(line.split()) >= 2][:count]
+    queries: list[str] = []
+    for line in result.text.splitlines():
+        text = _clean_query(line, action)
+        if not text:
+            continue
+        words = text.split()
+        if len(words) < 2 or len(words) > 14:
+            continue
+        if "the query is" in text.casefold() or "the action" in text.casefold():
+            continue
+        queries.append(text)
+        if len(queries) == count:
+            break
     return queries or [question]
 
 
@@ -477,6 +548,20 @@ def _repair(
     return result.text
 
 
+def _close_unbalanced_brackets(text: str) -> str:
+    """Close a citation bracket the writer forgot: [rr-091:000. -> [rr-091:000]."""
+
+    def fix(match: re.Match[str]) -> str:
+        label = match.group(1)
+        end = match.end()
+        if end < len(match.string) and match.string[end] == "]":
+            return match.group(0)
+        stripped = label.rstrip(".,;:")
+        return "[" + stripped + "]" + label[len(stripped) :]
+
+    return UNBALANCED_BRACKET_RE.sub(fix, text)
+
+
 def _normalize_citations(answer: str, selected: list[RetrievalHit]) -> str:
     """Keep node ids, translate known titles, drop labels the model invented."""
 
@@ -495,6 +580,8 @@ def _normalize_citations(answer: str, selected: list[RetrievalHit]) -> str:
         return ""
 
     cleaned = BRACKET_RE.sub(replace, answer)
+    # The writer sometimes forgets the closing bracket: [rr-091:000.
+    cleaned = _close_unbalanced_brackets(cleaned)
     cleaned = re.sub(
         r"\((?:source:\s*)?rr-\d{3}(?::\d{3})?\)",
         "",
@@ -507,9 +594,52 @@ def _normalize_citations(answer: str, selected: list[RetrievalHit]) -> str:
     return cleaned.strip()
 
 
+def _cite_sentences(answer: str, hits: list[RetrievalHit]) -> tuple[str, int]:
+    """Give every factual sentence a citation, even when the writer forgot one.
+
+    The writer is asked to cite each factual sentence. When it skips one, the
+    sentence is matched against the passages it could have come from. A
+    sentence with no clear match stays uncited, and the caller adds a source
+    footer for it.
+    """
+
+    if not hits:
+        return answer, 0
+    parts = re.split(r"(?<=[.!?])\s+", answer.strip())
+    sentences: list[str] = []
+    uncited = 0
+    for part in parts:
+        text = part.strip()
+        if not text:
+            continue
+        if CITATION_RE.search(text) or not re.search(r"[A-Za-z]", text):
+            sentences.append(text)
+            continue
+        terms = _terms(text)
+        best: RetrievalHit | None = None
+        best_score = 0
+        for hit in hits:
+            score = len(terms & _terms(f"{hit.title} {hit.text}"))
+            if score > best_score:
+                best_score = score
+                best = hit
+        if best is not None and best_score >= 2:
+            body = text.rstrip()
+            punctuation = ""
+            if body and body[-1] in ".!?":
+                body = body[:-1].rstrip()
+                punctuation = text[-1]
+            sentences.append(f"{body} [{best.node_id}]{punctuation}")
+        else:
+            sentences.append(text)
+            uncited += 1
+    return " ".join(sentences), uncited
+
+
 def _ensure_citations(
     answer: str,
     selected: list[RetrievalHit],
+    force_footer: bool = False,
 ) -> tuple[str, str]:
     """Return an answer with citations and how they were attached.
 
@@ -518,7 +648,7 @@ def _ensure_citations(
     """
 
     cited, _ = _citations(answer, selected)
-    if cited:
+    if cited and not force_footer:
         return answer, "inline"
     haystack = answer.casefold()
     preferred = [hit for hit in selected if hit.title.casefold() in haystack]
@@ -567,6 +697,26 @@ def answer_question(
     question: str,
     config: PipelineConfig | None = None,
 ) -> dict[str, Any]:
+    """Answer one question and export the run trace when OpenTelemetry is on."""
+
+    with tracing.span(
+        "raptor.answer",
+        **{"rptr.place": place.id, "rptr.question": question},
+    ) as span:
+        result = _answer_question(router, conn, place, question, config)
+        tracing.record_steps(span, result.get("trace", []))
+        tracing.finish(span, result)
+        result["trace_id"] = tracing.trace_id(span)
+        return result
+
+
+def _answer_question(
+    router: LlamaRouter,
+    conn: sqlite3.Connection,
+    place: Place,
+    question: str,
+    config: PipelineConfig | None = None,
+) -> dict[str, Any]:
     config = config or PipelineConfig()
     judge_model = place.models.get("judge", "d1-3b")
     writer_model = place.models.get("writer", "lfm2-8b")
@@ -574,6 +724,7 @@ def answer_question(
     started = time.monotonic()
     trace: list[dict[str, Any]] = []
     pool: dict[str, RetrievalHit] = {}
+    found_query: dict[str, str] = {}
     scores: dict[str, float] = {}
     relevance_calls: list[dict[str, Any]] = []
     queries = [question]
@@ -587,6 +738,10 @@ def answer_question(
             vector = router.embed([query], model=embed_model)[0]
             hits = collapsed_search(conn, place.id, vector, limit=config.retrieve_limit)
             _merge(pool, hits)
+            for hit in hits:
+                # The newest query wins. After a rewrite the query is more
+                # specific, and the passage deserves a fresh judgement.
+                found_query[hit.node_id] = query
         trace.append(
             {
                 "step": "retrieve",
@@ -613,10 +768,12 @@ def answer_question(
                 "timings": {"total_ms": int((time.monotonic() - started) * 1000)},
             }
 
-        new_scores, calls = _relevance(router, judge_model, question, list(pool.values()))
+        new_scores, calls = _relevance(
+            router, judge_model, question, list(pool.values()), found_query
+        )
         scores.update(new_scores)
         relevance_calls.extend(calls)
-        selected = _select(pool, scores, config, question)
+        selected = _select(pool, scores, config, question, found_query)
         trace.append(
             {
                 "step": "relevance",
@@ -678,13 +835,14 @@ def answer_question(
                 router,
                 writer_model,
                 question,
-                evidence,
-                "The evidence must contain the specific fact needed to answer.",
+                _writer_evidence(selected, question),
+                "The evidence must hold the rule, name, or number that the question asks the reader to look up.",
             )
-            trace_entry.update(
-                {"delegated": True, "source": "lfm", "delegate_answer": raw[:300]}
-            )
-            sufficient = delegated
+            if raw:
+                trace_entry.update(
+                    {"delegated": True, "source": "lfm", "delegate_answer": raw[:300]}
+                )
+                sufficient = delegated
         trace_entry["accepted"] = sufficient
         trace_entry["elapsed_ms"] = int((time.monotonic() - sufficiency_started) * 1000)
         trace.append(trace_entry)
@@ -760,11 +918,14 @@ def answer_question(
         }
     )
     answer = _normalize_citations(answer, writer_hits)
-    answer, citation_mode = _ensure_citations(answer, writer_hits)
+    answer, uncited_sentences = _cite_sentences(answer, writer_hits)
+    answer, citation_mode = _ensure_citations(
+        answer, writer_hits, force_footer=uncited_sentences > 0
+    )
     trace.append({"step": "cite", "mode": citation_mode})
 
     evidence = _evidence_text(writer_hits)
-    judge_evidence = _compact_evidence(writer_hits)
+    judge_evidence = _writer_evidence(writer_hits, question)
     grounded_decision = router.systemone(
         f"Question: {question}\n\nAnswer:\n{answer}\n\nEvidence:\n{judge_evidence}",
         {
@@ -815,7 +976,10 @@ def answer_question(
             answer = _polish_answer(
                 _trim_answer(_normalize_citations(repaired, writer_hits)), question
             )
-            answer, citation_mode = _ensure_citations(answer, writer_hits)
+            answer, uncited_sentences = _cite_sentences(answer, writer_hits)
+            answer, citation_mode = _ensure_citations(
+                answer, writer_hits, force_footer=uncited_sentences > 0
+            )
             trace.append(
                 {"step": "repair", "chars": len(answer), "citation_mode": citation_mode}
             )

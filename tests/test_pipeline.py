@@ -8,7 +8,10 @@ from rptr.llm import ChatResult, Decision
 from rptr.pipeline import (
     PipelineConfig,
     _citations,
+    _cite_sentences,
+    _clean_query,
     _fix_polarity,
+    _normalize_citations,
     _polish_answer,
     _select,
     _trim_answer,
@@ -204,3 +207,39 @@ def test_polish_answer_drops_a_trailing_no_before_a_citation():
     assert _polish_answer(text, "Why was the bird in the news?") == (
         "The bird was treated for lead poisoning."
     )
+
+
+def test_cite_sentences_adds_a_citation_to_a_bare_sentence():
+    hits = fake_hits()
+    text, uncited = _cite_sentences("The wind limit is 30 km/h.", hits)
+    assert uncited == 0
+    assert text == "The wind limit is 30 km/h [c1]."
+
+
+def test_cite_sentences_keeps_an_existing_citation():
+    hits = fake_hits()
+    text, uncited = _cite_sentences("The wind limit is 30 km/h [c1].", hits)
+    assert text.count("[c1]") == 1
+    assert uncited == 0
+
+
+def test_cite_sentences_counts_a_sentence_it_cannot_match():
+    hits = fake_hits()
+    text, uncited = _cite_sentences("Zorblax quuxed the flurb.", hits)
+    assert uncited == 1
+    assert "[" not in text
+
+
+def test_normalize_citations_repairs_a_missing_bracket():
+    hits = fake_hits()
+    answer = "The wind limit is 30 km/h [c1. The next sentence [c1] is fine."
+    text = _normalize_citations(answer, hits)
+    assert "[c1]." in text
+    assert text.count("[c1]") == 2
+
+
+def test_clean_query_drops_the_action_and_the_copied_description():
+    assert _clean_query("narrow (The query is too broad.) system 1 decisions", "narrow") == (
+        "system 1 decisions"
+    )
+    assert _clean_query("Query: ferry crossing time", "narrow") == "ferry crossing time"
