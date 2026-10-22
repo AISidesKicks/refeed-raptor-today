@@ -1,0 +1,275 @@
+{
+  "format": 1,
+  "place_id": "raptor-reserve",
+  "turn": 4,
+  "visitor": "Which storm damaged the South Beach boardwalk, and what did the repair cost?",
+  "note": "Two documents: the storm report and the trail maintenance record.",
+  "expect": "Storm Oscar; USD 18,400.",
+  "recorded_at": "2026-10-22T17:43:59.265098+00:00",
+  "models": {
+    "embedding": "embeddinggemma-2",
+    "writer": "lfm2-8b",
+    "judge": "d1-3b"
+  },
+  "result": {
+    "place_id": "raptor-reserve",
+    "question": "Which storm damaged the South Beach boardwalk, and what did the repair cost?",
+    "mode": "raptor",
+    "answer": "Storm Oscar damaged the South Beach boardwalk, and the repair cost USD 18,400 [rr-036:000]. The maintenance team rebuilt the boardwalk in six weeks [rr-036:000]. The reserve closed South Beach on 18 January [rr-036:000]. The repair cost was covered by the capital budget and a USD 5,000 donation from the friends group [rr-036:000]. New decking uses a higher grade of Marine Board and stainless fasteners [rr-036:000].",
+    "can_answer": true,
+    "warning": null,
+    "citations": [
+      {
+        "node_id": "rr-036:000",
+        "title": "Storm Oscar Damage Report",
+        "doc_ids": [
+          "rr-036"
+        ],
+        "level": 0
+      }
+    ],
+    "results": [
+      {
+        "node_id": "rr-036:000",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Storm Oscar Damage Report",
+        "text": "Storm Oscar reached Blacktail Island on 2026-01-18. The weather station recorded a peak gust of 118 km/h at 03:40. Rainfall was 41 mm in 12 hours. The ferry was cancelled for two days.\n\nThe South Beach boardwalk lost 42 m of decking and two support posts. The visitor center roof lost six shingles. The North Point lighthouse lost a window pane, and the old boathouse door was pushed in. No one was injured.\n\nThe reserve closed South Beach and the lower boardwalk on 18 January. The maintenance team rebuilt the boardwalk in six weeks. The repair cost USD 18,400, covered by the capital budget and a USD 5,000 donation from the friends group. The new decking uses a higher grade of Marine Board and stainless fasteners.\n\nThe storm also moved the South Beach dune line by about 3 m. The reserve added the change to the shoreline monitoring dataset. The next survey will check whether the least tern nesting area is still above the spring high tide line.\n\nThe boardwalk reopened on 1 March 2026.\n\n## Purpose and scope\n\nStorm Oscar Damage Report is the standard procedure for this part of the field program. It applies to staff, seasonal employees, and trained volunteers. It does not replace the safety plan (rr-005) or the emergency response plan (rr-006).\n\n## Roles\n\nThe head ranger, Elin Ward, owns the procedure. The field lead assigns teams and checks the weather. The data manager, Samir Haddad, checks the records. The veterinarian, Dr. Priya Nair, is consulted for any wildlife handling.\n\n## Procedure\n\n1. Check the weather, the tide, and the radio.\n2. Sign out at the research station and record the team.\n3. Follow the route and the timing in the document.\n4. Record the data in the field form before leaving the site.\n5. Report any safety issue, injury, or unusual wildlife behavior to the head ranger.\n6. Sign in at the end of the shift.\n\n## Data and records\n\nRecords go into the field database within 24 hours. Each record needs date, time, observer, location, weather, and a confidence note. Photos are optional and should not include people without consent. The data manager checks the records before the weekly summary.\n\n## Safety",
+        "doc_ids": [
+          "rr-036"
+        ],
+        "children": [],
+        "score": 0.7569,
+        "rank": 1,
+        "relevance": 0.957
+      },
+      {
+        "node_id": "rr-070:000",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Roads, Trails, and Bridges",
+        "text": "The reserve maintains 4 km of access road and 9 km of trails. The road runs from the ferry landing at Seal Cove to the research station at North Point. It is gravel and is not open to private vehicles.\n\nThere are two bridges: the Heron Marsh bridge and the South Beach bridge. Both are inspected every year. The Heron Marsh bridge has a 3 t load limit. The South Beach bridge was repaired after storm Oscar in 2026.\n\nTrail work is scheduled in May and September. The team clears drains, replaces boardwalk planks, and cuts back vegetation. The 2026 boardwalk repair cost USD 18,400 and took six weeks.\n\nThe reserve uses a small tractor and two ATVs for maintenance. Heavy equipment comes by barge. Any project above USD 10,000 needs board approval.\n\nVisitors should report a damaged trail or bridge to a ranger. Closed trails are marked with a red flag and a sign. Do not move a closure sign.\n\n## Overview\n\nRoads, Trails, and Bridges is part of the reserve's infrastructure and logistics. The document names the owner, the maintenance schedule, the risks, and the records. The goal is reliable service with a small footprint.\n\n## Specifications\n\nThe specifications are in the document. The maintenance lead keeps the current configuration, the warranty papers, and the service log. Any change to the specifications needs approval from the director and the board if the cost is above USD 10,000.\n\n## Maintenance\n\nPreventive maintenance follows the annual calendar. The team logs every inspection, repair, and replacement. Critical spares are kept on the island. The maintenance lead, Caleb Finch, reviews the log at the first Monday meeting.\n\n## Spare parts and tools\n\nThe maintenance shed keeps the spare parts that the team needs to keep this part of the operation running: filters, fuses, fasteners, and the parts named in the service manual. Critical parts are ordered before the winter ferry gap. The inventory is checked on the first Monday of each month.\n\n## Risks\n\nThe main risks are weather, salt corrosion, wildlife damage, and supply delays. The reserve keeps a storm kit, a spare parts bin, and a contingency line in the budget. Any outage that affects safety is reported to the director the same day.\n\n## Winter",
+        "doc_ids": [
+          "rr-070"
+        ],
+        "children": [],
+        "score": 0.7003,
+        "rank": 2,
+        "relevance": 0.8748
+      },
+      {
+        "node_id": "rr-003:000",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Operating Budget 2026",
+        "text": "The 2026 operating budget is USD 1,840,000, a 6.4 percent increase over 2025. The increase covers two seasonal research assistants, a new acoustic sensor array, and repairs to the South Beach boardwalk after storm Oscar.\n\nSpending is split across five programs: conservation 41 percent, research 22 percent, education 14 percent, facilities 17 percent, and administration 6 percent. Staff costs are 54 percent of the total. The contingency line is 4 percent of the operating budget.\n\nRevenue comes from grants (38 percent), individual donations (27 percent), the endowment (19 percent), program fees (9 percent), and other sources (7 percent). The largest single grant is USD 240,000 from the Maine Coast Trust for coastal habitat work.\n\nThe board approved a projected surplus of USD 12,000. The finance committee will review the budget in July and October. Any line that moves by more than 10 percent needs board approval.\n\nThe capital budget is separate. It covers the lighthouse roof, the solar battery replacement, and the new boat engine. The capital budget for 2026 is USD 310,000.\n\n## Scope\n\nOperating Budget 2026 applies to the board, the director, full-time and seasonal staff, volunteers, researchers, and contractors working on Blacktail Island. It does not replace the charter (rr-001), the emergency response plan (rr-006), or the safety plan (rr-005). When two documents disagree, the charter wins, then the management plan, then the specific policy.\n\n## Roles and responsibilities\n\nThe board approves the document. The director, Dr. Mara Voss, owns implementation and reports exceptions to the board. The head ranger, Elin Ward, is the day-to-day contact for field staff. The data manager, Samir Haddad, keeps the signed copy in the document register and makes sure the shared drive has the current version.\n\n## What staff should do\n\nRead the document during onboarding. Ask the director or the head ranger if a situation is not covered. Record decisions that deviate from the document, including the reason and the date. Do not edit the shared copy. Send proposed changes to the data manager.\n\n## Records and evidence\n\nThe reserve keeps the approved version, the board minutes, the public comment summary, and the annual review memo. Records are kept for 10 years. Personnel details are stored separately and are not part of the public corpus.\n\n## Review and amendment",
+        "doc_ids": [
+          "rr-003"
+        ],
+        "children": [],
+        "score": 0.6874,
+        "rank": 6,
+        "relevance": 0.8479
+      }
+    ],
+    "trace": [
+      {
+        "step": "retrieve",
+        "attempt": 0,
+        "queries": [
+          "Which storm damaged the South Beach boardwalk, and what did the repair cost?"
+        ],
+        "hits": 20,
+        "top_score": 0.7569,
+        "latency_ms": 11
+      },
+      {
+        "step": "relevance",
+        "attempt": 0,
+        "scored": 20,
+        "kept": 3,
+        "min_kept": 0.8479,
+        "latency_ms": 3340,
+        "scores": [
+          {
+            "node_id": "rr-036:000",
+            "probability": 0.957,
+            "confidence": 0.9139,
+            "latency_ms": 180,
+            "input_tokens": 1762
+          },
+          {
+            "node_id": "rr-070:000",
+            "probability": 0.8748,
+            "confidence": 0.7496,
+            "latency_ms": 180,
+            "input_tokens": 1762
+          },
+          {
+            "node_id": "rr-070:001",
+            "probability": 0.0576,
+            "confidence": 0.8848,
+            "latency_ms": 180,
+            "input_tokens": 1762
+          },
+          {
+            "node_id": "rr-051:001",
+            "probability": 0.038,
+            "confidence": 0.9241,
+            "latency_ms": 180,
+            "input_tokens": 1762
+          },
+          {
+            "node_id": "rr-036:001",
+            "probability": 0.0325,
+            "confidence": 0.9349,
+            "latency_ms": 198,
+            "input_tokens": 2047
+          },
+          {
+            "node_id": "rr-003:000",
+            "probability": 0.8479,
+            "confidence": 0.6959,
+            "latency_ms": 198,
+            "input_tokens": 2047
+          },
+          {
+            "node_id": "rr-051:000",
+            "probability": 0.0472,
+            "confidence": 0.9057,
+            "latency_ms": 198,
+            "input_tokens": 2047
+          },
+          {
+            "node_id": "rr-074:000",
+            "probability": 0.062,
+            "confidence": 0.8761,
+            "latency_ms": 198,
+            "input_tokens": 2047
+          },
+          {
+            "node_id": "rr-071:001",
+            "probability": 0.0576,
+            "confidence": 0.8848,
+            "latency_ms": 134,
+            "input_tokens": 1283
+          },
+          {
+            "node_id": "rr-074:001",
+            "probability": 0.0576,
+            "confidence": 0.8848,
+            "latency_ms": 134,
+            "input_tokens": 1283
+          },
+          {
+            "node_id": "rr-055:001",
+            "probability": 0.038,
+            "confidence": 0.9241,
+            "latency_ms": 134,
+            "input_tokens": 1283
+          },
+          {
+            "node_id": "rr-073:001",
+            "probability": 0.0576,
+            "confidence": 0.8848,
+            "latency_ms": 134,
+            "input_tokens": 1283
+          },
+          {
+            "node_id": "rr-069:001",
+            "probability": 0.0576,
+            "confidence": 0.8848,
+            "latency_ms": 152,
+            "input_tokens": 1469
+          },
+          {
+            "node_id": "rr-052:001",
+            "probability": 0.038,
+            "confidence": 0.9241,
+            "latency_ms": 152,
+            "input_tokens": 1469
+          },
+          {
+            "node_id": "rr-072:001",
+            "probability": 0.0576,
+            "confidence": 0.8848,
+            "latency_ms": 152,
+            "input_tokens": 1469
+          },
+          {
+            "node_id": "rr-066:000",
+            "probability": 0.1048,
+            "confidence": 0.7904,
+            "latency_ms": 152,
+            "input_tokens": 1469
+          },
+          {
+            "node_id": "rr-064:000",
+            "probability": 0.1849,
+            "confidence": 0.6301,
+            "latency_ms": 171,
+            "input_tokens": 1687
+          },
+          {
+            "node_id": "rr-053:001",
+            "probability": 0.038,
+            "confidence": 0.9241,
+            "latency_ms": 171,
+            "input_tokens": 1687
+          },
+          {
+            "node_id": "rr-048:001",
+            "probability": 0.038,
+            "confidence": 0.9241,
+            "latency_ms": 171,
+            "input_tokens": 1687
+          },
+          {
+            "node_id": "rr-072:000",
+            "probability": 0.037,
+            "confidence": 0.926,
+            "latency_ms": 171,
+            "input_tokens": 1687
+          }
+        ]
+      },
+      {
+        "step": "sufficient",
+        "attempt": 0,
+        "probability": 0.9636,
+        "confidence": 0.9272,
+        "band": "high",
+        "delegated": false,
+        "source": "d1",
+        "latency_ms": 150,
+        "accepted": true,
+        "elapsed_ms": 150
+      },
+      {
+        "step": "write",
+        "attempt": 0,
+        "chars": 418,
+        "raw_chars": 418,
+        "latency_ms": 440
+      },
+      {
+        "step": "cite",
+        "mode": "inline"
+      },
+      {
+        "step": "grounded",
+        "probability": 0.8941,
+        "confidence": 0.7882,
+        "band": "high",
+        "delegated": false,
+        "source": "d1",
+        "accepted": true,
+        "latency_ms": 42
+      }
+    ],
+    "refeeds": 0,
+    "timings": {
+      "total_ms": 1483
+    }
+  }
+}

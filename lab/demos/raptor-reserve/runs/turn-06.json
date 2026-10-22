@@ -1,0 +1,303 @@
+{
+  "format": 1,
+  "place_id": "raptor-reserve",
+  "turn": 6,
+  "visitor": "What does RAPTOR stand for, and what does the summary tree add?",
+  "note": "The methods wing. The answer should cite the RAPTOR summary and the metrics doc.",
+  "expect": "Recursive Abstractive Processing for Tree-Organized Retrieval; it adds summaries at multiple levels so retrieval can use the right abstraction.",
+  "recorded_at": "2026-10-22T17:43:59.265098+00:00",
+  "models": {
+    "embedding": "embeddinggemma-2",
+    "writer": "lfm2-8b",
+    "judge": "d1-3b"
+  },
+  "result": {
+    "place_id": "raptor-reserve",
+    "question": "What does RAPTOR stand for, and what does the summary tree add?",
+    "mode": "raptor",
+    "answer": "RAPTOR stands for Recursive Abstractive Processing for Tree-Organized Retrieval and its summary tree adds three levels of 512-token chunks with 64-token overlap, about 20 cluster summaries at level\u202f1, and about 5 higher summaries at level\u202f2, with the root as one page [rr-087:000].",
+    "can_answer": true,
+    "warning": null,
+    "citations": [
+      {
+        "node_id": "rr-087:000",
+        "title": "RAPTOR Summary Tree",
+        "doc_ids": [
+          "rr-087"
+        ],
+        "level": 0
+      }
+    ],
+    "results": [
+      {
+        "node_id": "rr-087:000",
+        "kind": "chunk",
+        "level": 0,
+        "title": "RAPTOR Summary Tree",
+        "text": "RAPTOR stands for Recursive Abstractive Processing for Tree-Organized Retrieval. The paper is arXiv 2401.18059 by Sarthi and colleagues, published at ICLR 2024.\n\nThe method is simple. Split the corpus into chunks. Embed the chunks. Cluster the embeddings. Summarize each cluster. Embed the summaries. Cluster again. Repeat until the tree has a root. Retrieval can search the leaves, the summaries, or every level at once.\n\nThe reserve's tree has three levels. Level 0 is the chunks, about 512 tokens each with a 64-token overlap. Level 1 is about 20 cluster summaries. Level 2 is about 5 higher summaries. The root is one page. The tree is stored in SQLite, not in a vector database.\n\nThe default retrieval mode is the collapsed tree: search every level at once and let the scores decide. The paper reports that this works better than walking down from the root. It is also easier to debug.\n\nThe paper reports a 20 percentage point absolute gain on the QuALITY benchmark when RAPTOR is paired with GPT-4. The reserve does not assume that number transfers. The lab measures its own recall, answer quality, and cost on the 50-question eval set.\n\nThe tree is rebuilt when the corpus changes. The build is deterministic: same documents, same seed, same tree.\n\n## Question\n\nThis document answers a practical question for the reserve's library: how does this part of the pipeline work, and when is it worth using? The goal is not to sell a model or a framework. The goal is to explain one piece of the retrieval pipeline so a reader can run it, measure it, and decide whether it is worth the cost.\n\n## Method\n\nThe method is a small local stack: EmbeddingGemma 2 for embeddings, a SQLite store, numpy cosine search, and a RAPTOR summary tree. The writer is LFM2.5-8B-A1B. The decision model is d1-3B. The app is FastAPI plus static HTML. No cloud model and no API key.\n\n## What the numbers mean\n\nRetrieval numbers describe whether the right passage was found. Answer numbers describe whether the final text is supported. Calibration numbers describe whether the model knows how sure it is. A good demo reports all three, not just the answer quality.\n\n## Limitations",
+        "doc_ids": [
+          "rr-087"
+        ],
+        "children": [],
+        "score": 0.7867,
+        "rank": 3,
+        "relevance": 0.7749
+      },
+      {
+        "node_id": "rr-092:000",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Retrieval Metrics",
+        "text": "Retrieval metrics answer one question: did the system find the passage that contains the answer?\n\nRecall@k is the fraction of gold passages that appear in the top k. Precision@k is the fraction of the top k that are relevant. Hit@k is 1 if at least one gold passage is in the top k, and 0 otherwise. MRR is the mean of 1 divided by the rank of the first relevant result. nDCG@k rewards relevant results near the top and handles graded relevance.\n\nRAG systems also use context precision and context recall. Context precision asks how much of the retrieved context is useful. Context recall asks how much of the needed context was retrieved. Both are usually judged by a model, so they inherit the judge's biases.\n\nThe reserve reports Recall@5, Recall@10, and Recall@20, plus MRR and nDCG@10. Recall is the primary metric because a missing passage cannot be fixed by a better prompt. Precision matters because a crowded context distracts the writer and costs tokens.\n\nThe RAPTOR report adds a level breakdown: how often a summary node beats a leaf, and whether the winning level matches the question type. A \"what is this about\" question should prefer a summary. A \"what exactly happened\" question should prefer a leaf.\n\nThe lab compares one-shot RAG, RAPTOR retrieval, and RAPTOR plus the refeed loop on the same 50 questions.\n\n## Question\n\nThis document answers a practical question for the reserve's library: how does this part of the pipeline work, and when is it worth using? The goal is not to sell a model or a framework. The goal is to explain one piece of the retrieval pipeline so a reader can run it, measure it, and decide whether it is worth the cost.\n\n## Method\n\nThe method is a small local stack: EmbeddingGemma 2 for embeddings, a SQLite store, numpy cosine search, and a RAPTOR summary tree. The writer is LFM2.5-8B-A1B. The decision model is d1-3B. The app is FastAPI plus static HTML. No cloud model and no API key.\n\n## What the numbers mean",
+        "doc_ids": [
+          "rr-092"
+        ],
+        "children": [],
+        "score": 0.7361,
+        "rank": 15,
+        "relevance": 0.8844
+      },
+      {
+        "node_id": "rr-100:000",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Glossary",
+        "text": "RAG: Retrieval-Augmented Generation. Retrieve passages, put them in the prompt, generate an answer.\n\nOne-shot RAG: one retrieval, one answer, no critic and no retry.\n\nRefeed loop: retrieve, judge, rewrite if needed, retrieve again, answer. The small loop in this project.\n\nRAPTOR: Recursive Abstractive Processing for Tree-Organized Retrieval. Chunk, embed, cluster, summarize, recurse, and retrieve from the tree.\n\nSummary tree: the RAPTOR output. Leaves are chunks; higher levels are summaries.\n\nCollapsed tree: search every level at once instead of walking down from the root.\n\nChunk: a fixed-size slice of a document, with a small overlap.\n\nEmbedding: a vector that represents the meaning of a text or an image.\n\nCosine similarity: the cosine of the angle between two vectors. Higher means more similar.\n\nSystem 1: fast, cheap, automatic judgment. In this project, d1-3B.\n\nSystem 2: slow, expensive reasoning and writing. In this project, LFM2.5-8B-A1B.\n\nDecision model: a model trained to answer typed questions with probabilities, not to generate prose.\n\n`noul`: a yes or no question. The answer is the probability of yes.\n\n`choice`: a question with named options. The answer is the chosen option plus the distribution.\n\n`score`: a rating on an ordered rubric. The answer is the expected level plus the distribution.\n\nCalibration: whether confidence matches accuracy. ECE is the expected calibration error. Brier is the mean squared error of the forecasts.\n\nRecall@k, Precision@k, MRR, nDCG@k: retrieval metrics.\n\nFaithfulness, groundedness, answer relevance, correctness, completeness: answer metrics.\n\nSpan: one timed operation in a trace. Retrieval, decision, rewrite, and answer are spans.\n\n## Question\n\nThis document answers a practical question for the reserve's library: how does this part of the pipeline work, and when is it worth using? The goal is not to sell a model or a framework. The goal is to explain one piece of the retrieval pipeline so a reader can run it, measure it, and decide whether it is worth the cost.\n\n## Method\n\nThe method is a small local stack: EmbeddingGemma 2 for embeddings, a SQLite store, numpy cosine search, and a RAPTOR summary tree. The writer is LFM2.5-8B-A1B. The decision model is d1-3B. The app is FastAPI plus static HTML. No cloud model and no API key.\n\n## What the numbers mean",
+        "doc_ids": [
+          "rr-100"
+        ],
+        "children": [],
+        "score": 0.7601,
+        "rank": 5,
+        "relevance": 0.8784
+      },
+      {
+        "node_id": "rr-100:001",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Glossary",
+        "text": "is a small local stack: EmbeddingGemma 2 for embeddings, a SQLite store, numpy cosine search, and a RAPTOR summary tree. The writer is LFM2.5-8B-A1B. The decision model is d1-3B. The app is FastAPI plus static HTML. No cloud model and no API key. ## What the numbers mean\n\nRetrieval numbers describe whether the right passage was found. Answer numbers describe whether the final text is supported. Calibration numbers describe whether the model knows how sure it is. A good demo reports all three, not just the answer quality.\n\n## Limitations\n\nThe corpus is small and synthetic. The results are a lab result, not a benchmark. A judge model can prefer its own output. A reranker can look good because the gold passages are easy. The project reports the cost and the failure cases next to the wins.\n\n## Practical use\n\nUse the method when the corpus is small enough to inspect and the question needs evidence. Do not use it when a keyword search or a single document is enough. The librarian guide (rr-095) shows how to ask a question that the loop can actually answer.\n\n## Further reading\n\nThe primary sources are the RAPTOR paper (arXiv 2401.18059), the SearchJev paper (arXiv 2610.05107), the EmbeddingGemma 2 model card, the LFM2.5 model card, and the d1-3B model card. The lab's INTENT.md has the full reference list.",
+        "doc_ids": [
+          "rr-100"
+        ],
+        "children": [],
+        "score": 0.7317,
+        "rank": 18,
+        "relevance": 0.5034
+      },
+      {
+        "node_id": "rr-096:001",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Data Dictionary",
+        "text": "is a small local stack: EmbeddingGemma 2 for embeddings, a SQLite store, numpy cosine search, and a RAPTOR summary tree. The writer is LFM2.5-8B-A1B. The decision model is d1-3B. The app is FastAPI plus static HTML. No cloud model and no API key. ## What the numbers mean\n\nRetrieval numbers describe whether the right passage was found. Answer numbers describe whether the final text is supported. Calibration numbers describe whether the model knows how sure it is. A good demo reports all three, not just the answer quality.\n\n## Limitations\n\nThe corpus is small and synthetic. The results are a lab result, not a benchmark. A judge model can prefer its own output. A reranker can look good because the gold passages are easy. The project reports the cost and the failure cases next to the wins.\n\n## Practical use\n\nUse the method when the corpus is small enough to inspect and the question needs evidence. Do not use it when a keyword search or a single document is enough. The librarian guide (rr-095) shows how to ask a question that the loop can actually answer.\n\n## Further reading\n\nThe primary sources are the RAPTOR paper (arXiv 2401.18059), the SearchJev paper (arXiv 2610.05107), the EmbeddingGemma 2 model card, the LFM2.5 model card, and the d1-3B model card. The lab's INTENT.md has the full reference list.",
+        "doc_ids": [
+          "rr-096"
+        ],
+        "children": [],
+        "score": 0.7308,
+        "rank": 19,
+        "relevance": 0.5034
+      }
+    ],
+    "trace": [
+      {
+        "step": "retrieve",
+        "attempt": 0,
+        "queries": [
+          "What does RAPTOR stand for, and what does the summary tree add?"
+        ],
+        "hits": 20,
+        "top_score": 0.8098,
+        "latency_ms": 10
+      },
+      {
+        "step": "relevance",
+        "attempt": 0,
+        "scored": 20,
+        "kept": 5,
+        "min_kept": 0.5034,
+        "latency_ms": 4268,
+        "scores": [
+          {
+            "node_id": "rr-087:001",
+            "probability": 0.3344,
+            "confidence": 0.3312,
+            "latency_ms": 195,
+            "input_tokens": 1966
+          },
+          {
+            "node_id": "sum-root",
+            "probability": 0.6484,
+            "confidence": 0.2969,
+            "latency_ms": 195,
+            "input_tokens": 1966
+          },
+          {
+            "node_id": "rr-087:000",
+            "probability": 0.7749,
+            "confidence": 0.5498,
+            "latency_ms": 195,
+            "input_tokens": 1966
+          },
+          {
+            "node_id": "sum-l1-10",
+            "probability": 0.3208,
+            "confidence": 0.3584,
+            "latency_ms": 195,
+            "input_tokens": 1966
+          },
+          {
+            "node_id": "rr-100:000",
+            "probability": 0.8784,
+            "confidence": 0.7567,
+            "latency_ms": 238,
+            "input_tokens": 2497
+          },
+          {
+            "node_id": "sum-l1-19",
+            "probability": 0.3383,
+            "confidence": 0.3234,
+            "latency_ms": 238,
+            "input_tokens": 2497
+          },
+          {
+            "node_id": "sum-l1-13",
+            "probability": 0.1773,
+            "confidence": 0.6455,
+            "latency_ms": 238,
+            "input_tokens": 2497
+          },
+          {
+            "node_id": "rr-076:000",
+            "probability": 0.1799,
+            "confidence": 0.6401,
+            "latency_ms": 238,
+            "input_tokens": 2497
+          },
+          {
+            "node_id": "rr-058:000",
+            "probability": 0.1931,
+            "confidence": 0.6139,
+            "latency_ms": 215,
+            "input_tokens": 2259
+          },
+          {
+            "node_id": "sum-l1-14",
+            "probability": 0.1529,
+            "confidence": 0.6943,
+            "latency_ms": 215,
+            "input_tokens": 2259
+          },
+          {
+            "node_id": "sum-l2-00",
+            "probability": 0.7083,
+            "confidence": 0.4167,
+            "latency_ms": 215,
+            "input_tokens": 2259
+          },
+          {
+            "node_id": "sum-l1-09",
+            "probability": 0.8314,
+            "confidence": 0.6628,
+            "latency_ms": 215,
+            "input_tokens": 2259
+          },
+          {
+            "node_id": "sum-l1-12",
+            "probability": 0.2282,
+            "confidence": 0.5435,
+            "latency_ms": 234,
+            "input_tokens": 2431
+          },
+          {
+            "node_id": "sum-l1-16",
+            "probability": 0.1767,
+            "confidence": 0.6466,
+            "latency_ms": 234,
+            "input_tokens": 2431
+          },
+          {
+            "node_id": "rr-092:000",
+            "probability": 0.8844,
+            "confidence": 0.7688,
+            "latency_ms": 234,
+            "input_tokens": 2431
+          },
+          {
+            "node_id": "rr-001:000",
+            "probability": 0.259,
+            "confidence": 0.4819,
+            "latency_ms": 234,
+            "input_tokens": 2431
+          },
+          {
+            "node_id": "rr-098:001",
+            "probability": 0.3259,
+            "confidence": 0.3481,
+            "latency_ms": 185,
+            "input_tokens": 1849
+          },
+          {
+            "node_id": "rr-100:001",
+            "probability": 0.5034,
+            "confidence": 0.0067,
+            "latency_ms": 185,
+            "input_tokens": 1849
+          },
+          {
+            "node_id": "rr-096:001",
+            "probability": 0.5034,
+            "confidence": 0.0067,
+            "latency_ms": 185,
+            "input_tokens": 1849
+          },
+          {
+            "node_id": "sum-l1-15",
+            "probability": 0.373,
+            "confidence": 0.2541,
+            "latency_ms": 185,
+            "input_tokens": 1849
+          }
+        ]
+      },
+      {
+        "step": "sufficient",
+        "attempt": 0,
+        "probability": 0.8006,
+        "confidence": 0.6013,
+        "band": "middle",
+        "delegated": false,
+        "source": "d1",
+        "latency_ms": 220,
+        "accepted": true,
+        "elapsed_ms": 220
+      },
+      {
+        "step": "write",
+        "attempt": 0,
+        "chars": 281,
+        "raw_chars": 281,
+        "latency_ms": 303
+      },
+      {
+        "step": "cite",
+        "mode": "inline"
+      },
+      {
+        "step": "grounded",
+        "probability": 0.6401,
+        "confidence": 0.2802,
+        "band": "low",
+        "delegated": false,
+        "source": "d1",
+        "accepted": true,
+        "latency_ms": 37
+      }
+    ],
+    "refeeds": 0,
+    "timings": {
+      "total_ms": 1641
+    }
+  }
+}

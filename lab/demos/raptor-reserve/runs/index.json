@@ -1,0 +1,64 @@
+{
+  "format": 1,
+  "place_id": "raptor-reserve",
+  "title": "Raptor Reserve",
+  "recorded_at": "2026-10-22T17:43:59.265098+00:00",
+  "models": {
+    "embedding": "embeddinggemma-2",
+    "writer": "lfm2-8b",
+    "judge": "d1-3b"
+  },
+  "chunks": 200,
+  "embeddings": 200,
+  "summary_nodes": 23,
+  "turns": [
+    {
+      "turn": 1,
+      "visitor": "How many osprey chicks fledged at the reserve in 2025?",
+      "can_answer": true,
+      "refeeds": 0,
+      "total_ms": 1624,
+      "file": "turn-01.json"
+    },
+    {
+      "turn": 2,
+      "visitor": "Which ranger approved the drone flight over Heron Marsh on 12 September 2026?",
+      "can_answer": true,
+      "refeeds": 0,
+      "total_ms": 1478,
+      "file": "turn-02.json"
+    },
+    {
+      "turn": 3,
+      "visitor": "A drone flight is planned for tomorrow with a 35 km/h wind. May it proceed?",
+      "can_answer": true,
+      "refeeds": 0,
+      "total_ms": 1729,
+      "file": "turn-03.json"
+    },
+    {
+      "turn": 4,
+      "visitor": "Which storm damaged the South Beach boardwalk, and what did the repair cost?",
+      "can_answer": true,
+      "refeeds": 0,
+      "total_ms": 1483,
+      "file": "turn-04.json"
+    },
+    {
+      "turn": 5,
+      "visitor": "Why was the peregrine named Juniper in the news?",
+      "can_answer": true,
+      "refeeds": 0,
+      "total_ms": 1449,
+      "file": "turn-05.json"
+    },
+    {
+      "turn": 6,
+      "visitor": "What does RAPTOR stand for, and what does the summary tree add?",
+      "can_answer": true,
+      "refeeds": 0,
+      "total_ms": 1641,
+      "file": "turn-06.json"
+    }
+  ]
+}

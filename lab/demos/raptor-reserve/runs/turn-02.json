@@ -1,0 +1,261 @@
+{
+  "format": 1,
+  "place_id": "raptor-reserve",
+  "turn": 2,
+  "visitor": "Which ranger approved the drone flight over Heron Marsh on 12 September 2026?",
+  "note": "The answer is in a dated patrol log, not in a policy document.",
+  "expect": "Elin Ward, the head ranger.",
+  "recorded_at": "2026-10-22T17:43:59.265098+00:00",
+  "models": {
+    "embedding": "embeddinggemma-2",
+    "writer": "lfm2-8b",
+    "judge": "d1-3b"
+  },
+  "result": {
+    "place_id": "raptor-reserve",
+    "question": "Which ranger approved the drone flight over Heron Marsh on 12 September 2026?",
+    "mode": "raptor",
+    "answer": "Head ranger Elin Ward approved the drone flight on 12 September 2026 at 09:30 for the nest survey [rr-034:000]. The approval was logged in the drone record [rr-034:000].",
+    "can_answer": true,
+    "warning": null,
+    "citations": [
+      {
+        "node_id": "rr-034:000",
+        "title": "Patrol Log, 12 September 2026",
+        "doc_ids": [
+          "rr-034"
+        ],
+        "level": 0
+      }
+    ],
+    "results": [
+      {
+        "node_id": "rr-034:000",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Patrol Log, 12 September 2026",
+        "text": "Observer: Elin Ward, head ranger.\nRoute: North Point to Heron Marsh, via the west trail and the lower boardwalk.\nTime: 06:40 to 11:20.\nWeather: fog at dawn, clearing by 09:00. Wind 14 km/h from the northwest. Visibility 1.2 km at 07:00, 8 km by 10:00. High tide 08:12.\n\nAt 07:05 I checked the North Point closure sign. The peregrine pair was on the cliff, no alarm calls. At 07:40 I found fresh osprey sticks on the platform at the Heron Marsh south nest. Two adults were circling, one carrying a fish.\n\nAt 08:20 I met four visitors near the lower boardwalk. They stayed on the trail and asked about the drone. I explained the 250 m nest rule and the 28 km/h wind limit. The wind was 14 km/h, so I approved the 09:30 drone flight over the marsh for the nest survey. I logged the approval in the drone book.\n\nAt 10:05 I checked the boardwalk repair from storm Oscar. The new decking is holding. One handrail bolt was loose; I tightened it and flagged the rail for the maintenance team.\n\nNo injured birds. No off-trail tracks. No dogs.\n\n## Purpose and scope\n\nPatrol Log, 12 September 2026 is the standard procedure for this part of the field program. It applies to staff, seasonal employees, and trained volunteers. It does not replace the safety plan (rr-005) or the emergency response plan (rr-006).\n\n## Roles\n\nThe head ranger, Elin Ward, owns the procedure. The field lead assigns teams and checks the weather. The data manager, Samir Haddad, checks the records. The veterinarian, Dr. Priya Nair, is consulted for any wildlife handling.\n\n## Procedure\n\n1. Check the weather, the tide, and the radio.\n2. Sign out at the research station and record the team.\n3. Follow the route and the timing in the document.\n4. Record the data in the field form before leaving the site.\n5. Report any safety issue, injury, or unusual wildlife behavior to the head ranger.\n6. Sign in at the end of the shift.\n\n## Data and records",
+        "doc_ids": [
+          "rr-034"
+        ],
+        "children": [],
+        "score": 0.8313,
+        "rank": 1,
+        "relevance": 0.9027
+      },
+      {
+        "node_id": "rr-032:000",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Drone Flight Checklist",
+        "text": "Drone flights are used for nest surveys, shoreline mapping, and search and rescue. Every flight needs approval from the head ranger and a written flight plan.\n\nThe pilot checks the weather first. Flights are cancelled at 28 km/h wind, visibility below 2 km, rain, snow, or lightning within 10 km. The drone must stay within 3.5 km of the pilot and above 30 m except during takeoff and landing.\n\nThe battery must be at least 80 percent at takeoff. The planned flight time cannot exceed 24 minutes, which leaves a 30 percent reserve. The pilot does not fly over people, boats, or the visitor center.\n\nNo flight is allowed within 250 m of an active nest during the breeding season. The pilot checks the nest map before takeoff and logs the flight in the drone book. The log records date, pilot, purpose, weather, max altitude, duration, battery used, and any wildlife response.\n\nIf the drone loses link, the pilot switches to return-to-home and clears the landing zone. If the drone does not return, the pilot marks the last known point and calls the head ranger.\n\n## Purpose and scope\n\nDrone Flight Checklist is the standard procedure for this part of the field program. It applies to staff, seasonal employees, and trained volunteers. It does not replace the safety plan (rr-005) or the emergency response plan (rr-006).\n\n## Roles\n\nThe head ranger, Elin Ward, owns the procedure. The field lead assigns teams and checks the weather. The data manager, Samir Haddad, checks the records. The veterinarian, Dr. Priya Nair, is consulted for any wildlife handling.\n\n## Procedure\n\n1. Check the weather, the tide, and the radio.\n2. Sign out at the research station and record the team.\n3. Follow the route and the timing in the document.\n4. Record the data in the field form before leaving the site.\n5. Report any safety issue, injury, or unusual wildlife behavior to the head ranger.\n6. Sign in at the end of the shift.\n\n## Data and records\n\nRecords go into the field database within 24 hours. Each record needs date, time, observer, location, weather, and a confidence note. Photos are optional and should not include people without consent. The data manager checks the records before the weekly summary.\n\n## Safety",
+        "doc_ids": [
+          "rr-032"
+        ],
+        "children": [],
+        "score": 0.7847,
+        "rank": 4,
+        "relevance": 0.7811
+      }
+    ],
+    "trace": [
+      {
+        "step": "retrieve",
+        "attempt": 0,
+        "queries": [
+          "Which ranger approved the drone flight over Heron Marsh on 12 September 2026?"
+        ],
+        "hits": 20,
+        "top_score": 0.8313,
+        "latency_ms": 9
+      },
+      {
+        "step": "relevance",
+        "attempt": 0,
+        "scored": 20,
+        "kept": 2,
+        "min_kept": 0.7811,
+        "latency_ms": 4228,
+        "scores": [
+          {
+            "node_id": "rr-034:000",
+            "probability": 0.9027,
+            "confidence": 0.8054,
+            "latency_ms": 218,
+            "input_tokens": 2227
+          },
+          {
+            "node_id": "rr-035:000",
+            "probability": 0.1012,
+            "confidence": 0.7976,
+            "latency_ms": 218,
+            "input_tokens": 2227
+          },
+          {
+            "node_id": "rr-038:000",
+            "probability": 0.1643,
+            "confidence": 0.6714,
+            "latency_ms": 218,
+            "input_tokens": 2227
+          },
+          {
+            "node_id": "rr-032:000",
+            "probability": 0.7811,
+            "confidence": 0.5622,
+            "latency_ms": 218,
+            "input_tokens": 2227
+          },
+          {
+            "node_id": "rr-039:000",
+            "probability": 0.0968,
+            "confidence": 0.8064,
+            "latency_ms": 193,
+            "input_tokens": 1926
+          },
+          {
+            "node_id": "sum-l1-00",
+            "probability": 0.1175,
+            "confidence": 0.7651,
+            "latency_ms": 193,
+            "input_tokens": 1926
+          },
+          {
+            "node_id": "rr-034:001",
+            "probability": 0.0654,
+            "confidence": 0.8693,
+            "latency_ms": 193,
+            "input_tokens": 1926
+          },
+          {
+            "node_id": "rr-035:001",
+            "probability": 0.0413,
+            "confidence": 0.9174,
+            "latency_ms": 193,
+            "input_tokens": 1926
+          },
+          {
+            "node_id": "rr-051:000",
+            "probability": 0.0487,
+            "confidence": 0.9025,
+            "latency_ms": 203,
+            "input_tokens": 2072
+          },
+          {
+            "node_id": "sum-l2-01",
+            "probability": 0.1555,
+            "confidence": 0.6889,
+            "latency_ms": 203,
+            "input_tokens": 2072
+          },
+          {
+            "node_id": "rr-032:001",
+            "probability": 0.0505,
+            "confidence": 0.899,
+            "latency_ms": 203,
+            "input_tokens": 2072
+          },
+          {
+            "node_id": "rr-033:000",
+            "probability": 0.2836,
+            "confidence": 0.4327,
+            "latency_ms": 203,
+            "input_tokens": 2072
+          },
+          {
+            "node_id": "rr-025:000",
+            "probability": 0.0433,
+            "confidence": 0.9135,
+            "latency_ms": 217,
+            "input_tokens": 2257
+          },
+          {
+            "node_id": "rr-001:000",
+            "probability": 0.0381,
+            "confidence": 0.9238,
+            "latency_ms": 217,
+            "input_tokens": 2257
+          },
+          {
+            "node_id": "rr-005:000",
+            "probability": 0.0741,
+            "confidence": 0.8518,
+            "latency_ms": 217,
+            "input_tokens": 2257
+          },
+          {
+            "node_id": "sum-l1-16",
+            "probability": 0.0701,
+            "confidence": 0.8598,
+            "latency_ms": 217,
+            "input_tokens": 2257
+          },
+          {
+            "node_id": "rr-030:000",
+            "probability": 0.0911,
+            "confidence": 0.8179,
+            "latency_ms": 226,
+            "input_tokens": 2271
+          },
+          {
+            "node_id": "rr-057:000",
+            "probability": 0.0474,
+            "confidence": 0.9052,
+            "latency_ms": 226,
+            "input_tokens": 2271
+          },
+          {
+            "node_id": "rr-037:000",
+            "probability": 0.0576,
+            "confidence": 0.8849,
+            "latency_ms": 226,
+            "input_tokens": 2271
+          },
+          {
+            "node_id": "rr-027:000",
+            "probability": 0.0917,
+            "confidence": 0.8167,
+            "latency_ms": 226,
+            "input_tokens": 2271
+          }
+        ]
+      },
+      {
+        "step": "sufficient",
+        "attempt": 0,
+        "probability": 0.9403,
+        "confidence": 0.8806,
+        "band": "high",
+        "delegated": false,
+        "source": "d1",
+        "latency_ms": 103,
+        "accepted": true,
+        "elapsed_ms": 104
+      },
+      {
+        "step": "write",
+        "attempt": 0,
+        "chars": 169,
+        "raw_chars": 186,
+        "latency_ms": 246
+      },
+      {
+        "step": "cite",
+        "mode": "inline"
+      },
+      {
+        "step": "grounded",
+        "probability": 0.868,
+        "confidence": 0.736,
+        "band": "middle",
+        "delegated": false,
+        "source": "d1",
+        "accepted": true,
+        "latency_ms": 59
+      }
+    ],
+    "refeeds": 0,
+    "timings": {
+      "total_ms": 1478
+    }
+  }
+}

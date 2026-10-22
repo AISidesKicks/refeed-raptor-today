@@ -14,6 +14,9 @@ lab/demos/<place>/
     manifest.json
   script.jsonl
   eval.jsonl
+  runs/             # optional, committed recordings for replay
+    index.json
+    turn-01.json
   NOTICE.md
   README.md
   tools/            # optional, for generated corpora
@@ -110,6 +113,27 @@ The reference set has 50 questions: 30 place-specific, 10 methods, and 10 multi-
 
 Every `gold` id must exist in the manifest. Every question must have a non-empty `expected` answer. The loader validates both on startup.
 
+## `runs/`
+
+The recorded replay. Run `pixi run record` with the router up, then commit the
+JSON files. One file per script turn:
+
+```text
+runs/turn-01.json
+```
+
+Each file keeps the visitor question, the note, the expected answer, the model
+ids, and the full result with the decision trace. `runs/index.json` lists the
+turns, the timestamp, the chunk count, and the tree size.
+
+Recorded mode needs no model, no embeddings, and no GPU. It is the mode for the
+video and for a reader who only wants to click through the demo. Live mode runs
+the same turn through the pipeline again. The keyword mode stays as the
+model-free retrieval floor, not as a scripted answer.
+
+If the corpus or a prompt changes, run `pixi run record` again and commit the new
+files. Do not hand-edit a recording.
+
 ## `NOTICE.md`
 
 State the license, the provenance, and what is fictional. If the corpus summarizes public research, list the sources and confirm that no third-party text is copied.
@@ -126,7 +150,8 @@ Explain what the place is, how to build it, what is fictional, and which questio
 4. Embed the chunks with EmbeddingGemma 2.
 5. Build or load the RAPTOR tree.
 6. Serve the starter questions and the script.
-7. Run `eval.jsonl` through the same retriever and loop.
+7. Replay `runs/` when it exists, or run the turn live.
+8. Run `eval.jsonl` through the same retriever and loop.
 
 The place is data. The app is the reader. Do not add a branch in `src/` for a specific place.
 
@@ -138,6 +163,7 @@ The place is data. The app is the reader. Do not add a branch in `src/` for a sp
 4. Build the corpus with the place's own generator, or write the Markdown by hand.
 5. Run the loader validation. Fix every missing file, missing gold id, and empty answer.
 6. Ask the three demo questions from `demo.toml` and check the citations by hand.
+7. Run `pixi run record` only when the answers are good enough to publish.
 
 If the contract is missing a field, change the contract, the loader, and the reference place together. Do not hide a special case in the app.
 

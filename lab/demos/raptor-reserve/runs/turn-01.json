@@ -1,0 +1,345 @@
+{
+  "format": 1,
+  "place_id": "raptor-reserve",
+  "turn": 1,
+  "visitor": "How many osprey chicks fledged at the reserve in 2025?",
+  "note": "A direct lookup. One-shot retrieval should handle it.",
+  "expect": "21 chicks from 14 pairs.",
+  "recorded_at": "2026-10-22T17:43:59.265098+00:00",
+  "models": {
+    "embedding": "embeddinggemma-2",
+    "writer": "lfm2-8b",
+    "judge": "d1-3b"
+  },
+  "result": {
+    "place_id": "raptor-reserve",
+    "question": "How many osprey chicks fledged at the reserve in 2025?",
+    "mode": "raptor",
+    "answer": "In 2025, 21 osprey chicks fledged at the reserve, which is higher than the 19 fledged in 2024 [rr-012:000]. The long-term trend is reported in the annual breeding summary and the occupancy analysis.",
+    "can_answer": true,
+    "warning": null,
+    "citations": [
+      {
+        "node_id": "rr-012:000",
+        "title": "Osprey",
+        "doc_ids": [
+          "rr-012"
+        ],
+        "level": 0
+      }
+    ],
+    "results": [
+      {
+        "node_id": "rr-012:001",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Osprey",
+        "text": "## Breeding timeline Pairs return in late March. Eggs are laid in late April, hatch in late May, and the chicks fledge in July. The reserve's three-visit protocol matches this schedule: occupancy in April, stage and clutch size in May, and chick count in June. ## Monitoring results\n\nThe 2025 season recorded 14 pairs and 21 fledged chicks. The 2024 season recorded 14 pairs and 19 fledged chicks. The long-term trend is reported in the annual breeding summary (rr-043) and the occupancy analysis (rr-045).\n\n## Threats and management\n\nThe lead paragraph lists the main threats. The management response has three parts: seasonal trail closures, a ban on lead ammunition, and a 250 m no-fly zone around active nests. Nest platforms are added where a natural site is unstable. The management plan target is to protect at least 90 percent of occupied territories.\n\n## Visitor guidance\n\nThe lead paragraph gives the distance rule. The short version: stay on the marked trail, keep 100 m from a bird that is alarm-calling or carrying food, and do not use playback, drones, or food to get a closer look. Report injured birds to a ranger.",
+        "doc_ids": [
+          "rr-012"
+        ],
+        "children": [],
+        "score": 0.8636,
+        "rank": 3,
+        "relevance": 0.9705
+      },
+      {
+        "node_id": "rr-012:000",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Osprey",
+        "text": "Osprey (Pandion haliaetus) is a state special concern raptor in the reserve's monitoring program. In 2025, the reserve monitored 14 breeding pairs, which fledged 21 chicks. The birds nest in platform nests and dead snags around Seal Cove and Heron Marsh. Their diet is mainly fish, mostly menhaden and mackerel.\n\nThe 2025 nest checks used the standard three-visit protocol: occupancy in April, stage and clutch size in May, and chick count in June. Observers stayed at least 150 m from active nests. The oldest known nest platform was built in 1998.\n\nThe main threats are nest platform damage, fishing line entanglement, and low fish availability in cold springs. The reserve manages them with seasonal trail closures, a ban on lead ammunition, and a 250 m no-fly zone around active nests.\n\nVisitors should watch from the marked viewpoints and keep 100 m from any bird that is alarm-calling or carrying food. If a bird leaves a nest because of a visitor, the visitor should back away slowly and report the encounter to a ranger.\n\n## Field identification\n\nOsprey is a large fish hawk with a white head, a dark eye stripe, and angled wings. It is most often confused with the bald eagle, which has a white head and tail but a different flight profile. The scientific name is Pandion haliaetus. At the reserve, the best clues are the flight silhouette, the wing pattern, and the habitat.\n\n## Habitat and territory\n\nThe species nests in platform nests and dead snags around Seal Cove and Heron Marsh. The reserve monitors 14 territories. Observers check the territories from the ground and stay at least 150 m from active nests. The birds use the same territory across years when the site is undisturbed.\n\n## Diet and hunting\n\nThe diet is mainly fish, mostly menhaden and mackerel. The birds hunt by hovering over the water and plunging feet-first. Pellets and prey remains are collected for the diet study (rr-047) when they are found away from nests.\n\n## Breeding timeline\n\nPairs return in late March. Eggs are laid in late April, hatch in late May, and the chicks fledge in July. The reserve's three-visit protocol matches this schedule: occupancy in April, stage and clutch size in May, and chick count in June.\n\n## Monitoring results",
+        "doc_ids": [
+          "rr-012"
+        ],
+        "children": [],
+        "score": 0.8528,
+        "rank": 7,
+        "relevance": 0.9659
+      },
+      {
+        "node_id": "rr-046:000",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Osprey Survival Analysis",
+        "text": "The reserve has banded 120 osprey chicks since 2016. Resightings and recoveries show first-year survival of 71 percent and adult survival of 84 percent. The average recapture probability is 0.31, so the estimates have wide confidence intervals.\n\nThe 2025 cohort fledged 21 chicks, the highest since 2019. The 2024 cohort fledged 19. The difference is within the range expected from prey availability and spring weather.\n\nMost first-year mortality happens in the first 60 days after fledging. The main known causes are fishing line entanglement, power line collisions, and starvation during cold snaps. The reserve works with the local fishing community to collect line and to mark the worst power lines.\n\nThe analysis uses a Cormack-Jolly-Seber model with time-varying survival and a constant recapture probability. The model is run in R with the marked package. The data is checked by the data manager and archived with the annual banding file.\n\nThe reserve plans to add a color-band resighting program in 2027. The goal is to raise recapture probability above 0.50 and narrow the survival estimates.\n\n## Background\n\nOsprey Survival Analysis is part of the reserve's long-term monitoring program. The question is whether the island's raptor population is changing, and whether the change is driven by weather, prey, disease, or human disturbance. The reserve has collected comparable data since 2016.\n\n## Methods\n\nThe analysis uses the standard field protocols. Counts use six fixed stations and a four-hour window. Nest checks use three visits and a 150 m observation distance. Occupancy models use the 2016-2025 records and account for detection probability. The data manager checks the records before analysis.\n\n## Results\n\nThe headline numbers are in the document. The full tables are in the annual data release. Estimates are reported with 95 percent confidence intervals. A difference is treated as meaningful only when the intervals do not overlap and the field effort was similar.\n\n## What changed since the last report\n\nThe previous report used the same routes and the same three-visit protocol, so the comparison is direct. The 2026 analysis adds the new South Beach boardwalk data and the two acoustic stations installed in 2025. The older records are flagged where the effort or the observer changed. A difference that comes from a new route is not treated as a population change.",
+        "doc_ids": [
+          "rr-046"
+        ],
+        "children": [],
+        "score": 0.856,
+        "rank": 5,
+        "relevance": 0.9728
+      },
+      {
+        "node_id": "rr-013:001",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Northern harrier",
+        "text": "away from nests. ## Breeding timeline Courtship begins in April. Eggs are laid in May, hatch in June, and the chicks fledge in July. The reserve's three-visit protocol matches this schedule: occupancy in April, stage and clutch size in May, and chick count in June. ## Monitoring results\n\nThe 2025 season recorded 6 pairs and 8 fledged chicks. The 2024 season recorded 6 pairs and 7 fledged chicks. The long-term trend is reported in the annual breeding summary (rr-043) and the occupancy analysis (rr-045).\n\n## Threats and management\n\nThe lead paragraph lists the main threats. The management response has three parts: seasonal trail closures, a ban on lead ammunition, and a 250 m no-fly zone around active nests. Nest platforms are added where a natural site is unstable. The management plan target is to protect at least 90 percent of occupied territories.\n\n## Visitor guidance\n\nThe lead paragraph gives the distance rule. The short version: stay on the marked trail, keep 100 m from a bird that is alarm-calling or carrying food, and do not use playback, drones, or food to get a closer look. Report injured birds to a ranger.",
+        "doc_ids": [
+          "rr-013"
+        ],
+        "children": [],
+        "score": 0.8278,
+        "rank": 18,
+        "relevance": 0.9723
+      },
+      {
+        "node_id": "rr-016:001",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Red-tailed hawk",
+        "text": "away from nests. ## Breeding timeline Courtship begins in March. Eggs are laid in April, hatch in May, and the chicks fledge in June. The reserve's three-visit protocol matches this schedule: occupancy in April, stage and clutch size in May, and chick count in June. ## Monitoring results\n\nThe 2025 season recorded 9 pairs and 12 fledged chicks. The 2024 season recorded 9 pairs and 11 fledged chicks. The long-term trend is reported in the annual breeding summary (rr-043) and the occupancy analysis (rr-045).\n\n## Threats and management\n\nThe lead paragraph lists the main threats. The management response has three parts: seasonal trail closures, a ban on lead ammunition, and a 250 m no-fly zone around active nests. Nest platforms are added where a natural site is unstable. The management plan target is to protect at least 90 percent of occupied territories.\n\n## Visitor guidance\n\nThe lead paragraph gives the distance rule. The short version: stay on the marked trail, keep 100 m from a bird that is alarm-calling or carrying food, and do not use playback, drones, or food to get a closer look. Report injured birds to a ranger.",
+        "doc_ids": [
+          "rr-016"
+        ],
+        "children": [],
+        "score": 0.8361,
+        "rank": 11,
+        "relevance": 0.9716
+      },
+      {
+        "node_id": "rr-018:001",
+        "kind": "chunk",
+        "level": 0,
+        "title": "American kestrel",
+        "text": "away from nests. ## Breeding timeline Courtship begins in April. Eggs are laid in May, hatch in June, and the chicks fledge in July. The reserve's three-visit protocol matches this schedule: occupancy in April, stage and clutch size in May, and chick count in June. ## Monitoring results\n\nThe 2025 season recorded 5 pairs and 9 fledged chicks. The 2024 season recorded 4 pairs and 7 fledged chicks. The long-term trend is reported in the annual breeding summary (rr-043) and the occupancy analysis (rr-045).\n\n## Threats and management\n\nThe lead paragraph lists the main threats. The management response has three parts: seasonal trail closures, a ban on lead ammunition, and a 250 m no-fly zone around active nests. Nest platforms are added where a natural site is unstable. The management plan target is to protect at least 90 percent of occupied territories.\n\n## Visitor guidance\n\nThe lead paragraph gives the distance rule. The short version: stay on the marked trail, keep 100 m from a bird that is alarm-calling or carrying food, and do not use playback, drones, or food to get a closer look. Report injured birds to a ranger.\n\n## Record note\n\nThis record is maintained by Tomas Reed. The current version is the one listed in the corpus manifest. Questions about the record go to the data manager (rr-096).",
+        "doc_ids": [
+          "rr-018"
+        ],
+        "children": [],
+        "score": 0.8324,
+        "rank": 14,
+        "relevance": 0.9706
+      },
+      {
+        "node_id": "rr-014:001",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Short-eared owl",
+        "text": "away from nests. ## Breeding timeline Nesting starts in April. Eggs are laid in May, hatch in June, and the chicks fledge in July. The reserve's three-visit protocol matches this schedule: occupancy in April, stage and clutch size in May, and chick count in June. ## Monitoring results\n\nThe 2025 season recorded 4 pairs and 5 fledged chicks. The 2024 season recorded 4 pairs and 4 fledged chicks. The long-term trend is reported in the annual breeding summary (rr-043) and the occupancy analysis (rr-045).\n\n## Threats and management\n\nThe lead paragraph lists the main threats. The management response has three parts: seasonal trail closures, a ban on lead ammunition, and a 250 m no-fly zone around active nests. Nest platforms are added where a natural site is unstable. The management plan target is to protect at least 90 percent of occupied territories.\n\n## Visitor guidance\n\nThe lead paragraph gives the distance rule. The short version: stay on the marked trail, keep 100 m from a bird that is alarm-calling or carrying food, and do not use playback, drones, or food to get a closer look. Report injured birds to a ranger.\n\n## Record note\n\nThis record is maintained by Tomas Reed. The current version is the one listed in the corpus manifest. Questions about the record go to the data manager (rr-096).",
+        "doc_ids": [
+          "rr-014"
+        ],
+        "children": [],
+        "score": 0.8338,
+        "rank": 13,
+        "relevance": 0.9669
+      },
+      {
+        "node_id": "rr-011:001",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Peregrine falcon",
+        "text": "## Breeding timeline Courtship starts in late March. Eggs are laid in mid-April, hatch in late May, and the chicks fledge in late June. The reserve's three-visit protocol matches this schedule: occupancy in April, stage and clutch size in May, and chick count in June. ## Monitoring results\n\nThe 2025 season recorded 2 pairs and 3 fledged chicks. The 2024 season recorded 2 pairs and 2 fledged chicks. The long-term trend is reported in the annual breeding summary (rr-043) and the occupancy analysis (rr-045).\n\n## Threats and management\n\nThe lead paragraph lists the main threats. The management response has three parts: seasonal trail closures, a ban on lead ammunition, and a 250 m no-fly zone around active nests. Nest platforms are added where a natural site is unstable. The management plan target is to protect at least 90 percent of occupied territories.\n\n## Visitor guidance\n\nThe lead paragraph gives the distance rule. The short version: stay on the marked trail, keep 100 m from a bird that is alarm-calling or carrying food, and do not use playback, drones, or food to get a closer look. Report injured birds to a ranger.",
+        "doc_ids": [
+          "rr-011"
+        ],
+        "children": [],
+        "score": 0.8315,
+        "rank": 15,
+        "relevance": 0.9651
+      }
+    ],
+    "trace": [
+      {
+        "step": "retrieve",
+        "attempt": 0,
+        "queries": [
+          "How many osprey chicks fledged at the reserve in 2025?"
+        ],
+        "hits": 20,
+        "top_score": 0.8741,
+        "latency_ms": 41
+      },
+      {
+        "step": "relevance",
+        "attempt": 0,
+        "scored": 20,
+        "kept": 8,
+        "min_kept": 0.9651,
+        "latency_ms": 3872,
+        "scores": [
+          {
+            "node_id": "rr-043:000",
+            "probability": 0.8433,
+            "confidence": 0.6867,
+            "latency_ms": 222,
+            "input_tokens": 2122
+          },
+          {
+            "node_id": "sum-l1-15",
+            "probability": 0.9729,
+            "confidence": 0.9459,
+            "latency_ms": 222,
+            "input_tokens": 2122
+          },
+          {
+            "node_id": "rr-012:001",
+            "probability": 0.9705,
+            "confidence": 0.9411,
+            "latency_ms": 222,
+            "input_tokens": 2122
+          },
+          {
+            "node_id": "rr-044:000",
+            "probability": 0.2618,
+            "confidence": 0.4764,
+            "latency_ms": 222,
+            "input_tokens": 2122
+          },
+          {
+            "node_id": "rr-046:000",
+            "probability": 0.9728,
+            "confidence": 0.9457,
+            "latency_ms": 233,
+            "input_tokens": 2424
+          },
+          {
+            "node_id": "sum-l1-12",
+            "probability": 0.8329,
+            "confidence": 0.6657,
+            "latency_ms": 233,
+            "input_tokens": 2424
+          },
+          {
+            "node_id": "rr-012:000",
+            "probability": 0.9659,
+            "confidence": 0.9318,
+            "latency_ms": 233,
+            "input_tokens": 2424
+          },
+          {
+            "node_id": "rr-022:000",
+            "probability": 0.7477,
+            "confidence": 0.4954,
+            "latency_ms": 233,
+            "input_tokens": 2424
+          },
+          {
+            "node_id": "rr-041:000",
+            "probability": 0.2593,
+            "confidence": 0.4814,
+            "latency_ms": 152,
+            "input_tokens": 1578
+          },
+          {
+            "node_id": "rr-019:001",
+            "probability": 0.9503,
+            "confidence": 0.9006,
+            "latency_ms": 152,
+            "input_tokens": 1578
+          },
+          {
+            "node_id": "rr-016:001",
+            "probability": 0.9716,
+            "confidence": 0.9432,
+            "latency_ms": 152,
+            "input_tokens": 1578
+          },
+          {
+            "node_id": "rr-017:001",
+            "probability": 0.932,
+            "confidence": 0.8639,
+            "latency_ms": 152,
+            "input_tokens": 1578
+          },
+          {
+            "node_id": "rr-014:001",
+            "probability": 0.9669,
+            "confidence": 0.9337,
+            "latency_ms": 177,
+            "input_tokens": 1686
+          },
+          {
+            "node_id": "rr-018:001",
+            "probability": 0.9706,
+            "confidence": 0.9412,
+            "latency_ms": 177,
+            "input_tokens": 1686
+          },
+          {
+            "node_id": "rr-011:001",
+            "probability": 0.9651,
+            "confidence": 0.9303,
+            "latency_ms": 177,
+            "input_tokens": 1686
+          },
+          {
+            "node_id": "rr-017:000",
+            "probability": 0.9318,
+            "confidence": 0.8637,
+            "latency_ms": 177,
+            "input_tokens": 1686
+          },
+          {
+            "node_id": "rr-015:001",
+            "probability": 0.9619,
+            "confidence": 0.9238,
+            "latency_ms": 184,
+            "input_tokens": 1933
+          },
+          {
+            "node_id": "rr-013:001",
+            "probability": 0.9723,
+            "confidence": 0.9446,
+            "latency_ms": 184,
+            "input_tokens": 1933
+          },
+          {
+            "node_id": "rr-042:000",
+            "probability": 0.1244,
+            "confidence": 0.7512,
+            "latency_ms": 184,
+            "input_tokens": 1933
+          },
+          {
+            "node_id": "sum-l2-01",
+            "probability": 0.1614,
+            "confidence": 0.6772,
+            "latency_ms": 184,
+            "input_tokens": 1933
+          }
+        ]
+      },
+      {
+        "step": "sufficient",
+        "attempt": 0,
+        "probability": 0.9674,
+        "confidence": 0.9349,
+        "band": "high",
+        "delegated": false,
+        "source": "d1",
+        "latency_ms": 266,
+        "accepted": true,
+        "elapsed_ms": 266
+      },
+      {
+        "step": "write",
+        "attempt": 0,
+        "chars": 216,
+        "raw_chars": 216,
+        "latency_ms": 274
+      },
+      {
+        "step": "cite",
+        "mode": "inline"
+      },
+      {
+        "step": "grounded",
+        "probability": 0.8771,
+        "confidence": 0.7542,
+        "band": "high",
+        "delegated": false,
+        "source": "d1",
+        "accepted": true,
+        "latency_ms": 70
+      }
+    ],
+    "refeeds": 0,
+    "timings": {
+      "total_ms": 1624
+    }
+  }
+}

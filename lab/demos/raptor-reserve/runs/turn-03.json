@@ -1,0 +1,345 @@
+{
+  "format": 1,
+  "place_id": "raptor-reserve",
+  "turn": 3,
+  "visitor": "A drone flight is planned for tomorrow with a 35 km/h wind. May it proceed?",
+  "note": "The wind limit and the flight rules are in different places. This is the refeed candidate.",
+  "expect": "No. Drone flights are cancelled at 28 km/h.",
+  "recorded_at": "2026-10-22T17:43:59.265098+00:00",
+  "models": {
+    "embedding": "embeddinggemma-2",
+    "writer": "lfm2-8b",
+    "judge": "d1-3b"
+  },
+  "result": {
+    "place_id": "raptor-reserve",
+    "question": "A drone flight is planned for tomorrow with a 35 km/h wind. May it proceed?",
+    "mode": "raptor",
+    "answer": "No. The current Drone Flight Checklist states flights are cancelled at wind \u226428\u202fkm/h, visibility \u22652\u202fkm, and no lightning within 10\u202fkm; tomorrow\u2019s wind speed of 35\u202fkm/h exceeds the limit, so the flight cannot proceed [rr-032:001]. The Drone Crash Report requires reporting safety issues to the head ranger, but it does not address wind thresholds for cancellation. Therefore, based on the checklist rule, proceeding is prohibited [rr-032:001].",
+    "can_answer": true,
+    "warning": null,
+    "citations": [
+      {
+        "node_id": "rr-032:001",
+        "title": "Drone Flight Checklist",
+        "doc_ids": [
+          "rr-032"
+        ],
+        "level": 0
+      }
+    ],
+    "results": [
+      {
+        "node_id": "rr-032:001",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Drone Flight Checklist",
+        "text": "shift. ## Data and records Records go into the field database within 24 hours. Each record needs date, time, observer, location, weather, and a confidence note. Photos are optional and should not include people without consent. The data manager checks the records before the weekly summary. ## Safety\n\nWork in pairs. Carry a radio, a first aid kit, and water. Stay 150 m from the cliff edge at North Point. Do not fly a drone above 28 km/h wind or within 250 m of an active nest. Stop work in lightning, fog below 2 km visibility, or a red risk level.\n\n## Why it matters\n\nConsistent records are the only way to compare years. A missed field or a changed route can look like a population change. The reserve would rather lose a day of data than publish a number that cannot be defended.\n\n## Review\n\nThe procedure is reviewed before each field season. Changes are tested in a drill and then added to the next version. The current version took effect on 2026-05-01.",
+        "doc_ids": [
+          "rr-032"
+        ],
+        "children": [],
+        "score": 0.7161,
+        "rank": 2,
+        "relevance": 0.6092
+      },
+      {
+        "node_id": "rr-035:001",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Drone Crash Report, 3 August 2025",
+        "text": "Follow the route and the timing in the document. 4. Record the data in the field form before leaving the site. 5. Report any safety issue, injury, or unusual wildlife behavior to the head ranger. 6. Sign in at the end of the shift. ## Data and records\n\nRecords go into the field database within 24 hours. Each record needs date, time, observer, location, weather, and a confidence note. Photos are optional and should not include people without consent. The data manager checks the records before the weekly summary.\n\n## Safety\n\nWork in pairs. Carry a radio, a first aid kit, and water. Stay 150 m from the cliff edge at North Point. Do not fly a drone above 28 km/h wind or within 250 m of an active nest. Stop work in lightning, fog below 2 km visibility, or a red risk level.\n\n## Why it matters\n\nConsistent records are the only way to compare years. A missed field or a changed route can look like a population change. The reserve would rather lose a day of data than publish a number that cannot be defended.\n\n## Review\n\nThe procedure is reviewed before each field season. Changes are tested in a drill and then added to the next version. The current version took effect on 2025-08-05.",
+        "doc_ids": [
+          "rr-035"
+        ],
+        "children": [],
+        "score": 0.687,
+        "rank": 5,
+        "relevance": 0.6744
+      },
+      {
+        "node_id": "rr-032:000",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Drone Flight Checklist",
+        "text": "Drone flights are used for nest surveys, shoreline mapping, and search and rescue. Every flight needs approval from the head ranger and a written flight plan.\n\nThe pilot checks the weather first. Flights are cancelled at 28 km/h wind, visibility below 2 km, rain, snow, or lightning within 10 km. The drone must stay within 3.5 km of the pilot and above 30 m except during takeoff and landing.\n\nThe battery must be at least 80 percent at takeoff. The planned flight time cannot exceed 24 minutes, which leaves a 30 percent reserve. The pilot does not fly over people, boats, or the visitor center.\n\nNo flight is allowed within 250 m of an active nest during the breeding season. The pilot checks the nest map before takeoff and logs the flight in the drone book. The log records date, pilot, purpose, weather, max altitude, duration, battery used, and any wildlife response.\n\nIf the drone loses link, the pilot switches to return-to-home and clears the landing zone. If the drone does not return, the pilot marks the last known point and calls the head ranger.\n\n## Purpose and scope\n\nDrone Flight Checklist is the standard procedure for this part of the field program. It applies to staff, seasonal employees, and trained volunteers. It does not replace the safety plan (rr-005) or the emergency response plan (rr-006).\n\n## Roles\n\nThe head ranger, Elin Ward, owns the procedure. The field lead assigns teams and checks the weather. The data manager, Samir Haddad, checks the records. The veterinarian, Dr. Priya Nair, is consulted for any wildlife handling.\n\n## Procedure\n\n1. Check the weather, the tide, and the radio.\n2. Sign out at the research station and record the team.\n3. Follow the route and the timing in the document.\n4. Record the data in the field form before leaving the site.\n5. Report any safety issue, injury, or unusual wildlife behavior to the head ranger.\n6. Sign in at the end of the shift.\n\n## Data and records\n\nRecords go into the field database within 24 hours. Each record needs date, time, observer, location, weather, and a confidence note. Photos are optional and should not include people without consent. The data manager checks the records before the weekly summary.\n\n## Safety",
+        "doc_ids": [
+          "rr-032"
+        ],
+        "children": [],
+        "score": 0.7416,
+        "rank": 1,
+        "relevance": 0.5201
+      },
+      {
+        "node_id": "rr-040:001",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Winter Preparation Checklist",
+        "text": "shift. ## Data and records Records go into the field database within 24 hours. Each record needs date, time, observer, location, weather, and a confidence note. Photos are optional and should not include people without consent. The data manager checks the records before the weekly summary. ## Safety\n\nWork in pairs. Carry a radio, a first aid kit, and water. Stay 150 m from the cliff edge at North Point. Do not fly a drone above 28 km/h wind or within 250 m of an active nest. Stop work in lightning, fog below 2 km visibility, or a red risk level.\n\n## Why it matters\n\nConsistent records are the only way to compare years. A missed field or a changed route can look like a population change. The reserve would rather lose a day of data than publish a number that cannot be defended.\n\n## Review\n\nThe procedure is reviewed before each field season. Changes are tested in a drill and then added to the next version. The current version took effect on 2026-10-01.",
+        "doc_ids": [
+          "rr-040"
+        ],
+        "children": [],
+        "score": 0.677,
+        "rank": 13,
+        "relevance": 0.6163
+      },
+      {
+        "node_id": "rr-028:001",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Nest Monitoring Protocol",
+        "text": "shift. ## Data and records Records go into the field database within 24 hours. Each record needs date, time, observer, location, weather, and a confidence note. Photos are optional and should not include people without consent. The data manager checks the records before the weekly summary. ## Safety\n\nWork in pairs. Carry a radio, a first aid kit, and water. Stay 150 m from the cliff edge at North Point. Do not fly a drone above 28 km/h wind or within 250 m of an active nest. Stop work in lightning, fog below 2 km visibility, or a red risk level.\n\n## Why it matters\n\nConsistent records are the only way to compare years. A missed field or a changed route can look like a population change. The reserve would rather lose a day of data than publish a number that cannot be defended.\n\n## Review\n\nThe procedure is reviewed before each field season. Changes are tested in a drill and then added to the next version. The current version took effect on 2026-03-15.",
+        "doc_ids": [
+          "rr-028"
+        ],
+        "children": [],
+        "score": 0.6651,
+        "rank": 20,
+        "relevance": 0.614
+      },
+      {
+        "node_id": "rr-033:001",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Granite Ridge Weather Station",
+        "text": "shift. ## Data and records Records go into the field database within 24 hours. Each record needs date, time, observer, location, weather, and a confidence note. Photos are optional and should not include people without consent. The data manager checks the records before the weekly summary. ## Safety\n\nWork in pairs. Carry a radio, a first aid kit, and water. Stay 150 m from the cliff edge at North Point. Do not fly a drone above 28 km/h wind or within 250 m of an active nest. Stop work in lightning, fog below 2 km visibility, or a red risk level.\n\n## Why it matters\n\nConsistent records are the only way to compare years. A missed field or a changed route can look like a population change. The reserve would rather lose a day of data than publish a number that cannot be defended.\n\n## Review\n\nThe procedure is reviewed before each field season. Changes are tested in a drill and then added to the next version. The current version took effect on 2026-01-20.\n\n## Record note\n\nThis record is maintained by Caleb Finch. The current version is the one listed in the corpus manifest. Questions about the record go to the data manager (rr-096).",
+        "doc_ids": [
+          "rr-033"
+        ],
+        "children": [],
+        "score": 0.6695,
+        "rank": 18,
+        "relevance": 0.5574
+      },
+      {
+        "node_id": "rr-038:001",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Search and Rescue Drill",
+        "text": "shift. ## Data and records Records go into the field database within 24 hours. Each record needs date, time, observer, location, weather, and a confidence note. Photos are optional and should not include people without consent. The data manager checks the records before the weekly summary. ## Safety\n\nWork in pairs. Carry a radio, a first aid kit, and water. Stay 150 m from the cliff edge at North Point. Do not fly a drone above 28 km/h wind or within 250 m of an active nest. Stop work in lightning, fog below 2 km visibility, or a red risk level.\n\n## Why it matters\n\nConsistent records are the only way to compare years. A missed field or a changed route can look like a population change. The reserve would rather lose a day of data than publish a number that cannot be defended.\n\n## Review\n\nThe procedure is reviewed before each field season. Changes are tested in a drill and then added to the next version. The current version took effect on 2026-05-02.\n\n## Record note\n\nThis record is maintained by Elin Ward. The current version is the one listed in the corpus manifest. Questions about the record go to the data manager (rr-096).",
+        "doc_ids": [
+          "rr-038"
+        ],
+        "children": [],
+        "score": 0.6811,
+        "rank": 10,
+        "relevance": 0.5469
+      },
+      {
+        "node_id": "rr-029:001",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Banding Protocol",
+        "text": "shift. ## Data and records Records go into the field database within 24 hours. Each record needs date, time, observer, location, weather, and a confidence note. Photos are optional and should not include people without consent. The data manager checks the records before the weekly summary. ## Safety\n\nWork in pairs. Carry a radio, a first aid kit, and water. Stay 150 m from the cliff edge at North Point. Do not fly a drone above 28 km/h wind or within 250 m of an active nest. Stop work in lightning, fog below 2 km visibility, or a red risk level.\n\n## Why it matters\n\nConsistent records are the only way to compare years. A missed field or a changed route can look like a population change. The reserve would rather lose a day of data than publish a number that cannot be defended.\n\n## Review\n\nThe procedure is reviewed before each field season. Changes are tested in a drill and then added to the next version. The current version took effect on 2026-05-20.\n\n## Record note\n\nThis record is maintained by Tomas Reed. The current version is the one listed in the corpus manifest. Questions about the record go to the data manager (rr-096).",
+        "doc_ids": [
+          "rr-029"
+        ],
+        "children": [],
+        "score": 0.6715,
+        "rank": 16,
+        "relevance": 0.5445
+      }
+    ],
+    "trace": [
+      {
+        "step": "retrieve",
+        "attempt": 0,
+        "queries": [
+          "A drone flight is planned for tomorrow with a 35 km/h wind. May it proceed?"
+        ],
+        "hits": 20,
+        "top_score": 0.7416,
+        "latency_ms": 9
+      },
+      {
+        "step": "relevance",
+        "attempt": 0,
+        "scored": 20,
+        "kept": 8,
+        "min_kept": 0.5201,
+        "latency_ms": 3672,
+        "scores": [
+          {
+            "node_id": "rr-032:000",
+            "probability": 0.5201,
+            "confidence": 0.0403,
+            "latency_ms": 196,
+            "input_tokens": 1934
+          },
+          {
+            "node_id": "rr-032:001",
+            "probability": 0.6092,
+            "confidence": 0.2184,
+            "latency_ms": 196,
+            "input_tokens": 1934
+          },
+          {
+            "node_id": "rr-033:000",
+            "probability": 0.4341,
+            "confidence": 0.1318,
+            "latency_ms": 196,
+            "input_tokens": 1934
+          },
+          {
+            "node_id": "rr-061:000",
+            "probability": 0.052,
+            "confidence": 0.8961,
+            "latency_ms": 196,
+            "input_tokens": 1934
+          },
+          {
+            "node_id": "rr-035:001",
+            "probability": 0.6744,
+            "confidence": 0.3487,
+            "latency_ms": 198,
+            "input_tokens": 2018
+          },
+          {
+            "node_id": "rr-051:000",
+            "probability": 0.1657,
+            "confidence": 0.6686,
+            "latency_ms": 198,
+            "input_tokens": 2018
+          },
+          {
+            "node_id": "rr-034:000",
+            "probability": 0.5018,
+            "confidence": 0.0036,
+            "latency_ms": 198,
+            "input_tokens": 2018
+          },
+          {
+            "node_id": "rr-054:000",
+            "probability": 0.0722,
+            "confidence": 0.8555,
+            "latency_ms": 198,
+            "input_tokens": 2018
+          },
+          {
+            "node_id": "sum-l2-01",
+            "probability": 0.7345,
+            "confidence": 0.4689,
+            "latency_ms": 197,
+            "input_tokens": 2089
+          },
+          {
+            "node_id": "rr-038:001",
+            "probability": 0.5469,
+            "confidence": 0.0938,
+            "latency_ms": 197,
+            "input_tokens": 2089
+          },
+          {
+            "node_id": "rr-038:000",
+            "probability": 0.307,
+            "confidence": 0.386,
+            "latency_ms": 197,
+            "input_tokens": 2089
+          },
+          {
+            "node_id": "rr-035:000",
+            "probability": 0.3336,
+            "confidence": 0.3328,
+            "latency_ms": 197,
+            "input_tokens": 2089
+          },
+          {
+            "node_id": "rr-040:001",
+            "probability": 0.6163,
+            "confidence": 0.2325,
+            "latency_ms": 178,
+            "input_tokens": 1820
+          },
+          {
+            "node_id": "sum-l1-00",
+            "probability": 0.3216,
+            "confidence": 0.3568,
+            "latency_ms": 178,
+            "input_tokens": 1820
+          },
+          {
+            "node_id": "rr-045:000",
+            "probability": 0.0484,
+            "confidence": 0.9031,
+            "latency_ms": 178,
+            "input_tokens": 1820
+          },
+          {
+            "node_id": "rr-029:001",
+            "probability": 0.5445,
+            "confidence": 0.0889,
+            "latency_ms": 178,
+            "input_tokens": 1820
+          },
+          {
+            "node_id": "rr-005:000",
+            "probability": 0.4125,
+            "confidence": 0.1751,
+            "latency_ms": 149,
+            "input_tokens": 1512
+          },
+          {
+            "node_id": "rr-033:001",
+            "probability": 0.5574,
+            "confidence": 0.1148,
+            "latency_ms": 149,
+            "input_tokens": 1512
+          },
+          {
+            "node_id": "rr-030:001",
+            "probability": 0.5412,
+            "confidence": 0.0823,
+            "latency_ms": 149,
+            "input_tokens": 1512
+          },
+          {
+            "node_id": "rr-028:001",
+            "probability": 0.614,
+            "confidence": 0.2279,
+            "latency_ms": 149,
+            "input_tokens": 1512
+          }
+        ]
+      },
+      {
+        "step": "sufficient",
+        "attempt": 0,
+        "probability": 0.7487,
+        "confidence": 0.4974,
+        "band": "middle",
+        "delegated": false,
+        "source": "d1",
+        "latency_ms": 235,
+        "accepted": true,
+        "elapsed_ms": 235
+      },
+      {
+        "step": "write",
+        "attempt": 0,
+        "chars": 468,
+        "raw_chars": 468,
+        "latency_ms": 483
+      },
+      {
+        "step": "cite",
+        "mode": "inline"
+      },
+      {
+        "step": "grounded",
+        "probability": 0.7198,
+        "confidence": 0.4397,
+        "band": "middle",
+        "delegated": false,
+        "source": "d1",
+        "accepted": true,
+        "latency_ms": 79
+      }
+    ],
+    "refeeds": 0,
+    "timings": {
+      "total_ms": 1729
+    }
+  }
+}
