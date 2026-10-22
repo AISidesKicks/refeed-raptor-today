@@ -1,0 +1,18 @@
+[workspace]
+authors = ["AISidesKicks <198066858+AISidesKicks@users.noreply.github.com>"]
+channels = ["conda-forge"]
+name = "rptr"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[activation]
+
+[activation.env]
+TMPDIR = "/run/user/$UID/pixi_tmp/$PIXI_PROJECT_NAME"
+SCRATCH = "$PIXI_PROJECT_ROOT/scratch"
+PYTHONPATH = "$PIXI_PROJECT_ROOT/src"
+
+[tasks]
+
+[dependencies]
+python = "==3.12"

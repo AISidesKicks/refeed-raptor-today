@@ -1,0 +1,16 @@
+# pixi environments
+.pixi/*
+!.pixi/config.toml
+
+# python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# scratch disk
+scratch/*
+!scratch/.gitkeep
+
+# local secrets
+.env
+.env.*
