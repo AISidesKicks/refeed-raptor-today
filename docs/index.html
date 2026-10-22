@@ -83,6 +83,29 @@
     letter-spacing: -0.04em;
   }
 
+  .gh {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-decoration: none;
+    color: var(--rust);
+    border: 1px solid var(--line);
+    border-radius: 0.5rem;
+    padding: 0.2rem 0.6rem;
+    background: var(--panel);
+    vertical-align: middle;
+    margin-left: 0.5rem;
+  }
+
+  .gh:hover {
+    border-color: var(--rust);
+  }
+
+  footer .gh {
+    margin-left: 0;
+  }
+
   .lede {
     max-width: 640px;
     margin: 18px 0 0;
@@ -230,7 +253,7 @@
 
 <header>
   <p class="eyebrow">A local RAG lab</p>
-  <h1>Refeed Raptor</h1>
+  <h1>Refeed Raptor <a class="gh" href="https://github.com/AISidesKicks/refeed-raptor-report">github</a></h1>
   <p class="lede">A RAPTOR summary tree, a small refeed loop, and a System-1 judge. No cloud model, no API key, no hidden state.</p>
   <p class="status">Status: the local stack is running. 100 documents, 200 chunks, a 23-node RAPTOR tree, the refeed loop, and committed recorded replays.</p>
 </header>
@@ -348,6 +371,7 @@
 
 <footer>
   <p>Refeed Raptor - an educational lab about RAG, memory, and the cost of a second look.</p>
+  <p><a class="gh" href="https://github.com/AISidesKicks/refeed-raptor-report">github.com/AISidesKicks/refeed-raptor-report</a></p>
 </footer>
 
 </div>
