@@ -13,19 +13,34 @@ The environment is a pixi workspace named `rptr`.
 
 ```bash
 pixi install
-pixi shell
+pixi run build-corpus
+pixi run serve
 ```
 
-The corpus is already generated. To rebuild it:
+Open `http://localhost:8000`. If port 8000 is taken, pick another:
 
 ```bash
-cd lab/demos/raptor-reserve
-python tools/build_corpus.py
+RPTR_PORT=8765 pixi run serve
 ```
+
+The server indexes the corpus on startup. To build the SQLite index without starting the server:
+
+```bash
+pixi run index
+```
+
+The reader is model-free. It has four tabs:
+
+- Ask: keyword search over the chunks.
+- Replay: step through the six autoplay turns.
+- Corpus: read all 100 documents.
+- Eval: run the keyword baseline on the 50 questions.
+
+The embedding retriever, the RAPTOR tree, the decision model, and the refeed loop are next. The keyword baseline is the comparison floor. On the current 50 questions it gets Recall@5 0.98 and MRR 0.83, so the models have to beat a strong floor.
 
 ## Status
 
-The corpus and eval set are in place. The app, the Docker stack, and the replay player are next.
+The corpus, the eval set, and the model-free reader are in place. The GPU stack and the recorded replay are next.
 
 ## License
 
