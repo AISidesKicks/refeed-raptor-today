@@ -5,7 +5,7 @@
   "visitor": "Which ranger approved the drone flight over Heron Marsh on 12 September 2026?",
   "note": "The answer is in a dated patrol log, not in a policy document.",
   "expect": "Elin Ward, the head ranger.",
-  "recorded_at": "2026-10-22T17:43:59.265098+00:00",
+  "recorded_at": "2026-10-22T19:57:08.218255+00:00",
   "models": {
     "embedding": "embeddinggemma-2",
     "writer": "lfm2-8b",
@@ -41,7 +41,7 @@
         "children": [],
         "score": 0.8313,
         "rank": 1,
-        "relevance": 0.9027
+        "relevance": 0.6731
       },
       {
         "node_id": "rr-032:000",
@@ -55,7 +55,7 @@
         "children": [],
         "score": 0.7847,
         "rank": 4,
-        "relevance": 0.7811
+        "relevance": 0.4034
       }
     ],
     "trace": [
@@ -67,155 +67,155 @@
         ],
         "hits": 20,
         "top_score": 0.8313,
-        "latency_ms": 9
+        "latency_ms": 8
       },
       {
         "step": "relevance",
         "attempt": 0,
         "scored": 20,
         "kept": 2,
-        "min_kept": 0.7811,
-        "latency_ms": 4228,
+        "min_kept": 0.4034,
+        "latency_ms": 3752,
         "scores": [
           {
             "node_id": "rr-034:000",
-            "probability": 0.9027,
-            "confidence": 0.8054,
-            "latency_ms": 218,
-            "input_tokens": 2227
+            "probability": 0.6731,
+            "confidence": 0.3463,
+            "latency_ms": 194,
+            "input_tokens": 2275
           },
           {
             "node_id": "rr-035:000",
-            "probability": 0.1012,
-            "confidence": 0.7976,
-            "latency_ms": 218,
-            "input_tokens": 2227
+            "probability": 0.1452,
+            "confidence": 0.7096,
+            "latency_ms": 194,
+            "input_tokens": 2275
           },
           {
             "node_id": "rr-038:000",
-            "probability": 0.1643,
-            "confidence": 0.6714,
-            "latency_ms": 218,
-            "input_tokens": 2227
+            "probability": 0.0992,
+            "confidence": 0.8016,
+            "latency_ms": 194,
+            "input_tokens": 2275
           },
           {
             "node_id": "rr-032:000",
-            "probability": 0.7811,
-            "confidence": 0.5622,
-            "latency_ms": 218,
-            "input_tokens": 2227
+            "probability": 0.4034,
+            "confidence": 0.1932,
+            "latency_ms": 194,
+            "input_tokens": 2275
           },
           {
             "node_id": "rr-039:000",
-            "probability": 0.0968,
-            "confidence": 0.8064,
-            "latency_ms": 193,
-            "input_tokens": 1926
+            "probability": 0.0718,
+            "confidence": 0.8565,
+            "latency_ms": 169,
+            "input_tokens": 1974
           },
           {
             "node_id": "sum-l1-00",
-            "probability": 0.1175,
-            "confidence": 0.7651,
-            "latency_ms": 193,
-            "input_tokens": 1926
+            "probability": 0.1257,
+            "confidence": 0.7486,
+            "latency_ms": 169,
+            "input_tokens": 1974
           },
           {
             "node_id": "rr-034:001",
-            "probability": 0.0654,
-            "confidence": 0.8693,
-            "latency_ms": 193,
-            "input_tokens": 1926
+            "probability": 0.1452,
+            "confidence": 0.7096,
+            "latency_ms": 169,
+            "input_tokens": 1974
           },
           {
             "node_id": "rr-035:001",
-            "probability": 0.0413,
-            "confidence": 0.9174,
-            "latency_ms": 193,
-            "input_tokens": 1926
+            "probability": 0.0721,
+            "confidence": 0.8558,
+            "latency_ms": 169,
+            "input_tokens": 1974
           },
           {
             "node_id": "rr-051:000",
-            "probability": 0.0487,
-            "confidence": 0.9025,
-            "latency_ms": 203,
-            "input_tokens": 2072
+            "probability": 0.0482,
+            "confidence": 0.9036,
+            "latency_ms": 181,
+            "input_tokens": 2120
           },
           {
             "node_id": "sum-l2-01",
-            "probability": 0.1555,
-            "confidence": 0.6889,
-            "latency_ms": 203,
-            "input_tokens": 2072
+            "probability": 0.1161,
+            "confidence": 0.7679,
+            "latency_ms": 181,
+            "input_tokens": 2120
           },
           {
             "node_id": "rr-032:001",
-            "probability": 0.0505,
-            "confidence": 0.899,
-            "latency_ms": 203,
-            "input_tokens": 2072
+            "probability": 0.069,
+            "confidence": 0.862,
+            "latency_ms": 181,
+            "input_tokens": 2120
           },
           {
             "node_id": "rr-033:000",
-            "probability": 0.2836,
-            "confidence": 0.4327,
-            "latency_ms": 203,
-            "input_tokens": 2072
+            "probability": 0.0964,
+            "confidence": 0.8071,
+            "latency_ms": 181,
+            "input_tokens": 2120
           },
           {
             "node_id": "rr-025:000",
-            "probability": 0.0433,
-            "confidence": 0.9135,
-            "latency_ms": 217,
-            "input_tokens": 2257
+            "probability": 0.0438,
+            "confidence": 0.9123,
+            "latency_ms": 194,
+            "input_tokens": 2305
           },
           {
             "node_id": "rr-001:000",
-            "probability": 0.0381,
-            "confidence": 0.9238,
-            "latency_ms": 217,
-            "input_tokens": 2257
+            "probability": 0.0375,
+            "confidence": 0.9251,
+            "latency_ms": 194,
+            "input_tokens": 2305
           },
           {
             "node_id": "rr-005:000",
-            "probability": 0.0741,
-            "confidence": 0.8518,
-            "latency_ms": 217,
-            "input_tokens": 2257
+            "probability": 0.056,
+            "confidence": 0.888,
+            "latency_ms": 194,
+            "input_tokens": 2305
           },
           {
             "node_id": "sum-l1-16",
-            "probability": 0.0701,
-            "confidence": 0.8598,
-            "latency_ms": 217,
-            "input_tokens": 2257
+            "probability": 0.0508,
+            "confidence": 0.8984,
+            "latency_ms": 194,
+            "input_tokens": 2305
           },
           {
             "node_id": "rr-030:000",
-            "probability": 0.0911,
-            "confidence": 0.8179,
-            "latency_ms": 226,
-            "input_tokens": 2271
+            "probability": 0.0673,
+            "confidence": 0.8655,
+            "latency_ms": 200,
+            "input_tokens": 2319
           },
           {
             "node_id": "rr-057:000",
-            "probability": 0.0474,
-            "confidence": 0.9052,
-            "latency_ms": 226,
-            "input_tokens": 2271
+            "probability": 0.054,
+            "confidence": 0.892,
+            "latency_ms": 200,
+            "input_tokens": 2319
           },
           {
             "node_id": "rr-037:000",
-            "probability": 0.0576,
-            "confidence": 0.8849,
-            "latency_ms": 226,
-            "input_tokens": 2271
+            "probability": 0.0513,
+            "confidence": 0.8974,
+            "latency_ms": 200,
+            "input_tokens": 2319
           },
           {
             "node_id": "rr-027:000",
-            "probability": 0.0917,
-            "confidence": 0.8167,
-            "latency_ms": 226,
-            "input_tokens": 2271
+            "probability": 0.0672,
+            "confidence": 0.8657,
+            "latency_ms": 200,
+            "input_tokens": 2319
           }
         ]
       },
@@ -227,16 +227,16 @@
         "band": "high",
         "delegated": false,
         "source": "d1",
-        "latency_ms": 103,
+        "latency_ms": 89,
         "accepted": true,
-        "elapsed_ms": 104
+        "elapsed_ms": 90
       },
       {
         "step": "write",
         "attempt": 0,
         "chars": 169,
         "raw_chars": 186,
-        "latency_ms": 246
+        "latency_ms": 218
       },
       {
         "step": "cite",
@@ -244,18 +244,19 @@
       },
       {
         "step": "grounded",
-        "probability": 0.868,
-        "confidence": 0.736,
-        "band": "middle",
+        "probability": 0.9002,
+        "confidence": 0.8004,
+        "band": "high",
         "delegated": false,
         "source": "d1",
         "accepted": true,
-        "latency_ms": 59
+        "latency_ms": 42
       }
     ],
     "refeeds": 0,
     "timings": {
-      "total_ms": 1478
-    }
+      "total_ms": 1301
+    },
+    "trace_id": null
   }
 }

@@ -5,7 +5,7 @@
   "visitor": "What does RAPTOR stand for, and what does the summary tree add?",
   "note": "The methods wing. The answer should cite the RAPTOR summary and the metrics doc.",
   "expect": "Recursive Abstractive Processing for Tree-Organized Retrieval; it adds summaries at multiple levels so retrieval can use the right abstraction.",
-  "recorded_at": "2026-10-22T17:43:59.265098+00:00",
+  "recorded_at": "2026-10-22T19:57:08.218255+00:00",
   "models": {
     "embedding": "embeddinggemma-2",
     "writer": "lfm2-8b",
@@ -15,12 +15,12 @@
     "place_id": "raptor-reserve",
     "question": "What does RAPTOR stand for, and what does the summary tree add?",
     "mode": "raptor",
-    "answer": "RAPTOR stands for Recursive Abstractive Processing for Tree-Organized Retrieval and its summary tree adds three levels of 512-token chunks with 64-token overlap, about 20 cluster summaries at level\u202f1, and about 5 higher summaries at level\u202f2, with the root as one page [rr-087:000].",
+    "answer": "RAPTOR stands for Recursive Abstractive Processing for Tree-Organized Retrieval and its summary tree adds a level breakdown that indicates how often a summary node beats a leaf and whether the winning level matches the question type [rr-087:001]. The tree consists of three levels, with Level\u202f0 as chunks (~512 tokens each with 64-token overlap), Level\u202f1 as ~20 cluster summaries, and Level\u202f2 as ~5 higher summaries, rooted at one page, stored in SQLite, rebuilt deterministically when the corpus changes [rr-087:001].",
     "can_answer": true,
     "warning": null,
     "citations": [
       {
-        "node_id": "rr-087:000",
+        "node_id": "rr-087:001",
         "title": "RAPTOR Summary Tree",
         "doc_ids": [
           "rr-087"
@@ -41,7 +41,7 @@
         "children": [],
         "score": 0.7867,
         "rank": 3,
-        "relevance": 0.7749
+        "relevance": 0.6105
       },
       {
         "node_id": "rr-092:000",
@@ -55,7 +55,7 @@
         "children": [],
         "score": 0.7361,
         "rank": 15,
-        "relevance": 0.8844
+        "relevance": 0.6829
       },
       {
         "node_id": "rr-100:000",
@@ -69,7 +69,21 @@
         "children": [],
         "score": 0.7601,
         "rank": 5,
-        "relevance": 0.8784
+        "relevance": 0.632
+      },
+      {
+        "node_id": "rr-087:001",
+        "kind": "chunk",
+        "level": 0,
+        "title": "RAPTOR Summary Tree",
+        "text": "key. ## What the numbers mean Retrieval numbers describe whether the right passage was found. Answer numbers describe whether the final text is supported. Calibration numbers describe whether the model knows how sure it is. A good demo reports all three, not just the answer quality. ## Limitations\n\nThe corpus is small and synthetic. The results are a lab result, not a benchmark. A judge model can prefer its own output. A reranker can look good because the gold passages are easy. The project reports the cost and the failure cases next to the wins.\n\n## Practical use\n\nUse the method when the corpus is small enough to inspect and the question needs evidence. Do not use it when a keyword search or a single document is enough. The librarian guide (rr-095) shows how to ask a question that the loop can actually answer.\n\n## Further reading\n\nThe primary sources are the RAPTOR paper (arXiv 2401.18059), the SearchJev paper (arXiv 2610.05107), the EmbeddingGemma 2 model card, the LFM2.5 model card, and the d1-3B model card. The lab's INTENT.md has the full reference list.",
+        "doc_ids": [
+          "rr-087"
+        ],
+        "children": [],
+        "score": 0.8098,
+        "rank": 1,
+        "relevance": 0.4043
       },
       {
         "node_id": "rr-100:001",
@@ -83,7 +97,7 @@
         "children": [],
         "score": 0.7317,
         "rank": 18,
-        "relevance": 0.5034
+        "relevance": 0.5358
       },
       {
         "node_id": "rr-096:001",
@@ -97,7 +111,7 @@
         "children": [],
         "score": 0.7308,
         "rank": 19,
-        "relevance": 0.5034
+        "relevance": 0.5358
       }
     ],
     "trace": [
@@ -109,176 +123,176 @@
         ],
         "hits": 20,
         "top_score": 0.8098,
-        "latency_ms": 10
+        "latency_ms": 8
       },
       {
         "step": "relevance",
         "attempt": 0,
         "scored": 20,
-        "kept": 5,
-        "min_kept": 0.5034,
-        "latency_ms": 4268,
+        "kept": 6,
+        "min_kept": 0.4043,
+        "latency_ms": 3848,
         "scores": [
           {
             "node_id": "rr-087:001",
-            "probability": 0.3344,
-            "confidence": 0.3312,
-            "latency_ms": 195,
-            "input_tokens": 1966
+            "probability": 0.4043,
+            "confidence": 0.1915,
+            "latency_ms": 177,
+            "input_tokens": 2014
           },
           {
             "node_id": "sum-root",
-            "probability": 0.6484,
-            "confidence": 0.2969,
-            "latency_ms": 195,
-            "input_tokens": 1966
+            "probability": 0.5458,
+            "confidence": 0.0916,
+            "latency_ms": 177,
+            "input_tokens": 2014
           },
           {
             "node_id": "rr-087:000",
-            "probability": 0.7749,
-            "confidence": 0.5498,
-            "latency_ms": 195,
-            "input_tokens": 1966
+            "probability": 0.6105,
+            "confidence": 0.2211,
+            "latency_ms": 177,
+            "input_tokens": 2014
           },
           {
             "node_id": "sum-l1-10",
-            "probability": 0.3208,
-            "confidence": 0.3584,
-            "latency_ms": 195,
-            "input_tokens": 1966
+            "probability": 0.092,
+            "confidence": 0.816,
+            "latency_ms": 177,
+            "input_tokens": 2014
           },
           {
             "node_id": "rr-100:000",
-            "probability": 0.8784,
-            "confidence": 0.7567,
-            "latency_ms": 238,
-            "input_tokens": 2497
+            "probability": 0.632,
+            "confidence": 0.2641,
+            "latency_ms": 215,
+            "input_tokens": 2545
           },
           {
             "node_id": "sum-l1-19",
-            "probability": 0.3383,
-            "confidence": 0.3234,
-            "latency_ms": 238,
-            "input_tokens": 2497
+            "probability": 0.0691,
+            "confidence": 0.8619,
+            "latency_ms": 215,
+            "input_tokens": 2545
           },
           {
             "node_id": "sum-l1-13",
-            "probability": 0.1773,
-            "confidence": 0.6455,
-            "latency_ms": 238,
-            "input_tokens": 2497
+            "probability": 0.0818,
+            "confidence": 0.8365,
+            "latency_ms": 215,
+            "input_tokens": 2545
           },
           {
             "node_id": "rr-076:000",
-            "probability": 0.1799,
-            "confidence": 0.6401,
-            "latency_ms": 238,
-            "input_tokens": 2497
+            "probability": 0.0935,
+            "confidence": 0.813,
+            "latency_ms": 215,
+            "input_tokens": 2545
           },
           {
             "node_id": "rr-058:000",
-            "probability": 0.1931,
-            "confidence": 0.6139,
-            "latency_ms": 215,
-            "input_tokens": 2259
+            "probability": 0.1576,
+            "confidence": 0.6848,
+            "latency_ms": 198,
+            "input_tokens": 2307
           },
           {
             "node_id": "sum-l1-14",
-            "probability": 0.1529,
-            "confidence": 0.6943,
-            "latency_ms": 215,
-            "input_tokens": 2259
+            "probability": 0.0813,
+            "confidence": 0.8374,
+            "latency_ms": 198,
+            "input_tokens": 2307
           },
           {
             "node_id": "sum-l2-00",
-            "probability": 0.7083,
-            "confidence": 0.4167,
-            "latency_ms": 215,
-            "input_tokens": 2259
+            "probability": 0.6275,
+            "confidence": 0.2551,
+            "latency_ms": 198,
+            "input_tokens": 2307
           },
           {
             "node_id": "sum-l1-09",
-            "probability": 0.8314,
-            "confidence": 0.6628,
-            "latency_ms": 215,
-            "input_tokens": 2259
+            "probability": 0.6596,
+            "confidence": 0.3192,
+            "latency_ms": 198,
+            "input_tokens": 2307
           },
           {
             "node_id": "sum-l1-12",
-            "probability": 0.2282,
-            "confidence": 0.5435,
-            "latency_ms": 234,
-            "input_tokens": 2431
+            "probability": 0.2212,
+            "confidence": 0.5576,
+            "latency_ms": 207,
+            "input_tokens": 2479
           },
           {
             "node_id": "sum-l1-16",
-            "probability": 0.1767,
-            "confidence": 0.6466,
-            "latency_ms": 234,
-            "input_tokens": 2431
+            "probability": 0.0913,
+            "confidence": 0.8175,
+            "latency_ms": 207,
+            "input_tokens": 2479
           },
           {
             "node_id": "rr-092:000",
-            "probability": 0.8844,
-            "confidence": 0.7688,
-            "latency_ms": 234,
-            "input_tokens": 2431
+            "probability": 0.6829,
+            "confidence": 0.3659,
+            "latency_ms": 207,
+            "input_tokens": 2479
           },
           {
             "node_id": "rr-001:000",
-            "probability": 0.259,
-            "confidence": 0.4819,
-            "latency_ms": 234,
-            "input_tokens": 2431
+            "probability": 0.1049,
+            "confidence": 0.7902,
+            "latency_ms": 207,
+            "input_tokens": 2479
           },
           {
             "node_id": "rr-098:001",
-            "probability": 0.3259,
-            "confidence": 0.3481,
-            "latency_ms": 185,
-            "input_tokens": 1849
+            "probability": 0.347,
+            "confidence": 0.306,
+            "latency_ms": 165,
+            "input_tokens": 1897
           },
           {
             "node_id": "rr-100:001",
-            "probability": 0.5034,
-            "confidence": 0.0067,
-            "latency_ms": 185,
-            "input_tokens": 1849
+            "probability": 0.5358,
+            "confidence": 0.0717,
+            "latency_ms": 165,
+            "input_tokens": 1897
           },
           {
             "node_id": "rr-096:001",
-            "probability": 0.5034,
-            "confidence": 0.0067,
-            "latency_ms": 185,
-            "input_tokens": 1849
+            "probability": 0.5358,
+            "confidence": 0.0717,
+            "latency_ms": 165,
+            "input_tokens": 1897
           },
           {
             "node_id": "sum-l1-15",
-            "probability": 0.373,
-            "confidence": 0.2541,
-            "latency_ms": 185,
-            "input_tokens": 1849
+            "probability": 0.1465,
+            "confidence": 0.7069,
+            "latency_ms": 165,
+            "input_tokens": 1897
           }
         ]
       },
       {
         "step": "sufficient",
         "attempt": 0,
-        "probability": 0.8006,
-        "confidence": 0.6013,
+        "probability": 0.7364,
+        "confidence": 0.4728,
         "band": "middle",
         "delegated": false,
         "source": "d1",
-        "latency_ms": 220,
+        "latency_ms": 213,
         "accepted": true,
-        "elapsed_ms": 220
+        "elapsed_ms": 213
       },
       {
         "step": "write",
         "attempt": 0,
-        "chars": 281,
-        "raw_chars": 281,
-        "latency_ms": 303
+        "chars": 518,
+        "raw_chars": 641,
+        "latency_ms": 531
       },
       {
         "step": "cite",
@@ -286,18 +300,19 @@
       },
       {
         "step": "grounded",
-        "probability": 0.6401,
-        "confidence": 0.2802,
-        "band": "low",
+        "probability": 0.7347,
+        "confidence": 0.4694,
+        "band": "middle",
         "delegated": false,
         "source": "d1",
         "accepted": true,
-        "latency_ms": 37
+        "latency_ms": 54
       }
     ],
     "refeeds": 0,
     "timings": {
-      "total_ms": 1641
-    }
+      "total_ms": 1774
+    },
+    "trace_id": null
   }
 }

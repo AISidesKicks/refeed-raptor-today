@@ -1,0 +1,702 @@
+{
+  "format": 1,
+  "place_id": "raptor-reserve",
+  "turn": 7,
+  "visitor": "How many osprey chicks fledged in 2025, and which ranger approved the drone flight over Heron Marsh?",
+  "note": "Two documents and two questions in one. The first pass only finds the osprey records, so the loop splits the question and looks again.",
+  "expect": "21 fledged chicks, and the head ranger approved the flight.",
+  "recorded_at": "2026-10-22T19:57:08.218255+00:00",
+  "models": {
+    "embedding": "embeddinggemma-2",
+    "writer": "lfm2-8b",
+    "judge": "d1-3b"
+  },
+  "result": {
+    "place_id": "raptor-reserve",
+    "question": "How many osprey chicks fledged in 2025, and which ranger approved the drone flight over Heron Marsh?",
+    "mode": "raptor",
+    "answer": "The 2025 season recorded 21 fledged chicks [rr-012:000] and the drone flight was approved by the head ranger [rr-032:000].",
+    "can_answer": true,
+    "warning": null,
+    "citations": [
+      {
+        "node_id": "rr-012:000",
+        "title": "Osprey",
+        "doc_ids": [
+          "rr-012"
+        ],
+        "level": 0
+      },
+      {
+        "node_id": "rr-032:000",
+        "title": "Drone Flight Checklist",
+        "doc_ids": [
+          "rr-032"
+        ],
+        "level": 0
+      }
+    ],
+    "results": [
+      {
+        "node_id": "rr-012:001",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Osprey",
+        "text": "## Breeding timeline Pairs return in late March. Eggs are laid in late April, hatch in late May, and the chicks fledge in July. The reserve's three-visit protocol matches this schedule: occupancy in April, stage and clutch size in May, and chick count in June. ## Monitoring results\n\nThe 2025 season recorded 14 pairs and 21 fledged chicks. The 2024 season recorded 14 pairs and 19 fledged chicks. The long-term trend is reported in the annual breeding summary (rr-043) and the occupancy analysis (rr-045).\n\n## Threats and management\n\nThe lead paragraph lists the main threats. The management response has three parts: seasonal trail closures, a ban on lead ammunition, and a 250 m no-fly zone around active nests. Nest platforms are added where a natural site is unstable. The management plan target is to protect at least 90 percent of occupied territories.\n\n## Visitor guidance\n\nThe lead paragraph gives the distance rule. The short version: stay on the marked trail, keep 100 m from a bird that is alarm-calling or carrying food, and do not use playback, drones, or food to get a closer look. Report injured birds to a ranger.",
+        "doc_ids": [
+          "rr-012"
+        ],
+        "children": [],
+        "score": 0.8478,
+        "rank": 1,
+        "relevance": 0.9424
+      },
+      {
+        "node_id": "rr-032:000",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Drone Flight Checklist",
+        "text": "Drone flights are used for nest surveys, shoreline mapping, and search and rescue. Every flight needs approval from the head ranger and a written flight plan.\n\nThe pilot checks the weather first. Flights are cancelled at 28 km/h wind, visibility below 2 km, rain, snow, or lightning within 10 km. The drone must stay within 3.5 km of the pilot and above 30 m except during takeoff and landing.\n\nThe battery must be at least 80 percent at takeoff. The planned flight time cannot exceed 24 minutes, which leaves a 30 percent reserve. The pilot does not fly over people, boats, or the visitor center.\n\nNo flight is allowed within 250 m of an active nest during the breeding season. The pilot checks the nest map before takeoff and logs the flight in the drone book. The log records date, pilot, purpose, weather, max altitude, duration, battery used, and any wildlife response.\n\nIf the drone loses link, the pilot switches to return-to-home and clears the landing zone. If the drone does not return, the pilot marks the last known point and calls the head ranger.\n\n## Purpose and scope\n\nDrone Flight Checklist is the standard procedure for this part of the field program. It applies to staff, seasonal employees, and trained volunteers. It does not replace the safety plan (rr-005) or the emergency response plan (rr-006).\n\n## Roles\n\nThe head ranger, Elin Ward, owns the procedure. The field lead assigns teams and checks the weather. The data manager, Samir Haddad, checks the records. The veterinarian, Dr. Priya Nair, is consulted for any wildlife handling.\n\n## Procedure\n\n1. Check the weather, the tide, and the radio.\n2. Sign out at the research station and record the team.\n3. Follow the route and the timing in the document.\n4. Record the data in the field form before leaving the site.\n5. Report any safety issue, injury, or unusual wildlife behavior to the head ranger.\n6. Sign in at the end of the shift.\n\n## Data and records\n\nRecords go into the field database within 24 hours. Each record needs date, time, observer, location, weather, and a confidence note. Photos are optional and should not include people without consent. The data manager checks the records before the weekly summary.\n\n## Safety",
+        "doc_ids": [
+          "rr-032"
+        ],
+        "children": [],
+        "score": 0.7759,
+        "rank": 3,
+        "relevance": 0.7909
+      },
+      {
+        "node_id": "rr-012:000",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Osprey",
+        "text": "Osprey (Pandion haliaetus) is a state special concern raptor in the reserve's monitoring program. In 2025, the reserve monitored 14 breeding pairs, which fledged 21 chicks. The birds nest in platform nests and dead snags around Seal Cove and Heron Marsh. Their diet is mainly fish, mostly menhaden and mackerel.\n\nThe 2025 nest checks used the standard three-visit protocol: occupancy in April, stage and clutch size in May, and chick count in June. Observers stayed at least 150 m from active nests. The oldest known nest platform was built in 1998.\n\nThe main threats are nest platform damage, fishing line entanglement, and low fish availability in cold springs. The reserve manages them with seasonal trail closures, a ban on lead ammunition, and a 250 m no-fly zone around active nests.\n\nVisitors should watch from the marked viewpoints and keep 100 m from any bird that is alarm-calling or carrying food. If a bird leaves a nest because of a visitor, the visitor should back away slowly and report the encounter to a ranger.\n\n## Field identification\n\nOsprey is a large fish hawk with a white head, a dark eye stripe, and angled wings. It is most often confused with the bald eagle, which has a white head and tail but a different flight profile. The scientific name is Pandion haliaetus. At the reserve, the best clues are the flight silhouette, the wing pattern, and the habitat.\n\n## Habitat and territory\n\nThe species nests in platform nests and dead snags around Seal Cove and Heron Marsh. The reserve monitors 14 territories. Observers check the territories from the ground and stay at least 150 m from active nests. The birds use the same territory across years when the site is undisturbed.\n\n## Diet and hunting\n\nThe diet is mainly fish, mostly menhaden and mackerel. The birds hunt by hovering over the water and plunging feet-first. Pellets and prey remains are collected for the diet study (rr-047) when they are found away from nests.\n\n## Breeding timeline\n\nPairs return in late March. Eggs are laid in late April, hatch in late May, and the chicks fledge in July. The reserve's three-visit protocol matches this schedule: occupancy in April, stage and clutch size in May, and chick count in June.\n\n## Monitoring results",
+        "doc_ids": [
+          "rr-012"
+        ],
+        "children": [],
+        "score": 0.8195,
+        "rank": 5,
+        "relevance": 0.9193
+      },
+      {
+        "node_id": "rr-034:000",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Patrol Log, 12 September 2026",
+        "text": "Observer: Elin Ward, head ranger.\nRoute: North Point to Heron Marsh, via the west trail and the lower boardwalk.\nTime: 06:40 to 11:20.\nWeather: fog at dawn, clearing by 09:00. Wind 14 km/h from the northwest. Visibility 1.2 km at 07:00, 8 km by 10:00. High tide 08:12.\n\nAt 07:05 I checked the North Point closure sign. The peregrine pair was on the cliff, no alarm calls. At 07:40 I found fresh osprey sticks on the platform at the Heron Marsh south nest. Two adults were circling, one carrying a fish.\n\nAt 08:20 I met four visitors near the lower boardwalk. They stayed on the trail and asked about the drone. I explained the 250 m nest rule and the 28 km/h wind limit. The wind was 14 km/h, so I approved the 09:30 drone flight over the marsh for the nest survey. I logged the approval in the drone book.\n\nAt 10:05 I checked the boardwalk repair from storm Oscar. The new decking is holding. One handrail bolt was loose; I tightened it and flagged the rail for the maintenance team.\n\nNo injured birds. No off-trail tracks. No dogs.\n\n## Purpose and scope\n\nPatrol Log, 12 September 2026 is the standard procedure for this part of the field program. It applies to staff, seasonal employees, and trained volunteers. It does not replace the safety plan (rr-005) or the emergency response plan (rr-006).\n\n## Roles\n\nThe head ranger, Elin Ward, owns the procedure. The field lead assigns teams and checks the weather. The data manager, Samir Haddad, checks the records. The veterinarian, Dr. Priya Nair, is consulted for any wildlife handling.\n\n## Procedure\n\n1. Check the weather, the tide, and the radio.\n2. Sign out at the research station and record the team.\n3. Follow the route and the timing in the document.\n4. Record the data in the field form before leaving the site.\n5. Report any safety issue, injury, or unusual wildlife behavior to the head ranger.\n6. Sign in at the end of the shift.\n\n## Data and records",
+        "doc_ids": [
+          "rr-034"
+        ],
+        "children": [],
+        "score": 0.7817,
+        "rank": 20,
+        "relevance": 0.791
+      },
+      {
+        "node_id": "rr-046:000",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Osprey Survival Analysis",
+        "text": "The reserve has banded 120 osprey chicks since 2016. Resightings and recoveries show first-year survival of 71 percent and adult survival of 84 percent. The average recapture probability is 0.31, so the estimates have wide confidence intervals.\n\nThe 2025 cohort fledged 21 chicks, the highest since 2019. The 2024 cohort fledged 19. The difference is within the range expected from prey availability and spring weather.\n\nMost first-year mortality happens in the first 60 days after fledging. The main known causes are fishing line entanglement, power line collisions, and starvation during cold snaps. The reserve works with the local fishing community to collect line and to mark the worst power lines.\n\nThe analysis uses a Cormack-Jolly-Seber model with time-varying survival and a constant recapture probability. The model is run in R with the marked package. The data is checked by the data manager and archived with the annual banding file.\n\nThe reserve plans to add a color-band resighting program in 2027. The goal is to raise recapture probability above 0.50 and narrow the survival estimates.\n\n## Background\n\nOsprey Survival Analysis is part of the reserve's long-term monitoring program. The question is whether the island's raptor population is changing, and whether the change is driven by weather, prey, disease, or human disturbance. The reserve has collected comparable data since 2016.\n\n## Methods\n\nThe analysis uses the standard field protocols. Counts use six fixed stations and a four-hour window. Nest checks use three visits and a 150 m observation distance. Occupancy models use the 2016-2025 records and account for detection probability. The data manager checks the records before analysis.\n\n## Results\n\nThe headline numbers are in the document. The full tables are in the annual data release. Estimates are reported with 95 percent confidence intervals. A difference is treated as meaningful only when the intervals do not overlap and the field effort was similar.\n\n## What changed since the last report\n\nThe previous report used the same routes and the same three-visit protocol, so the comparison is direct. The 2026 analysis adds the new South Beach boardwalk data and the two acoustic stations installed in 2025. The older records are flagged where the effort or the observer changed. A difference that comes from a new route is not treated as a population change.",
+        "doc_ids": [
+          "rr-046"
+        ],
+        "children": [],
+        "score": 0.8435,
+        "rank": 2,
+        "relevance": 0.9659
+      },
+      {
+        "node_id": "rr-035:000",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Drone Crash Report, 3 August 2025",
+        "text": "On 3 August 2025 at 10:42, a reserve drone crashed in Heron Marsh during a nest survey. The pilot was Caleb Finch. The drone was 180 m from the pilot at 42 m altitude when the battery voltage dropped from 48 percent to 21 percent in less than 20 seconds. The drone entered a forced landing and hit the marsh.\n\nNo birds were harmed. The nearest active nest was 310 m away. The drone was recovered after a two-hour search. The camera and the flight log survived. The replacement cost was USD 2,100.\n\nThe cause was battery failure. The battery had 94 charge cycles and had shown a small voltage sag on the previous flight. The maintenance log had not flagged it.\n\nCorrective actions: retire drone batteries after 80 cycles, check voltage under load before every flight, and add a pre-flight battery health field to the drone book. The reserve also bought a battery analyzer and now keeps a spare battery at the marsh station.\n\nThe report was reviewed by the safety committee on 11 August 2025. The committee closed the case with all three actions complete.\n\n## Purpose and scope\n\nDrone Crash Report, 3 August 2025 is the standard procedure for this part of the field program. It applies to staff, seasonal employees, and trained volunteers. It does not replace the safety plan (rr-005) or the emergency response plan (rr-006).\n\n## Roles\n\nThe head ranger, Elin Ward, owns the procedure. The field lead assigns teams and checks the weather. The data manager, Samir Haddad, checks the records. The veterinarian, Dr. Priya Nair, is consulted for any wildlife handling.\n\n## Procedure\n\n1. Check the weather, the tide, and the radio.\n2. Sign out at the research station and record the team.\n3. Follow the route and the timing in the document.\n4. Record the data in the field form before leaving the site.\n5. Report any safety issue, injury, or unusual wildlife behavior to the head ranger.\n6. Sign in at the end of the shift.\n\n## Data and records",
+        "doc_ids": [
+          "rr-035"
+        ],
+        "children": [],
+        "score": 0.7896,
+        "rank": 1,
+        "relevance": 0.5577
+      },
+      {
+        "node_id": "rr-013:001",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Northern harrier",
+        "text": "away from nests. ## Breeding timeline Courtship begins in April. Eggs are laid in May, hatch in June, and the chicks fledge in July. The reserve's three-visit protocol matches this schedule: occupancy in April, stage and clutch size in May, and chick count in June. ## Monitoring results\n\nThe 2025 season recorded 6 pairs and 8 fledged chicks. The 2024 season recorded 6 pairs and 7 fledged chicks. The long-term trend is reported in the annual breeding summary (rr-043) and the occupancy analysis (rr-045).\n\n## Threats and management\n\nThe lead paragraph lists the main threats. The management response has three parts: seasonal trail closures, a ban on lead ammunition, and a 250 m no-fly zone around active nests. Nest platforms are added where a natural site is unstable. The management plan target is to protect at least 90 percent of occupied territories.\n\n## Visitor guidance\n\nThe lead paragraph gives the distance rule. The short version: stay on the marked trail, keep 100 m from a bird that is alarm-calling or carrying food, and do not use playback, drones, or food to get a closer look. Report injured birds to a ranger.",
+        "doc_ids": [
+          "rr-013"
+        ],
+        "children": [],
+        "score": 0.7916,
+        "rank": 17,
+        "relevance": 0.9484
+      },
+      {
+        "node_id": "rr-016:001",
+        "kind": "chunk",
+        "level": 0,
+        "title": "Red-tailed hawk",
+        "text": "away from nests. ## Breeding timeline Courtship begins in March. Eggs are laid in April, hatch in May, and the chicks fledge in June. The reserve's three-visit protocol matches this schedule: occupancy in April, stage and clutch size in May, and chick count in June. ## Monitoring results\n\nThe 2025 season recorded 9 pairs and 12 fledged chicks. The 2024 season recorded 9 pairs and 11 fledged chicks. The long-term trend is reported in the annual breeding summary (rr-043) and the occupancy analysis (rr-045).\n\n## Threats and management\n\nThe lead paragraph lists the main threats. The management response has three parts: seasonal trail closures, a ban on lead ammunition, and a 250 m no-fly zone around active nests. Nest platforms are added where a natural site is unstable. The management plan target is to protect at least 90 percent of occupied territories.\n\n## Visitor guidance\n\nThe lead paragraph gives the distance rule. The short version: stay on the marked trail, keep 100 m from a bird that is alarm-calling or carrying food, and do not use playback, drones, or food to get a closer look. Report injured birds to a ranger.",
+        "doc_ids": [
+          "rr-016"
+        ],
+        "children": [],
+        "score": 0.7959,
+        "rank": 14,
+        "relevance": 0.9459
+      }
+    ],
+    "trace": [
+      {
+        "step": "retrieve",
+        "attempt": 0,
+        "queries": [
+          "How many osprey chicks fledged in 2025, and which ranger approved the drone flight over Heron Marsh?"
+        ],
+        "hits": 20,
+        "top_score": 0.8185,
+        "latency_ms": 8
+      },
+      {
+        "step": "relevance",
+        "attempt": 0,
+        "scored": 20,
+        "kept": 2,
+        "min_kept": 0.3647,
+        "latency_ms": 3796,
+        "scores": [
+          {
+            "node_id": "rr-051:000",
+            "probability": 0.0724,
+            "confidence": 0.8552,
+            "latency_ms": 188,
+            "input_tokens": 2173
+          },
+          {
+            "node_id": "sum-l2-01",
+            "probability": 0.1909,
+            "confidence": 0.6183,
+            "latency_ms": 188,
+            "input_tokens": 2173
+          },
+          {
+            "node_id": "rr-043:000",
+            "probability": 0.2316,
+            "confidence": 0.5368,
+            "latency_ms": 188,
+            "input_tokens": 2173
+          },
+          {
+            "node_id": "rr-017:001",
+            "probability": 0.3473,
+            "confidence": 0.3053,
+            "latency_ms": 188,
+            "input_tokens": 2173
+          },
+          {
+            "node_id": "rr-044:000",
+            "probability": 0.1682,
+            "confidence": 0.6637,
+            "latency_ms": 217,
+            "input_tokens": 2562
+          },
+          {
+            "node_id": "rr-012:000",
+            "probability": 0.2492,
+            "confidence": 0.5016,
+            "latency_ms": 217,
+            "input_tokens": 2562
+          },
+          {
+            "node_id": "sum-l1-12",
+            "probability": 0.2649,
+            "confidence": 0.4701,
+            "latency_ms": 217,
+            "input_tokens": 2562
+          },
+          {
+            "node_id": "sum-l1-15",
+            "probability": 0.6878,
+            "confidence": 0.3756,
+            "latency_ms": 217,
+            "input_tokens": 2562
+          },
+          {
+            "node_id": "rr-012:001",
+            "probability": 0.3717,
+            "confidence": 0.2567,
+            "latency_ms": 179,
+            "input_tokens": 2087
+          },
+          {
+            "node_id": "rr-042:000",
+            "probability": 0.0659,
+            "confidence": 0.8683,
+            "latency_ms": 179,
+            "input_tokens": 2087
+          },
+          {
+            "node_id": "rr-013:000",
+            "probability": 0.083,
+            "confidence": 0.834,
+            "latency_ms": 179,
+            "input_tokens": 2087
+          },
+          {
+            "node_id": "rr-041:000",
+            "probability": 0.0893,
+            "confidence": 0.8213,
+            "latency_ms": 179,
+            "input_tokens": 2087
+          },
+          {
+            "node_id": "rr-046:000",
+            "probability": 0.2581,
+            "confidence": 0.4837,
+            "latency_ms": 186,
+            "input_tokens": 2196
+          },
+          {
+            "node_id": "rr-019:001",
+            "probability": 0.3056,
+            "confidence": 0.3888,
+            "latency_ms": 186,
+            "input_tokens": 2196
+          },
+          {
+            "node_id": "rr-020:000",
+            "probability": 0.0467,
+            "confidence": 0.9067,
+            "latency_ms": 186,
+            "input_tokens": 2196
+          },
+          {
+            "node_id": "sum-l1-00",
+            "probability": 0.0762,
+            "confidence": 0.8475,
+            "latency_ms": 186,
+            "input_tokens": 2196
+          },
+          {
+            "node_id": "rr-017:000",
+            "probability": 0.0963,
+            "confidence": 0.8074,
+            "latency_ms": 179,
+            "input_tokens": 2110
+          },
+          {
+            "node_id": "rr-025:000",
+            "probability": 0.0552,
+            "confidence": 0.8896,
+            "latency_ms": 179,
+            "input_tokens": 2110
+          },
+          {
+            "node_id": "rr-018:001",
+            "probability": 0.3647,
+            "confidence": 0.2707,
+            "latency_ms": 179,
+            "input_tokens": 2110
+          },
+          {
+            "node_id": "rr-034:000",
+            "probability": 0.0862,
+            "confidence": 0.8276,
+            "latency_ms": 179,
+            "input_tokens": 2110
+          }
+        ]
+      },
+      {
+        "step": "sufficient",
+        "attempt": 0,
+        "probability": 0.1423,
+        "confidence": 0.7153,
+        "band": "middle",
+        "delegated": false,
+        "source": "d1",
+        "latency_ms": 58,
+        "accepted": false,
+        "elapsed_ms": 58
+      },
+      {
+        "step": "action",
+        "attempt": 0,
+        "choice": "decompose",
+        "probabilities": {
+          "keep": 0.3663552879860309,
+          "broaden": 0.007283530993941398,
+          "narrow": 0.022156760511246227,
+          "decompose": 0.6042044205087815
+        },
+        "confidence": 0.47227256067837536,
+        "latency_ms": 60
+      },
+      {
+        "step": "rewrite",
+        "attempt": 0,
+        "queries": [
+          "How many osprey chicks fledged in 2025",
+          "Which ranger approved the drone flight over Heron Marsh"
+        ]
+      },
+      {
+        "step": "retrieve",
+        "attempt": 1,
+        "queries": [
+          "How many osprey chicks fledged in 2025",
+          "Which ranger approved the drone flight over Heron Marsh"
+        ],
+        "hits": 42,
+        "top_score": 0.8478,
+        "latency_ms": 16
+      },
+      {
+        "step": "relevance",
+        "attempt": 1,
+        "scored": 42,
+        "kept": 8,
+        "min_kept": 0.5577,
+        "latency_ms": 7180,
+        "scores": [
+          {
+            "node_id": "rr-051:000",
+            "probability": 0.0652,
+            "confidence": 0.8696,
+            "latency_ms": 182,
+            "input_tokens": 2123
+          },
+          {
+            "node_id": "sum-l2-01",
+            "probability": 0.1379,
+            "confidence": 0.7243,
+            "latency_ms": 182,
+            "input_tokens": 2123
+          },
+          {
+            "node_id": "rr-043:000",
+            "probability": 0.8746,
+            "confidence": 0.7492,
+            "latency_ms": 182,
+            "input_tokens": 2123
+          },
+          {
+            "node_id": "rr-017:001",
+            "probability": 0.9176,
+            "confidence": 0.8353,
+            "latency_ms": 182,
+            "input_tokens": 2123
+          },
+          {
+            "node_id": "rr-044:000",
+            "probability": 0.6092,
+            "confidence": 0.2185,
+            "latency_ms": 215,
+            "input_tokens": 2514
+          },
+          {
+            "node_id": "rr-012:000",
+            "probability": 0.9193,
+            "confidence": 0.8386,
+            "latency_ms": 215,
+            "input_tokens": 2514
+          },
+          {
+            "node_id": "sum-l1-12",
+            "probability": 0.8035,
+            "confidence": 0.607,
+            "latency_ms": 215,
+            "input_tokens": 2514
+          },
+          {
+            "node_id": "sum-l1-15",
+            "probability": 0.9595,
+            "confidence": 0.919,
+            "latency_ms": 215,
+            "input_tokens": 2514
+          },
+          {
+            "node_id": "rr-012:001",
+            "probability": 0.9424,
+            "confidence": 0.8849,
+            "latency_ms": 176,
+            "input_tokens": 2051
+          },
+          {
+            "node_id": "rr-042:000",
+            "probability": 0.1147,
+            "confidence": 0.7706,
+            "latency_ms": 176,
+            "input_tokens": 2051
+          },
+          {
+            "node_id": "rr-013:000",
+            "probability": 0.083,
+            "confidence": 0.834,
+            "latency_ms": 176,
+            "input_tokens": 2051
+          },
+          {
+            "node_id": "rr-041:000",
+            "probability": 0.1419,
+            "confidence": 0.7162,
+            "latency_ms": 176,
+            "input_tokens": 2051
+          },
+          {
+            "node_id": "rr-046:000",
+            "probability": 0.9659,
+            "confidence": 0.9318,
+            "latency_ms": 183,
+            "input_tokens": 2159
+          },
+          {
+            "node_id": "rr-019:001",
+            "probability": 0.9031,
+            "confidence": 0.8063,
+            "latency_ms": 183,
+            "input_tokens": 2159
+          },
+          {
+            "node_id": "rr-020:000",
+            "probability": 0.0467,
+            "confidence": 0.9067,
+            "latency_ms": 183,
+            "input_tokens": 2159
+          },
+          {
+            "node_id": "sum-l1-00",
+            "probability": 0.1377,
+            "confidence": 0.7245,
+            "latency_ms": 183,
+            "input_tokens": 2159
+          },
+          {
+            "node_id": "rr-017:000",
+            "probability": 0.0963,
+            "confidence": 0.8074,
+            "latency_ms": 174,
+            "input_tokens": 2072
+          },
+          {
+            "node_id": "rr-025:000",
+            "probability": 0.0517,
+            "confidence": 0.8967,
+            "latency_ms": 174,
+            "input_tokens": 2072
+          },
+          {
+            "node_id": "rr-018:001",
+            "probability": 0.9453,
+            "confidence": 0.8907,
+            "latency_ms": 174,
+            "input_tokens": 2072
+          },
+          {
+            "node_id": "rr-034:000",
+            "probability": 0.791,
+            "confidence": 0.5821,
+            "latency_ms": 174,
+            "input_tokens": 2072
+          },
+          {
+            "node_id": "rr-022:000",
+            "probability": 0.6572,
+            "confidence": 0.3145,
+            "latency_ms": 158,
+            "input_tokens": 1813
+          },
+          {
+            "node_id": "rr-011:001",
+            "probability": 0.9417,
+            "confidence": 0.8834,
+            "latency_ms": 158,
+            "input_tokens": 1813
+          },
+          {
+            "node_id": "rr-045:000",
+            "probability": 0.0823,
+            "confidence": 0.8354,
+            "latency_ms": 158,
+            "input_tokens": 1813
+          },
+          {
+            "node_id": "rr-016:001",
+            "probability": 0.9459,
+            "confidence": 0.8918,
+            "latency_ms": 158,
+            "input_tokens": 1813
+          },
+          {
+            "node_id": "rr-014:001",
+            "probability": 0.9396,
+            "confidence": 0.8793,
+            "latency_ms": 140,
+            "input_tokens": 1643
+          },
+          {
+            "node_id": "rr-013:001",
+            "probability": 0.9484,
+            "confidence": 0.8967,
+            "latency_ms": 140,
+            "input_tokens": 1643
+          },
+          {
+            "node_id": "rr-015:001",
+            "probability": 0.8972,
+            "confidence": 0.7944,
+            "latency_ms": 140,
+            "input_tokens": 1643
+          },
+          {
+            "node_id": "rr-035:000",
+            "probability": 0.5577,
+            "confidence": 0.1153,
+            "latency_ms": 140,
+            "input_tokens": 1643
+          },
+          {
+            "node_id": "rr-032:000",
+            "probability": 0.7909,
+            "confidence": 0.5818,
+            "latency_ms": 172,
+            "input_tokens": 2046
+          },
+          {
+            "node_id": "rr-038:000",
+            "probability": 0.283,
+            "confidence": 0.434,
+            "latency_ms": 172,
+            "input_tokens": 2046
+          },
+          {
+            "node_id": "rr-039:000",
+            "probability": 0.1494,
+            "confidence": 0.7012,
+            "latency_ms": 172,
+            "input_tokens": 2046
+          },
+          {
+            "node_id": "rr-035:001",
+            "probability": 0.1206,
+            "confidence": 0.7588,
+            "latency_ms": 172,
+            "input_tokens": 2046
+          },
+          {
+            "node_id": "rr-032:001",
+            "probability": 0.0738,
+            "confidence": 0.8525,
+            "latency_ms": 181,
+            "input_tokens": 2104
+          },
+          {
+            "node_id": "sum-l1-16",
+            "probability": 0.0479,
+            "confidence": 0.9042,
+            "latency_ms": 181,
+            "input_tokens": 2104
+          },
+          {
+            "node_id": "rr-033:000",
+            "probability": 0.3297,
+            "confidence": 0.3405,
+            "latency_ms": 181,
+            "input_tokens": 2104
+          },
+          {
+            "node_id": "rr-001:000",
+            "probability": 0.0525,
+            "confidence": 0.8951,
+            "latency_ms": 181,
+            "input_tokens": 2104
+          },
+          {
+            "node_id": "rr-005:000",
+            "probability": 0.0826,
+            "confidence": 0.8349,
+            "latency_ms": 173,
+            "input_tokens": 2003
+          },
+          {
+            "node_id": "rr-030:000",
+            "probability": 0.1286,
+            "confidence": 0.7429,
+            "latency_ms": 173,
+            "input_tokens": 2003
+          },
+          {
+            "node_id": "rr-026:000",
+            "probability": 0.2029,
+            "confidence": 0.5942,
+            "latency_ms": 173,
+            "input_tokens": 2003
+          },
+          {
+            "node_id": "rr-051:001",
+            "probability": 0.0354,
+            "confidence": 0.9291,
+            "latency_ms": 173,
+            "input_tokens": 2003
+          },
+          {
+            "node_id": "rr-034:001",
+            "probability": 0.1227,
+            "confidence": 0.7546,
+            "latency_ms": 82,
+            "input_tokens": 937
+          },
+          {
+            "node_id": "rr-057:000",
+            "probability": 0.0783,
+            "confidence": 0.8433,
+            "latency_ms": 82,
+            "input_tokens": 937
+          }
+        ]
+      },
+      {
+        "step": "sufficient",
+        "attempt": 1,
+        "probability": 0.8737,
+        "confidence": 0.7475,
+        "band": "middle",
+        "delegated": false,
+        "source": "d1",
+        "latency_ms": 283,
+        "accepted": true,
+        "elapsed_ms": 283
+      },
+      {
+        "step": "write",
+        "attempt": 1,
+        "chars": 122,
+        "raw_chars": 126,
+        "latency_ms": 147
+      },
+      {
+        "step": "cite",
+        "mode": "inline"
+      },
+      {
+        "step": "grounded",
+        "probability": 0.8112,
+        "confidence": 0.6224,
+        "band": "middle",
+        "delegated": false,
+        "source": "d1",
+        "accepted": true,
+        "latency_ms": 70
+      }
+    ],
+    "refeeds": 1,
+    "timings": {
+      "total_ms": 3621
+    },
+    "trace_id": null
+  }
+}

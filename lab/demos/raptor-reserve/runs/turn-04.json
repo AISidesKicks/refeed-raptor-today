@@ -5,7 +5,7 @@
   "visitor": "Which storm damaged the South Beach boardwalk, and what did the repair cost?",
   "note": "Two documents: the storm report and the trail maintenance record.",
   "expect": "Storm Oscar; USD 18,400.",
-  "recorded_at": "2026-10-22T17:43:59.265098+00:00",
+  "recorded_at": "2026-10-22T19:57:08.218255+00:00",
   "models": {
     "embedding": "embeddinggemma-2",
     "writer": "lfm2-8b",
@@ -15,7 +15,7 @@
     "place_id": "raptor-reserve",
     "question": "Which storm damaged the South Beach boardwalk, and what did the repair cost?",
     "mode": "raptor",
-    "answer": "Storm Oscar damaged the South Beach boardwalk, and the repair cost USD 18,400 [rr-036:000]. The maintenance team rebuilt the boardwalk in six weeks [rr-036:000]. The reserve closed South Beach on 18 January [rr-036:000]. The repair cost was covered by the capital budget and a USD 5,000 donation from the friends group [rr-036:000]. New decking uses a higher grade of Marine Board and stainless fasteners [rr-036:000].",
+    "answer": "Storm Oscar damaged the South Beach boardwalk and cost USD 18,400 to repair [rr-036:000]. The reserve closed South Beach on 18 January and rebuilt the boardwalk in six weeks [rr-036:000]. The maintenance team used higher-grade Marine Board and stainless fasteners for the new decking [rr-036:000].",
     "can_answer": true,
     "warning": null,
     "citations": [
@@ -41,7 +41,7 @@
         "children": [],
         "score": 0.7569,
         "rank": 1,
-        "relevance": 0.957
+        "relevance": 0.9536
       },
       {
         "node_id": "rr-070:000",
@@ -55,7 +55,7 @@
         "children": [],
         "score": 0.7003,
         "rank": 2,
-        "relevance": 0.8748
+        "relevance": 0.8318
       },
       {
         "node_id": "rr-003:000",
@@ -69,7 +69,7 @@
         "children": [],
         "score": 0.6874,
         "rank": 6,
-        "relevance": 0.8479
+        "relevance": 0.6101
       }
     ],
     "trace": [
@@ -81,155 +81,155 @@
         ],
         "hits": 20,
         "top_score": 0.7569,
-        "latency_ms": 11
+        "latency_ms": 8
       },
       {
         "step": "relevance",
         "attempt": 0,
         "scored": 20,
         "kept": 3,
-        "min_kept": 0.8479,
-        "latency_ms": 3340,
+        "min_kept": 0.6101,
+        "latency_ms": 2988,
         "scores": [
           {
             "node_id": "rr-036:000",
-            "probability": 0.957,
-            "confidence": 0.9139,
-            "latency_ms": 180,
-            "input_tokens": 1762
+            "probability": 0.9536,
+            "confidence": 0.9072,
+            "latency_ms": 160,
+            "input_tokens": 1810
           },
           {
             "node_id": "rr-070:000",
-            "probability": 0.8748,
-            "confidence": 0.7496,
-            "latency_ms": 180,
-            "input_tokens": 1762
+            "probability": 0.8318,
+            "confidence": 0.6637,
+            "latency_ms": 160,
+            "input_tokens": 1810
           },
           {
             "node_id": "rr-070:001",
-            "probability": 0.0576,
-            "confidence": 0.8848,
-            "latency_ms": 180,
-            "input_tokens": 1762
+            "probability": 0.0618,
+            "confidence": 0.8765,
+            "latency_ms": 160,
+            "input_tokens": 1810
           },
           {
             "node_id": "rr-051:001",
-            "probability": 0.038,
-            "confidence": 0.9241,
-            "latency_ms": 180,
-            "input_tokens": 1762
+            "probability": 0.0507,
+            "confidence": 0.8987,
+            "latency_ms": 160,
+            "input_tokens": 1810
           },
           {
             "node_id": "rr-036:001",
-            "probability": 0.0325,
-            "confidence": 0.9349,
-            "latency_ms": 198,
-            "input_tokens": 2047
+            "probability": 0.0328,
+            "confidence": 0.9345,
+            "latency_ms": 176,
+            "input_tokens": 2095
           },
           {
             "node_id": "rr-003:000",
-            "probability": 0.8479,
-            "confidence": 0.6959,
-            "latency_ms": 198,
-            "input_tokens": 2047
+            "probability": 0.6101,
+            "confidence": 0.2203,
+            "latency_ms": 176,
+            "input_tokens": 2095
           },
           {
             "node_id": "rr-051:000",
-            "probability": 0.0472,
-            "confidence": 0.9057,
-            "latency_ms": 198,
-            "input_tokens": 2047
+            "probability": 0.0379,
+            "confidence": 0.9241,
+            "latency_ms": 176,
+            "input_tokens": 2095
           },
           {
             "node_id": "rr-074:000",
-            "probability": 0.062,
-            "confidence": 0.8761,
-            "latency_ms": 198,
-            "input_tokens": 2047
+            "probability": 0.0485,
+            "confidence": 0.9031,
+            "latency_ms": 176,
+            "input_tokens": 2095
           },
           {
             "node_id": "rr-071:001",
-            "probability": 0.0576,
-            "confidence": 0.8848,
-            "latency_ms": 134,
-            "input_tokens": 1283
+            "probability": 0.0618,
+            "confidence": 0.8765,
+            "latency_ms": 122,
+            "input_tokens": 1331
           },
           {
             "node_id": "rr-074:001",
-            "probability": 0.0576,
-            "confidence": 0.8848,
-            "latency_ms": 134,
-            "input_tokens": 1283
+            "probability": 0.0618,
+            "confidence": 0.8765,
+            "latency_ms": 122,
+            "input_tokens": 1331
           },
           {
             "node_id": "rr-055:001",
-            "probability": 0.038,
-            "confidence": 0.9241,
-            "latency_ms": 134,
-            "input_tokens": 1283
+            "probability": 0.0507,
+            "confidence": 0.8987,
+            "latency_ms": 122,
+            "input_tokens": 1331
           },
           {
             "node_id": "rr-073:001",
-            "probability": 0.0576,
-            "confidence": 0.8848,
-            "latency_ms": 134,
-            "input_tokens": 1283
+            "probability": 0.0618,
+            "confidence": 0.8765,
+            "latency_ms": 122,
+            "input_tokens": 1331
           },
           {
             "node_id": "rr-069:001",
-            "probability": 0.0576,
-            "confidence": 0.8848,
-            "latency_ms": 152,
-            "input_tokens": 1469
+            "probability": 0.0618,
+            "confidence": 0.8765,
+            "latency_ms": 136,
+            "input_tokens": 1517
           },
           {
             "node_id": "rr-052:001",
-            "probability": 0.038,
-            "confidence": 0.9241,
-            "latency_ms": 152,
-            "input_tokens": 1469
+            "probability": 0.0507,
+            "confidence": 0.8987,
+            "latency_ms": 136,
+            "input_tokens": 1517
           },
           {
             "node_id": "rr-072:001",
-            "probability": 0.0576,
-            "confidence": 0.8848,
-            "latency_ms": 152,
-            "input_tokens": 1469
+            "probability": 0.0618,
+            "confidence": 0.8765,
+            "latency_ms": 136,
+            "input_tokens": 1517
           },
           {
             "node_id": "rr-066:000",
-            "probability": 0.1048,
-            "confidence": 0.7904,
-            "latency_ms": 152,
-            "input_tokens": 1469
+            "probability": 0.1345,
+            "confidence": 0.7309,
+            "latency_ms": 136,
+            "input_tokens": 1517
           },
           {
             "node_id": "rr-064:000",
-            "probability": 0.1849,
-            "confidence": 0.6301,
-            "latency_ms": 171,
-            "input_tokens": 1687
+            "probability": 0.1162,
+            "confidence": 0.7676,
+            "latency_ms": 153,
+            "input_tokens": 1735
           },
           {
             "node_id": "rr-053:001",
-            "probability": 0.038,
-            "confidence": 0.9241,
-            "latency_ms": 171,
-            "input_tokens": 1687
+            "probability": 0.0507,
+            "confidence": 0.8987,
+            "latency_ms": 153,
+            "input_tokens": 1735
           },
           {
             "node_id": "rr-048:001",
-            "probability": 0.038,
-            "confidence": 0.9241,
-            "latency_ms": 171,
-            "input_tokens": 1687
+            "probability": 0.0507,
+            "confidence": 0.8987,
+            "latency_ms": 153,
+            "input_tokens": 1735
           },
           {
             "node_id": "rr-072:000",
-            "probability": 0.037,
-            "confidence": 0.926,
-            "latency_ms": 171,
-            "input_tokens": 1687
+            "probability": 0.0271,
+            "confidence": 0.9458,
+            "latency_ms": 153,
+            "input_tokens": 1735
           }
         ]
       },
@@ -241,16 +241,16 @@
         "band": "high",
         "delegated": false,
         "source": "d1",
-        "latency_ms": 150,
+        "latency_ms": 131,
         "accepted": true,
-        "elapsed_ms": 150
+        "elapsed_ms": 131
       },
       {
         "step": "write",
         "attempt": 0,
-        "chars": 418,
-        "raw_chars": 418,
-        "latency_ms": 440
+        "chars": 297,
+        "raw_chars": 297,
+        "latency_ms": 272
       },
       {
         "step": "cite",
@@ -258,18 +258,19 @@
       },
       {
         "step": "grounded",
-        "probability": 0.8941,
-        "confidence": 0.7882,
-        "band": "high",
+        "probability": 0.8625,
+        "confidence": 0.7251,
+        "band": "middle",
         "delegated": false,
         "source": "d1",
         "accepted": true,
-        "latency_ms": 42
+        "latency_ms": 50
       }
     ],
     "refeeds": 0,
     "timings": {
-      "total_ms": 1483
-    }
+      "total_ms": 1211
+    },
+    "trace_id": null
   }
 }
