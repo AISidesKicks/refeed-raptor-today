@@ -192,8 +192,10 @@ class LlamaRouter:
             raise RouterError("chat response had no choices")
         message = choices[0].get("message", {})
         text = str(message.get("content") or "").strip()
-        if skip_reasoning and text.startswith("</think>"):
-            text = text[len("</think>") :].strip()
+        if skip_reasoning and "</think>" in text:
+            # The model can open a think block again after the prefilled close.
+            # Keep only what comes after the last close tag.
+            text = text.rsplit("</think>", 1)[-1].strip()
         text = plain_hyphens(text)
         usage = response.get("usage") or {}
         return ChatResult(
