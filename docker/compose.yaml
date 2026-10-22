@@ -1,0 +1,56 @@
+name: rptr
+
+# All project resources use the rptr- prefix: containers, volumes, networks.
+# The llama.cpp image is pinned by tag and digest. The tag records the build
+# (b11804, the newest cuda13 image on the v0.7.x line); the digest makes the
+# pull reproducible after the tag moves.
+
+services:
+  rptr-llm:
+    image: ghcr.io/ggml-org/llama.cpp:server-cuda13-b11804@sha256:dfe42bda81c6bd53df864dfcf65e2423e9703f9991c238cfa7aaa893063e2977
+    container_name: rptr-llm
+    restart: unless-stopped
+    command:
+      - --models-preset
+      - /presets.ini
+      - --models-max
+      - "3"
+      - --models-autoload
+      - --metrics
+      - --slots
+    environment:
+      LLAMA_CACHE: /models
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - ../models:/models:ro
+      - ./presets.ini:/presets.ini:ro
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:8080/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 180s
+
+  rptr-phoenix:
+    image: arizephoenix/phoenix:version-20.24.0
+    container_name: rptr-phoenix
+    restart: unless-stopped
+    environment:
+      PHOENIX_WORKING_DIR: /data
+    ports:
+      - "127.0.0.1:6006:6006"
+      - "127.0.0.1:4317:4317"
+    volumes:
+      - rptr-phoenix-data:/data
+
+volumes:
+  rptr-phoenix-data:
+    name: rptr-phoenix-data
