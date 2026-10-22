@@ -2,7 +2,7 @@
 
 > A small, local, funny RAG lab. A raptor gets fed documents, chews them into a summary tree, and refeeds when the answer is not good enough.
 
-**Status:** research complete, the first corpus is built. The stack and the loop are locked. The first place is a 100-document synthetic corpus called `raptor-reserve`. The app, the Docker stack, and the replay player are next.
+**Status:** research complete, the first corpus is built. The local stack, the RAPTOR tree, the refeed loop, the citation path, and the recorded replay are in place. The first place is a 100-document synthetic corpus called `raptor-reserve`. The demo video is next.
 
 This is an educational project. The goal is not to build the biggest RAG system. The goal is to make the small one legible, then show what the extra machinery buys and what it costs.
 
@@ -161,7 +161,7 @@ The "delegate" band is the interesting part. If confidence is high, accept the d
 | Runtime | **pixi** workspace `rptr` | Python 3.12, project-local environment |
 | Containers | Prefix **`rptr-`** | `rptr-llm`, `rptr-app`, `rptr-phoenix`, `rptr-build` |
 
-The current `pixi.toml` is a skeleton with Python 3.12 only. The first build step adds the app and test dependencies.
+`pixi.toml` carries the app, the test and ruff tools, numpy, scikit-learn, and umap-learn. The models run in Docker with the `rptr-` prefix.
 
 ### 5.2 Why one router
 
@@ -196,13 +196,13 @@ This is the part that breaks first.
 
 - **EmbeddingGemma 2** needs llama.cpp build **b11455 or newer**, because it uses the `gemma-embedding2` architecture.
 - **d1-3B** needs a build with `lfm2-d1` decision support.
-- The latest release at the time of writing is **b11819** (22 October 2026).
+- The verified release is the llama.cpp **v0.7.x** line, image tag `server-cuda13-b11804`, built 22 October 2026.
 - An older b7xxx build is too old for both. It will fail with `unknown model architecture`, or it will be missing `/v1/systemone`, and the failure looks like a broken model file.
 
 The cuda13 GHCR image publishes a moving `server-cuda13` tag. We did not find per-build cuda13 tags. Pin the image by digest for reproducibility:
 
 ```text
-ghcr.io/ggml-org/llama.cpp:server-cuda13@sha256:dfe42bda81c6bd53df864dfcf65e2423e9703f9991c238cfa7aaa893063e2977
+ghcr.io/ggml-org/llama.cpp:server-cuda13-b11804@sha256:dfe42bda81c6bd53df864dfcf65e2423e9703f9991c238cfa7aaa893063e2977
 ```
 
 That digest is the one verified for this project on 22 October 2026. The tag moves. The digest does not.
@@ -259,7 +259,7 @@ The LlamaIndex RAPTOR pack is convenient, but it hides the clustering and summar
 
 Our version is small:
 
-- `src/rptr/chunk.py`
+- `src/rptr/chunking.py`
 - `src/rptr/embed.py`
 - `src/rptr/tree.py`
 - `src/rptr/store.py`
@@ -326,20 +326,23 @@ The visitor clones the repo and runs the stack:
 
 ```bash
 pixi install
-docker compose --profile llm --profile app --profile obs up -d
-pixi run demo:seed
-pixi run demo
+pixi run models
+pixi run llm-up
+pixi run index
+pixi run embed
+pixi run build-tree
+pixi run serve
 ```
 
-Then they open the lab, ask a question, and watch the loop. The app shows the retrieved nodes, the decision scores, the rewrite, the answer, and the cost.
+Then they open the lab, ask a question, and watch the loop. The app shows the retrieved nodes, the decision scores, the rewrite, the answer, and the latency.
 
 ### 8.3 Replay
 
-The same player reads a recorded event trace. No models, no GPU, no downloads.
+The same player reads a committed recording. No models, no embeddings, no GPU, no downloads.
 
-- The trace is JSONL, one event per line.
+- One JSON file per script turn, under `lab/demos/<place>/runs/`.
+- The file keeps the question, the expected answer, the final result, and the full trace.
 - The player is the same code in live and replay mode.
-- The static GitHub Pages site uses replay for the on-page demo.
 - A visitor can replay a place before deciding to run the full stack.
 
 ### 8.4 Agent-customizable
@@ -359,17 +362,20 @@ Live and replay share one event vocabulary:
 
 | Event | What it carries |
 |---|---|
-| `typing` | The visitor's question, character by character |
-| `line` | A scripted line in the demo, with an optional note |
-| `retrieval` | Node ids, levels, scores, source paths |
-| `decision` | Question id, chosen answer, probabilities, confidence, latency |
-| `rewrite` | Old query, new query, action, reason |
-| `delta` | A token of the answer |
-| `answer` | Final answer, citations, stop reason |
-| `metrics` | Iterations, tokens, latency, cost estimate |
-| `done` | The summary of the run |
+The current trace is a list of steps inside each result:
 
-The player supports **skip** and **takeover**, like the parallax watch mode. Skip moves to the next scripted turn. Takeover lets the visitor type their own question.
+| Step | What it carries |
+|---|---|
+| `retrieve` | Query, attempt, hit ids |
+| `relevance` | Per-node probabilities, kept count |
+| `sufficient` | Probability, confidence band, delegation source |
+| `action` | Chosen action, probabilities |
+| `rewrite` | New queries |
+| `write` | Characters, raw characters, latency |
+| `cite` | Inline or footer mode |
+| `grounded` | Probability, confidence band, repair decision |
+
+The replay player moves through the six scripted turns. Token streaming and visitor takeover are future work.
 
 ---
 
@@ -383,6 +389,7 @@ lab/demos/<place>/
   corpus/          the documents that make this place
   script.jsonl     visitor turns for the autoplay
   eval.jsonl       questions, gold passages, expected claims
+  runs/            committed recordings, optional but recommended
 ```
 
 A place is a small world. It has documents, a script, and a way to measure whether the raptor understood it.
@@ -390,18 +397,20 @@ A place is a small world. It has documents, a script, and a way to measure wheth
 ### 9.2 The commands
 
 ```bash
-pixi run demo:validate <place>   # schema, build the index, run the evals
-pixi run demo:replay <place>     # play the recorded or generated trace
-pixi run demo:record <place>     # capture the event trace
-pixi run demo:index              # regenerate the site's demo registry
+pixi run test                    # loader, index, API, pipeline tests
+pixi run index                   # validate and index every place
+pixi run embed                   # chunk embeddings
+pixi run build-tree             # RAPTOR summaries
+pixi run eval                    # retrieval metrics
+pixi run record --place <place>  # commit the six script turns
 ```
 
-The validate command is the important one. It should fail loudly if:
+The loader is the validator. It fails loudly if:
 
 - The corpus is empty or has unsupported files.
 - A question has no gold passage.
-- A script references a place that does not exist.
-- The model stack in `demo.toml` is not available.
+- A script or eval file is malformed.
+- A document id does not match the manifest.
 
 ### 9.3 The agent playbook
 
@@ -412,12 +421,12 @@ The root `AGENTS.md` tells a coding agent how to work here:
 3. Add 10 to 30 documents to `corpus/`.
 4. Add 10 to 30 questions to `eval.jsonl`, each with gold passages.
 5. Add 3 to 6 visitor turns to `script.jsonl`.
-6. Run `pixi run demo:validate <place>`.
-7. Fix the failures.
-8. Run `pixi run demo:record <place>`.
-9. Add the place to the site registry.
+6. Run `pixi run test` and fix any loader failure.
+7. Run `pixi run index`, `pixi run embed`, and `pixi run build-tree`.
+8. Run `pixi run eval` and compare with the reference place.
+9. Run `pixi run record --place <place>` and commit `runs/`.
 
-The commands are non-interactive and idempotent. The agent can run them without a human in the loop.
+The commands are non-interactive. The embedding and recording steps need the router.
 
 ### 9.4 Why this matters
 

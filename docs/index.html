@@ -4,7 +4,33 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Refeed Raptor - a local RAG lab</title>
-<meta name="description" content="A local RAG lab with a RAPTOR summary tree, a refeed loop, and a System-1 decision model.">
+<meta name="description" content="A local RAG lab with a RAPTOR summary tree, a refeed loop, d1 decisions, and an LFM writer. No cloud model or API key.">
+<link rel="canonical" href="https://refeed.raptor.report/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#f6f1e8">
+<meta name="color-scheme" content="light">
+<meta name="author" content="AISidesKicks">
+<meta name="publisher" content="AISidesKicks">
+<meta property="article:published_time" content="2026-10-22T00:00:00+00:00">
+<meta property="article:modified_time" content="2026-10-22T00:00:00+00:00">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Refeed Raptor">
+<meta property="og:url" content="https://refeed.raptor.report/">
+<meta property="og:title" content="Refeed Raptor - a local RAG lab">
+<meta property="og:description" content="A RAPTOR summary tree, a small refeed loop, and a System-1 judge. No cloud model, no API key, no hidden state.">
+<meta property="og:image" content="https://refeed.raptor.report/refeed-raptor.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="635">
+<meta property="og:image:alt" content="A paper raptor eating documents fed by a robot arm in a server room">
+<meta property="og:locale" content="en">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Refeed Raptor - a local RAG lab">
+<meta name="twitter:description" content="A RAPTOR summary tree, a small refeed loop, and a System-1 judge. No cloud model, no API key.">
+<meta name="twitter:image" content="https://refeed.raptor.report/refeed-raptor.png">
+<meta name="twitter:image:alt" content="A paper raptor eating documents fed by a robot arm in a server room">
 <style>
   :root {
     --paper: #f6f1e8;
@@ -188,7 +214,7 @@
   <p class="eyebrow">A local RAG lab</p>
   <h1>Refeed Raptor</h1>
   <p class="lede">A RAPTOR summary tree, a small refeed loop, and a System-1 judge. No cloud model, no API key, no hidden state.</p>
-  <p class="status">Status: the model-free reader and keyword baseline are in place. The embedding retriever, RAPTOR tree, and refeed loop are next.</p>
+  <p class="status">Status: the local stack is running. 100 documents, 200 chunks, a 23-node RAPTOR tree, the refeed loop, and committed recorded replays.</p>
 </header>
 
 <img class="hero" src="refeed-raptor.png" alt="A paper raptor being fed documents by a robot arm in a server room">
@@ -208,10 +234,10 @@
     <div class="stat"><strong>100</strong><span>documents</span></div>
     <div class="stat"><strong>52k</strong><span>words</span></div>
     <div class="stat"><strong>200</strong><span>chunks</span></div>
-    <div class="stat"><strong>50</strong><span>eval questions</span></div>
+    <div class="stat"><strong>23</strong><span>summary nodes</span></div>
   </div>
   <p>85 documents are reserve records: governance, species, field operations, research, visitors, infrastructure, and history. 15 are data and methods notes: RAPTOR, SearchJev, EmbeddingGemma 2, LFM2.5, d1-3B, and the metrics.</p>
-  <p>The questions are 30 reserve-specific, 10 methods, and 10 multi-hop. The drone wind question is the key demo: it needs the 28 km/h limit from the checklist and the flight approval from the patrol log. One-shot retrieval often misses one of them.</p>
+  <p>The eval set has 50 questions: 30 reserve-specific, 10 methods, and 10 multi-hop. The drone wind question is the key demo. It needs the 28 km/h limit from the checklist and the flight approval from the patrol log. One-shot retrieval often misses one of them.</p>
 </section>
 
 <section id="loop">
@@ -219,11 +245,12 @@
   <ol>
     <li>Embed the question with EmbeddingGemma 2.</li>
     <li>Retrieve the top 20 chunks and tree summaries with cosine similarity.</li>
-    <li>Score the top 20 with d1-3B. Keep the top 8.</li>
-    <li>Ask d1 whether the evidence is sufficient. If not, rewrite and retrieve again, at most twice.</li>
-    <li>Write the answer with LFM2.5-8B-A1B, with citations.</li>
-    <li>Ask d1 whether the answer is grounded. Repair or answer.</li>
+    <li>Score each result with d1-3B and keep the top 8. Leaf chunks are preferred as evidence; a summary is used only when no chunk passes the floor.</li>
+    <li>Ask d1 whether the evidence is sufficient. On a low-confidence answer, delegate the call to LFM2.5. If the evidence is still thin, d1 picks an action, LFM rewrites the query, and the loop retries. The limit is two refeeds.</li>
+    <li>Give the writer up to three leaf chunks whose titles match the question. LFM2.5 writes at temperature 0, with validated citations.</li>
+    <li>Ask d1 whether the answer is grounded. One repair pass is allowed, then the answer ships with a warning if needed.</li>
   </ol>
+  <p>Every decision is a typed question with a probability. The trace shows the probability, the confidence band, and whether a low-confidence call was delegated. Replay can run the stored trace with no model at all.</p>
 </section>
 
 <section id="stack">
@@ -231,21 +258,23 @@
   <p>One llama.cpp router, three presets, one CUDA context, one port.</p>
   <table>
     <tr><th>Part</th><th>Choice</th></tr>
+    <tr><td>Router</td><td>llama.cpp v0.7.x, pinned image <code>server-cuda13-b11804</code>, port 8080</td></tr>
     <tr><td>Embeddings</td><td>EmbeddingGemma 2, Q8_0, 768 dimensions</td></tr>
     <tr><td>Writer</td><td>LFM2.5-8B-A1B, Q4_K_M, 128K context</td></tr>
-    <tr><td>Decisions</td><td>d1-3B, Q8_0, typed questions</td></tr>
+    <tr><td>Decisions</td><td>d1-3B, Q8_0, typed <code>noul</code> and <code>choice</code> calls</td></tr>
     <tr><td>Storage</td><td>SQLite plus numpy cosine</td></tr>
     <tr><td>App</td><td>FastAPI, WebSocket, static HTML</td></tr>
-    <tr><td>Traces</td><td>Arize Phoenix</td></tr>
+    <tr><td>Traces</td><td>Arize Phoenix, optional local container</td></tr>
   </table>
-  <p>About 8.3 GB of model weights on a 12 GB card.</p>
+  <p>About 8.3 GB of model weights. The test card is a 12 GB GPU and the three loaded presets use about 11.1 GB.</p>
 </section>
 
 <section id="measure">
   <h2>What we measure</h2>
-  <p>Retrieval, answer quality, calibration, and cost. The lab compares one-shot RAG, RAPTOR retrieval, and RAPTOR plus the refeed loop on the same 50 questions. The report includes the failures, not just the wins.</p>
+  <p>Retrieval, answer quality, calibration, and cost. The lab compares keyword search, one-shot RAPTOR retrieval, and RAPTOR plus the refeed loop on the same 50 questions. The report includes the failures, not just the wins.</p>
   <p>Retrieval: Recall@k, MRR, and nDCG. Answer: faithfulness, correctness, and citation accuracy. Calibration: Brier, ECE, and the delegation rate. System: tokens, latency, and peak VRAM.</p>
-  <p>The keyword baseline already gets Recall@5 0.98 and MRR 0.83 on the 50 questions. That is the floor the model pipeline has to beat. The full reference lives in <code>mds/metrics.md</code> in the repository.</p>
+  <p>On the 50 questions, the keyword floor gets Recall@5 0.98 and MRR 0.829. RAPTOR gets Recall@5 0.96, Recall@10 0.98, Recall@20 1.00, and MRR 0.861. RAPTOR ranks the right passage better, and finds every gold document by rank 20. Keyword wins Recall@5 by one question.</p>
+  <p>Two questions explain the gap. <code>q29</code> reaches its gold document at rank 6. <code>q47</code> reaches the first gold document at rank 14, but stays inside Recall@20. The full reference lives in <code>mds/metrics.md</code> in the repository.</p>
 </section>
 
 <section id="local">
@@ -260,9 +289,22 @@
   </div>
   <ul>
     <li>No cloud model and no API key. The only network call is the local llama.cpp router.</li>
-    <li>The reader supports interactive use and a model-free script replay. The recorded model-backed replay is next.</li>
+    <li>The reader supports live RAPTOR, committed recorded runs, and a model-free keyword replay. The recorded runs live in <code>lab/demos/raptor-reserve/runs/</code>.</li>
     <li>The corpus generator is the source of truth. The Markdown in <code>corpus/</code> is the build output.</li>
+    <li>A recorded demo video is the next media artifact. The replay path already works without the GPU.</li>
   </ul>
+</section>
+
+<section id="run">
+  <h2>Run it</h2>
+  <p>The lab expects a pixi workspace named <code>rptr</code>, a CUDA host, and about 12 GB of VRAM.</p>
+  <ol>
+    <li><code>pixi install</code></li>
+    <li><code>pixi run models</code> to download the three GGUFs, then <code>pixi run llm-up</code></li>
+    <li><code>pixi run index</code>, <code>pixi run embed</code>, and <code>pixi run build-tree</code></li>
+    <li><code>pixi run serve</code></li>
+  </ol>
+  <p>Open <code>http://localhost:8000</code>. Ask and live replay need the router. Recorded replay and the keyword floor do not. The corpus can be regenerated with <code>pixi run build-corpus</code>.</p>
 </section>
 
 </main>
