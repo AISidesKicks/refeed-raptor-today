@@ -151,6 +151,13 @@ function renderCitationChips(container, citations) {
   container.append(box);
 }
 
+function metaLine(payload) {
+  const parts = [`refeeds ${payload.refeeds || 0}`];
+  parts.push(`${payload.timings ? payload.timings.total_ms : 0} ms`);
+  if (payload.trace_id) parts.push(`trace ${payload.trace_id.slice(0, 12)}`);
+  return parts.join(" - ");
+}
+
 function renderAnswer(payload) {
   const answer = $("answer");
   answer.hidden = false;
@@ -165,11 +172,7 @@ function renderAnswer(payload) {
   renderCitationChips(answer, payload.citations);
   if (payload.mode === "raptor") {
     answer.append(
-      make(
-        "p",
-        "replay-note",
-        `refeeds ${payload.refeeds || 0} - ${payload.timings ? payload.timings.total_ms : 0} ms`
-      )
+      make("p", "replay-note", metaLine(payload))
     );
   }
 }
@@ -313,11 +316,7 @@ async function showTurn(turn) {
       renderCitationChips(answer, replay.result.citations);
       if (replay.result.timings) {
         answer.append(
-          make(
-            "p",
-            "replay-note",
-            `refeeds ${replay.result.refeeds || 0} - ${replay.result.timings.total_ms || 0} ms`
-          )
+          make("p", "replay-note", metaLine(replay.result))
         );
       }
       body.append(answer);

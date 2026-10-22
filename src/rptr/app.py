@@ -18,6 +18,7 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
+from . import tracing
 from .config import Settings
 from .eval import keyword_metrics, raptor_metrics
 from .index import build_index
@@ -169,9 +170,20 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         try:
             status = app.state.router.health()
             models = app.state.router.models()
-            return {"router": status, "models": models, "reachable": True}
+            return {
+                "router": status,
+                "models": models,
+                "reachable": True,
+                "otel": tracing.enabled(),
+            }
         except RouterError as exc:
-            return {"router": {"status": "down"}, "models": [], "reachable": False, "error": str(exc)}
+            return {
+                "router": {"status": "down"},
+                "models": [],
+                "reachable": False,
+                "error": str(exc),
+                "otel": tracing.enabled(),
+            }
 
     @app.get("/api/places/{place_id}")
     def get_place(place_id: str) -> dict[str, Any]:
