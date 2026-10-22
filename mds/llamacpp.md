@@ -91,8 +91,8 @@ pixi run models-check  # verify without downloading
 
 The manifest in the script carries the size and the hash of each file, so a truncated download fails loudly instead of producing a broken model later.
 
-## What is not wired yet
+## The trace collector
 
-The compose file also defines `rptr-phoenix`, an Arize Phoenix container on ports 6006 and 4317, and there are pixi tasks to start and stop it. The trace exporter is not written yet, so the container is only a definition for now. The lab has its own trace view in the UI and in the API, and that is what the metrics are computed from.
+The compose file also defines `rptr-phoenix`, an Arize Phoenix container on ports 6006 and 4317, and there are pixi tasks to start and stop it. With `RPTR_OTLP_ENDPOINT` set, every run is exported to it as OpenTelemetry spans. See [OpenTelemetry and Phoenix](opentelemetry.md).
 
 Read next: [the model stack](models.md), [the app](fastapi-app.md).

@@ -244,3 +244,35 @@ The eval is part of the app, not a notebook. It should run on the same commit as
 - EmbeddingGemma 2 model card: https://huggingface.co/google/embeddinggemma-2
 - LFM2.5-8B-A1B model card: https://huggingface.co/LiquidAI/LFM2.5-8B-A1B
 - d1-3B model card: https://huggingface.co/LiquidAI/d1-3B
+
+
+---
+
+## The numbers from the lab
+
+Retrieval on the 50 questions of the eval set:
+
+| Mode | Recall@5 | Recall@10 | Recall@20 | MRR |
+|---|---|---|---|---|
+| Keyword | 0.98 | 0.98 | 1.00 | 0.829 |
+| RAPTOR | 0.96 | 0.98 | 1.00 | 0.861 |
+
+The full loop, same 50 questions, one answer per question:
+
+| Measure | Value |
+|---|---|
+| Answered | 50 of 50 |
+| Citation hit rate | 0.94 |
+| Mean refeeds | 0.00 |
+| Mean latency | 1.5 s |
+| Slowest answer | 4.3 s |
+
+The citation hit rate is the share of answers that cite a document that holds the gold answer. It is not a faithfulness score: a faithful answer can cite the wrong document, and an unfaithful answer can cite the right one. The lab measures the first because it is cheap and automatic. A human check of the recorded turns is still the last word.
+
+Reproduce it with:
+
+```bash
+pixi run eval -- --place raptor-reserve --answers --output scratch/answers.json
+```
+
+The command writes the full report, including the per question rows, so the numbers can be checked one by one.

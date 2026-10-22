@@ -50,20 +50,52 @@ LFM2.5 turns the action into one or two new queries. It never answers the questi
 
 The `decompose` action is the interesting one for multi-hop questions. "Which storm damaged the boardwalk, and what did the repair cost?" needs a storm record and a repair record, and the two halves often live in different documents.
 
+## Relevance is judged per query
+
+A passage is judged against the query that found it, not against the whole question. The relevance call gets a neutral state, and every question carries its own search query:
+
+```python
+questions[f"p{index}"] = noul(
+    "Is this passage relevant to the search query? ...\n\n"
+    f"Search query: {query}\n\nPassage:\n" + hit.text
+)
+```
+
+This matters after a rewrite. The question "How many osprey chicks fledged in 2025, and which ranger approved the drone flight?" is split into two queries, and the patrol log is relevant to the second one. Judged against the whole question it scored 0.15 and was dropped. Judged against the query that found it, it scores 0.79 and stays.
+
 ## Evidence selection
 
-Eight passages survive the relevance step. The writer sees at most three of them, and they are picked by title:
+Eight passages survive the relevance step. They are not the top eight overall: the passages are taken in rounds, one per query at a time, so a compound question keeps a slot for every part of it.
+
+The writer sees at most four of them, and the ones whose titles name the topic come first:
 
 ```python
 def _writer_hits(selected, question, limit):
     terms = _terms(question)
     matched = [hit for hit in selected if terms & _terms(hit.title)]
-    return (matched or selected)[:limit]
+    rest = [hit for hit in selected if hit not in matched]
+    return (matched + rest)[:limit]
 ```
 
-If any of the eight has a title that names the topic of the question, only those are shown to the writer. This one rule removed most of the noise: the model no longer mixes a winter checklist into an answer about a wind limit.
+The title matches come first because they are the passages that talk about the subject of the question. The rest fill the remaining slots, because a passage with an unrelated title can still hold the missing fact.
+
+This one rule removed most of the noise: the model no longer mixes a winter checklist into an answer about a wind limit.
 
 The writer also gets excerpts, not full chunks. `_excerpt` keeps the paragraphs that match the question terms, drops the boilerplate paragraphs, and caps the result at about 150 words per passage. That is what keeps the prompt small enough to stay fast and cheap.
+
+## The sufficiency check
+
+The decision model answers one question: is the evidence enough? When the answer lands in the low confidence band, the writer model is asked to grade the evidence with one word.
+
+The wording of that grade matters more than it looks:
+
+```
+Check what the question asks the reader to look up. Reply yes only if the
+evidence holds that rule, name, or number. Facts that the question already
+states do not have to be in the evidence.
+```
+
+The first version said "every fact the question asks for", and the grader refused to answer the wind question, because the 35 km/h wind was in the question and not in the evidence. The second version refuses the compound question, because the patrol log is missing. Both words are load bearing.
 
 ## The trace
 
@@ -81,6 +113,21 @@ Every run returns a trace, and the trace is the product:
 | `grounded` | The probability, the band, and the repair decision |
 
 Nothing in the loop is hidden. The trace is in the API response, in the UI, and in the committed recordings under `lab/demos/raptor-reserve/runs/`.
+
+## What the loop buys
+
+Measured on the 50 questions of the eval set, with the full loop:
+
+| Measure | Value |
+| --- | --- |
+| Answered | 50 of 50 |
+| Citation hit rate | 0.94 |
+| Mean refeeds | 0.00 |
+| Mean latency | 1.5 s |
+
+No question on the eval set needs a refeed any more. The loop is still there for the questions that do, and the script has one: "How many osprey chicks fledged in 2025, and which ranger approved the drone flight over Heron Marsh?" takes one refeed with a decompose action.
+
+The citation hit rate is the honest one: for 47 of the 50 questions the answer cites a document that holds the gold answer.
 
 ## Cost per question
 
