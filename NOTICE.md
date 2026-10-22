@@ -41,3 +41,5 @@ Raptor Reserve is a fictional place. The bird species are real. Events, people, 
 ## Image
 
 The hero image `docs/refeed-raptor.png` and the favicon `docs/favicon.svg` are project assets generated for this lab.
+
+The demo video `docs/assets/videos/refeed-loop.mp4` is a screen recording of this app. It contains no third-party footage.

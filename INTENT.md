@@ -2,7 +2,7 @@
 
 > A small, local, funny RAG lab. A raptor gets fed documents, chews them into a summary tree, and refeeds when the answer is not good enough.
 
-**Status:** research complete, the first corpus is built. The local stack, the RAPTOR tree, the refeed loop, the citation path, and the recorded replay are in place. The first place is a 100-document synthetic corpus called `raptor-reserve`. The demo video is next.
+**Status:** research complete, the first corpus is built. The local stack, the RAPTOR tree, the refeed loop, the citation path, the recorded replay, and a silent demo video are in place. The first place is a 100-document synthetic corpus called `raptor-reserve`. A narrated video is the next media step.
 
 This is an educational project. The goal is not to build the biggest RAG system. The goal is to make the small one legible, then show what the extra machinery buys and what it costs.
 
@@ -315,10 +315,11 @@ The demo is a **recorded video** first, because that is what people watch. The r
 
 ### 8.1 Video
 
-- A short screencast, recorded from the live app or the replay player.
-- Hosted like the parallax auto-debate video: `docs/assets/videos/refeed-loop.mp4` with a poster frame.
-- The page uses a plain HTML5 video element, with captions and a transcript link.
-- The video is the public artifact. It must work without a GPU, a clone, or a model download.
+- A short screencast, recorded from the live app and the replay player.
+- Hosted at `docs/assets/videos/refeed-loop.mp4` with `refeed-loop-poster.jpg`.
+- The current clip is 18 seconds, silent, and has burned-in captions.
+- The page uses a plain HTML5 video element. The clip works without a GPU, a clone, or a model download.
+- A narrated version can replace it without changing the page.
 
 ### 8.2 Interactive
 

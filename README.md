@@ -6,6 +6,7 @@ A local RAG lab: a RAPTOR summary tree, a small refeed loop, and a System-1 deci
 - Design intent: `INTENT.md`
 - First corpus: `lab/demos/raptor-reserve/`
 - Metrics reference: `mds/metrics.md`
+- Demo video: `docs/assets/videos/refeed-loop.mp4`
 
 ## Quick start
 
