@@ -12,9 +12,9 @@ The Markdown files are build output. The generator in `lab/demos/raptor-reserve/
 
 ## Code
 
-The Python, HTML, CSS, and shell code in this repository is not licensed for reuse yet. All rights are reserved until a code license is chosen.
+The Python, HTML, CSS, and shell code in this repository is under the MIT License. See `LICENSE`.
 
-This is deliberate. The code license is a separate decision from the corpus license.
+The corpus keeps its own license. The code and the corpus are separate, so a reader can reuse the lab without reusing the text, and the other way around.
 
 ## Models and runtime
 
