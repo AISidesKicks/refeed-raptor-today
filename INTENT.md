@@ -37,7 +37,7 @@ A local RAG lab with four faces:
 3. **A replay mode.** The same player reads a recorded event trace. No models, no GPU, no downloads. This is what the static site and the video recording use.
 4. **An agent harness.** A folder contract and an `AGENTS.md` playbook so an AI coding agent can add a new place, validate it, record it, and publish it.
 
-The public site is a GitHub Pages site at `refeed.raptor.report`. The lab runs on the visitor's machine. There is no cloud LLM and no API key.
+The public site is a GitHub Pages site at `refeed.raptor.today`. The lab runs on the visitor's machine. There is no cloud LLM and no API key.
 
 ---
 

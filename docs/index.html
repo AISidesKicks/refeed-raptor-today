@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Refeed Raptor - a local RAG lab</title>
 <meta name="description" content="A local RAG lab with a RAPTOR summary tree, a refeed loop, d1 decisions, and an LFM writer. No cloud model or API key.">
-<link rel="canonical" href="https://refeed.raptor.report/">
+<link rel="canonical" href="https://refeed.raptor.today/">
 <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
 <link rel="icon" type="image/png" sizes="192x192" href="assets/images/icon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon-180.png">
@@ -18,22 +18,22 @@
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Refeed Raptor">
-<meta property="og:url" content="https://refeed.raptor.report/">
+<meta property="og:url" content="https://refeed.raptor.today/">
 <meta property="og:title" content="Refeed Raptor - a local RAG lab">
 <meta property="og:description" content="A RAPTOR summary tree, a small refeed loop, and a System-1 judge. No cloud model, no API key, no hidden state.">
-<meta property="og:image" content="https://refeed.raptor.report/refeed-raptor.png">
+<meta property="og:image" content="https://refeed.raptor.today/refeed-raptor.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1024">
 <meta property="og:image:height" content="635">
 <meta property="og:image:alt" content="A paper raptor eating documents fed by a robot arm in a server room">
-<meta property="og:video" content="https://refeed.raptor.report/assets/videos/refeed-loop.mp4">
+<meta property="og:video" content="https://refeed.raptor.today/assets/videos/refeed-loop.mp4">
 <meta property="og:video:type" content="video/mp4">
 <meta property="og:locale" content="en">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Refeed Raptor - a local RAG lab">
 <meta name="twitter:description" content="A RAPTOR summary tree, a small refeed loop, and a System-1 judge. No cloud model, no API key.">
-<meta name="twitter:image" content="https://refeed.raptor.report/refeed-raptor.png">
+<meta name="twitter:image" content="https://refeed.raptor.today/refeed-raptor.png">
 <meta name="twitter:image:alt" content="A paper raptor eating documents fed by a robot arm in a server room">
 <style>
   :root {
@@ -261,7 +261,7 @@
 
 <header>
   <p class="eyebrow">Refeed Raptor - a local RAG lab</p>
-  <h1><span class="domain">refeed.raptor.report</span> <a class="gh" href="https://github.com/AISidesKicks/refeed-raptor-report">github</a></h1>
+  <h1><span class="domain">refeed.raptor.today</span> <a class="gh" href="https://github.com/AISidesKicks/refeed-raptor-today">github</a></h1>
   <p class="lede">A RAPTOR summary tree, a small refeed loop, and a System-1 judge. No cloud model, no API key, no hidden state.</p>
   <p class="status">Status: the local stack is running. 100 documents, 200 chunks, a 23-node RAPTOR tree, the refeed loop, OpenTelemetry traces, seven recorded turns, a three-mode eval, and a 12-question refusal set.</p>
 </header>
@@ -287,7 +287,7 @@
     <p><strong>0:12</strong> Turn 7: two documents, one question. The loop splits it and looks again.</p>
     <p><strong>0:17</strong> Live mode: retrieve, judge, write, cite, check grounding.</p>
     <p><strong>0:21</strong> RAPTOR on 50 questions: Recall@20 100%, MRR 0.861.</p>
-    <p><strong>0:23</strong> refeed.raptor.report - local models, visible loop.</p>
+    <p><strong>0:23</strong> refeed.raptor.today - local models, visible loop.</p>
   </details>
 </section>
 
@@ -353,7 +353,7 @@
   <p>The loop earns its keep on turn 7 of the demo: one-shot says 67 osprey chicks and cites unrelated records, the loop says 21 with the season report and the drone log after one refeed. Both answers are in <code>evals/script.json</code>.</p>
   <p>The refusal set is the other side of the contract. 12 questions the corpus cannot answer, all 12 returned as "not enough evidence", at a mean of 1.1 s.</p>
   <p>Calibration: the first sufficiency probability has a Brier score of 0.055 over the 50 questions, with 4 decisions delegated to LFM. The reliability curve is a page of its own: <a href="./calibration.html">calibration.html</a>.</p>
-  <p>Every eval artifact is committed under <code>lab/demos/raptor-reserve/evals/</code>. The full reference lives in <a href="https://github.com/AISidesKicks/refeed-raptor-report/blob/main/mds/metrics.md">mds/metrics.md</a>.</p>
+  <p>Every eval artifact is committed under <code>lab/demos/raptor-reserve/evals/</code>. The full reference lives in <a href="https://github.com/AISidesKicks/refeed-raptor-today/blob/main/mds/metrics.md">mds/metrics.md</a>.</p>
 </section>
 
 <section id="local">
@@ -378,17 +378,17 @@
   <h2>Deep dives</h2>
   <p>One file per technology, written by hand, with the numbers from this lab.</p>
   <ul>
-    <li><a href="https://github.com/AISidesKicks/refeed-raptor-report/blob/main/mds/metrics.md">Metrics</a> - retrieval, answer, calibration, and cost metrics, and how to read them</li>
+    <li><a href="https://github.com/AISidesKicks/refeed-raptor-today/blob/main/mds/metrics.md">Metrics</a> - retrieval, answer, calibration, and cost metrics, and how to read them</li>
     <li><a href="./calibration.html">Calibration</a> - the reliability curve of the d1 sufficiency decision</li>
-    <li><a href="https://github.com/AISidesKicks/refeed-raptor-report/blob/main/mds/systemone.md">System 1 decisions</a> - typed questions, the confidence band, and when the writer takes over</li>
-    <li><a href="https://github.com/AISidesKicks/refeed-raptor-report/blob/main/mds/refeed.md">The refeed loop</a> - retrieve, judge, rewrite, retry, cite, check</li>
-    <li><a href="https://github.com/AISidesKicks/refeed-raptor-report/blob/main/mds/raptor.md">The RAPTOR tree</a> - the build, the summaries, and what the tree really buys</li>
-    <li><a href="https://github.com/AISidesKicks/refeed-raptor-report/blob/main/mds/umap-gmm.md">UMAP and GMM</a> - the clustering behind the clusters</li>
-    <li><a href="https://github.com/AISidesKicks/refeed-raptor-report/blob/main/mds/llamacpp.md">The local router</a> - one llama.cpp server, three presets, a pinned build</li>
-    <li><a href="https://github.com/AISidesKicks/refeed-raptor-report/blob/main/mds/models.md">The model stack</a> - EmbeddingGemma 2, LFM2.5, and d1-3B</li>
-    <li><a href="https://github.com/AISidesKicks/refeed-raptor-report/blob/main/mds/sqlite-numpy.md">SQLite and numpy</a> - the database, the vectors, and the fingerprint</li>
-    <li><a href="https://github.com/AISidesKicks/refeed-raptor-report/blob/main/mds/fastapi-app.md">The app</a> - the four tabs, the recorded replay, and the tests</li>
-    <li><a href="https://github.com/AISidesKicks/refeed-raptor-report/blob/main/mds/place-contract.md">The place contract</a> - the demo format and how an agent adds a place</li>
+    <li><a href="https://github.com/AISidesKicks/refeed-raptor-today/blob/main/mds/systemone.md">System 1 decisions</a> - typed questions, the confidence band, and when the writer takes over</li>
+    <li><a href="https://github.com/AISidesKicks/refeed-raptor-today/blob/main/mds/refeed.md">The refeed loop</a> - retrieve, judge, rewrite, retry, cite, check</li>
+    <li><a href="https://github.com/AISidesKicks/refeed-raptor-today/blob/main/mds/raptor.md">The RAPTOR tree</a> - the build, the summaries, and what the tree really buys</li>
+    <li><a href="https://github.com/AISidesKicks/refeed-raptor-today/blob/main/mds/umap-gmm.md">UMAP and GMM</a> - the clustering behind the clusters</li>
+    <li><a href="https://github.com/AISidesKicks/refeed-raptor-today/blob/main/mds/llamacpp.md">The local router</a> - one llama.cpp server, three presets, a pinned build</li>
+    <li><a href="https://github.com/AISidesKicks/refeed-raptor-today/blob/main/mds/models.md">The model stack</a> - EmbeddingGemma 2, LFM2.5, and d1-3B</li>
+    <li><a href="https://github.com/AISidesKicks/refeed-raptor-today/blob/main/mds/sqlite-numpy.md">SQLite and numpy</a> - the database, the vectors, and the fingerprint</li>
+    <li><a href="https://github.com/AISidesKicks/refeed-raptor-today/blob/main/mds/fastapi-app.md">The app</a> - the four tabs, the recorded replay, and the tests</li>
+    <li><a href="https://github.com/AISidesKicks/refeed-raptor-today/blob/main/mds/place-contract.md">The place contract</a> - the demo format and how an agent adds a place</li>
   </ul>
 </section>
 
@@ -409,7 +409,7 @@
 
 <footer>
   <p>Refeed Raptor - an educational lab about RAG, memory, and the cost of a second look.</p>
-  <p><a class="gh" href="https://github.com/AISidesKicks/refeed-raptor-report">github.com/AISidesKicks/refeed-raptor-report</a></p>
+  <p><a class="gh" href="https://github.com/AISidesKicks/refeed-raptor-today">github.com/AISidesKicks/refeed-raptor-today</a></p>
 </footer>
 
 </div>

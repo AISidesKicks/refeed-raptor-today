@@ -259,7 +259,7 @@ def build_page(place_id: str, rows: list[dict[str, Any]]) -> str:
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Calibration - refeed.raptor.report</title>
+<title>Calibration - refeed.raptor.today</title>
 <meta name="description" content="The reliability curve of the d1 sufficiency decision in the Refeed Raptor lab.">
 <link rel="icon" href="./favicon.png" type="image/png">
 <style>
@@ -364,7 +364,7 @@ pixi run calibrate</code></pre>
 
 <footer>
   <p>Refeed Raptor - an educational lab about RAG, memory, and the cost of a second look.</p>
-  <p><a href="./">The lab</a> - <a href="https://github.com/AISidesKicks/refeed-raptor-report">github.com/AISidesKicks/refeed-raptor-report</a></p>
+  <p><a href="./">The lab</a> - <a href="https://github.com/AISidesKicks/refeed-raptor-today">github.com/AISidesKicks/refeed-raptor-today</a></p>
 </footer>
 </div>
 </body>
