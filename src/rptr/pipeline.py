@@ -710,6 +710,94 @@ def answer_question(
         return result
 
 
+def answer_oneshot(
+    router: LlamaRouter,
+    conn: sqlite3.Connection,
+    place: Place,
+    question: str,
+    config: PipelineConfig | None = None,
+    limit: int = 6,
+) -> dict[str, Any]:
+    """Answer in one pass: retrieve, write, cite.
+
+    This is the baseline the loop is measured against. It takes the top
+    passages by embedding score, uses the same writer prompt, and stops. There
+    is no relevance judgement, no sufficiency gate, no rewrite, and no
+    groundedness check.
+    """
+
+    config = config or PipelineConfig()
+    started = time.monotonic()
+    embed_model = place.models.get("embedding", "embeddinggemma-2")
+    writer_model = place.models.get("writer", "lfm2-8b")
+    trace: list[dict[str, Any]] = []
+
+    with tracing.span("raptor.oneshot", **{"rptr.place": place.id}) as span:
+        tracing.set_attribute(span, "rptr.question", question)
+        retrieval_started = time.monotonic()
+        vector = router.embed([question], model=embed_model)[0]
+        hits = collapsed_search(conn, place.id, vector, limit=config.retrieve_limit)
+        selected = [hit for hit in hits if hit.kind == "chunk"][:limit] or hits[:limit]
+        trace.append(
+            {
+                "step": "retrieve",
+                "queries": [question],
+                "hits": len(hits),
+                "kept": len(selected),
+                "top_score": round(selected[0].score, 4) if selected else 0.0,
+                "latency_ms": int((time.monotonic() - retrieval_started) * 1000),
+            }
+        )
+
+        writer_hits = _writer_hits(selected, question, config.writer_evidence_limit)
+        write_started = time.monotonic()
+        raw_answer = _write_answer(
+            router,
+            writer_model,
+            place,
+            question,
+            writer_hits,
+            config.writer_max_tokens,
+        )
+        answer = _polish_answer(_trim_answer(raw_answer), question)
+        trace.append(
+            {
+                "step": "write",
+                "chars": len(answer),
+                "raw_chars": len(raw_answer),
+                "latency_ms": int((time.monotonic() - write_started) * 1000),
+            }
+        )
+
+        answer = _normalize_citations(answer, writer_hits)
+        answer, uncited_sentences = _cite_sentences(answer, writer_hits)
+        answer, citation_mode = _ensure_citations(
+            answer, writer_hits, force_footer=uncited_sentences > 0
+        )
+        trace.append({"step": "cite", "mode": citation_mode})
+
+        citations, _ = _citations(answer, writer_hits)
+        result: dict[str, Any] = {
+            "place_id": place.id,
+            "question": question,
+            "mode": "oneshot",
+            "answer": answer,
+            "can_answer": True,
+            "warning": None,
+            "citations": citations,
+            "results": [
+                {**hit.as_dict(), "relevance": round(hit.score, 4)} for hit in selected
+            ],
+            "trace": trace,
+            "refeeds": 0,
+            "timings": {"total_ms": int((time.monotonic() - started) * 1000)},
+        }
+        tracing.record_steps(span, trace)
+        tracing.finish(span, result)
+        result["trace_id"] = tracing.trace_id(span)
+        return result
+
+
 def _answer_question(
     router: LlamaRouter,
     conn: sqlite3.Connection,

@@ -67,6 +67,8 @@ class Place:
     questions: tuple[Question, ...]
     script: tuple[ScriptTurn, ...]
     manifest: dict[str, Any] = field(repr=False)
+    unknown_path: Path | None = None
+    unknown_questions: tuple[Question, ...] = ()
 
     @property
     def words(self) -> int:
@@ -99,6 +101,7 @@ class Place:
             "documents": len(self.documents),
             "words": self.words,
             "questions": len(self.questions),
+            "unknown_questions": len(self.unknown_questions),
             "starter_questions": list(self.starter_questions),
             "models": self.models,
         }
@@ -154,6 +157,44 @@ def _parse_document(path: Path, rel_path: str, doc_id: str) -> Document:
         text=body,
         words=len(body.split()),
     )
+
+
+def _load_unknown_questions(path: Path) -> list[Question]:
+    """Load questions the corpus cannot answer.
+
+    These are the negative controls. They must not have gold documents: a gold
+    document would make the question answerable, which defeats the point.
+    """
+
+    questions: list[Question] = []
+    seen: set[str] = set()
+    for record in _read_jsonl(path):
+        question_id = str(record.get("id", "")).strip()
+        question = str(record.get("question", "")).strip()
+        expected = str(record.get("expected", "")).strip()
+        if not question_id or not question or not expected:
+            raise PlaceError(f"{path}: every question needs id, question, and expected")
+        if question_id in seen:
+            raise PlaceError(f"{path}: duplicate question id {question_id}")
+        seen.add(question_id)
+        gold = record.get("gold") or []
+        if not isinstance(gold, list):
+            raise PlaceError(f"{path}: {question_id} gold must be a list")
+        if gold:
+            raise PlaceError(
+                f"{path}: {question_id} is out of corpus and must not have gold docs"
+            )
+        questions.append(
+            Question(
+                id=question_id,
+                question=question,
+                type=str(record.get("type", "unknown")),
+                gold=(),
+                expected=expected,
+                notes=str(record.get("notes", "")),
+            )
+        )
+    return questions
 
 
 def load_place(path: Path) -> Place:
@@ -272,6 +313,9 @@ def load_place(path: Path) -> Place:
             )
         )
 
+    unknown_path = (root / str(meta["unknown"])).resolve() if meta.get("unknown") else None
+    unknown_questions = _load_unknown_questions(unknown_path) if unknown_path else []
+
     models = meta.get("models", {})
     if not isinstance(models, dict):
         raise PlaceError(f"{demo_path}: [models] must be a table")
@@ -292,6 +336,8 @@ def load_place(path: Path) -> Place:
         questions=tuple(questions),
         script=tuple(script),
         manifest=manifest,
+        unknown_path=unknown_path,
+        unknown_questions=tuple(unknown_questions),
     )
 
 

@@ -4,6 +4,7 @@ blurb = "A fictional island reserve with 100 documents, 50 eval questions, and e
 corpus = "corpus"
 script = "script.jsonl"
 eval = "eval.jsonl"
+unknown = "unknown.jsonl"
 license = "CC-BY-4.0"
 version = 1
 

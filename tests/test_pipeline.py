@@ -15,6 +15,7 @@ from rptr.pipeline import (
     _polish_answer,
     _select,
     _trim_answer,
+    answer_oneshot,
     answer_question,
 )
 from rptr.retrieval import RetrievalHit
@@ -243,3 +244,22 @@ def test_clean_query_drops_the_action_and_the_copied_description():
         "system 1 decisions"
     )
     assert _clean_query("Query: ferry crossing time", "narrow") == "ferry crossing time"
+
+
+def test_answer_oneshot_skips_the_loop(monkeypatch):
+    monkeypatch.setattr(pipeline, "collapsed_search", lambda *args, **kwargs: fake_hits())
+    place = SimpleNamespace(
+        id="test",
+        title="Test Reserve",
+        models={"judge": "d1", "writer": "lfm", "embedding": "emb"},
+    )
+    router = FakeRouter()
+
+    result = answer_oneshot(router, None, place, "What is the drone wind limit?")
+
+    assert result["mode"] == "oneshot"
+    assert result["can_answer"] is True
+    assert result["refeeds"] == 0
+    assert [step["step"] for step in result["trace"]] == ["retrieve", "write", "cite"]
+    assert router.systemone_calls == 0
+    assert result["citations"][0]["node_id"] == "c1"
