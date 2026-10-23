@@ -31,6 +31,8 @@ The app is a reader, not a reserve-specific chatbot. A demo place lives in `lab/
 - `corpus/` - Markdown documents plus `manifest.json`.
 - `script.jsonl` - three to six autoplay turns.
 - `eval.jsonl` - the question set with gold document ids.
+- `unknown.jsonl` - optional out-of-corpus questions; the expected outcome is a refusal.
+- `evals/` - committed three-mode, refusal, and script reports.
 - `NOTICE.md` and `README.md` - license, provenance, and build notes.
 
 `lab/demos/raptor-reserve/` is the reference place. An AI coding agent can add a place by copying it, replacing the corpus and metadata, and running the loader validation. Do not hard-code Raptor Reserve facts in `src/` or the app. If the contract needs a new field, update the contract, the loader, and the reference place together.

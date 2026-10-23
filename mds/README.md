@@ -15,6 +15,8 @@ Short notes on one technology each. The tone is informal, the numbers come from 
 | [fastapi-app.md](fastapi-app.md) | The app, the four tabs, the recorded replay, and the tests |
 | [place-contract.md](place-contract.md) | The demo place format and how an agent adds a new place |
 
+The reliability curve of the d1 sufficiency decision is generated into `docs/calibration.html` by `pixi run calibrate`.
+
 The order that makes sense for a reader: the metrics first (so the numbers mean something), then the loop, then the tree, then the stack that runs it.
 
 Every number in these files was measured on the first corpus with the model stack in `docker/presets.ini`. When the stack or the corpus changes, the numbers have to be re-measured and the files updated. A deep dive with stale numbers is worse than no deep dive.

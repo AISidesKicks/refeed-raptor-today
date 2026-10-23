@@ -118,16 +118,18 @@ Nothing in the loop is hidden. The trace is in the API response, in the UI, and 
 
 Measured on the 50 questions of the eval set, with the full loop:
 
-| Measure | Value |
-| --- | --- |
-| Answered | 50 of 50 |
-| Citation hit rate | 0.94 |
-| Mean refeeds | 0.00 |
-| Mean latency | 1.5 s |
+| Measure | One-shot | One-shot plus the loop |
+| --- | --- | --- |
+| Answered | 50 of 50 | 50 of 50 |
+| Citation hit rate | 0.96 | 0.94 |
+| Mean refeeds | 0.00 | 0.00 |
+| Mean latency | 0.39 s | 1.44 s |
+
+That is the trade, not a victory. On a set of curated questions the first retrieval is usually enough, and the loop spends about a second more per answer. The loop fixes one question (`q05`), where the one-shot writer cites a mortality analysis instead of the season report, and breaks two (`q08`, `q29`), where the answer is supported by the record it cites but that record is not on the gold list. Both breaks are attribution differences, not hallucinations.
 
 No question on the eval set needs a refeed any more. The loop is still there for the questions that do, and the script has one: "How many osprey chicks fledged in 2025, and which ranger approved the drone flight over Heron Marsh?" takes one refeed with a decompose action.
 
-The citation hit rate is the honest one: for 47 of the 50 questions the answer cites a document that holds the gold answer.
+That turn is the demo beat. One-shot answers "67 osprey chicks" and cites two unrelated records. The loop decomposes the question, refetches, and answers 21 chicks with the osprey season report and the drone log, after one refeed. The comparison is committed in `evals/script.json`.
 
 ## Cost per question
 
@@ -146,5 +148,7 @@ That is 8 decision calls and one write. A question that needs a refeed adds the 
 `q29` finds its gold document at rank 6, and `q47` at rank 14. Both are inside Recall@20, so the retrieval numbers look fine, but a writer that only sees the top 3 passages will miss them. That is the case for the refeed loop: the second look is what pulls a rank 6 passage into the evidence set.
 
 The other failure is the writer being too generous. The answer can contain a true sentence and an extra sentence that the evidence does not support. The grounded check catches some of that, and one repair pass fixes some of the rest. The rest is why the reader should look at the trace, not just the answer.
+
+Turn 6 is a known quality gap in the other direction. The question asks what the RAPTOR summary tree adds. The loop cites the metrics paragraph of the methods note and talks about summary nodes beating leaves. One-shot cites the definition paragraph and answers with the level structure. The loop's evidence selection is not always the best paragraph, even when both passages come from the same document.
 
 Read next: [System 1 decisions](systemone.md), [the model stack](models.md), [the metrics](metrics.md).

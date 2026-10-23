@@ -1,10 +1,14 @@
 # Refeed Raptor
 
+![A paper raptor being fed documents by a robot arm in a server room](docs/refeed-raptor.png)
+
 A local RAG lab: a RAPTOR summary tree, a small refeed loop, and a System-1 decision model. No cloud model, no API key.
 
 - Public overview: `docs/index.html`
+- Calibration page: `docs/calibration.html`
 - Design intent: `INTENT.md`
 - First corpus: `lab/demos/raptor-reserve/`
+- Eval reports: `lab/demos/raptor-reserve/evals/`
 - Metrics reference: `mds/metrics.md`
 - Demo video: `docs/assets/videos/refeed-loop.mp4`
 
@@ -54,22 +58,38 @@ The test card is a 12 GB GPU. The three loaded presets use about 11.1 GB.
 
 ## Current metrics
 
-On the 50-question eval set:
+On the 50-question eval set, three modes:
 
-| Mode | Recall@5 | Recall@10 | Recall@20 | MRR |
+| Mode | What it does | Citation hit | Mean latency |
+| --- | --- | --- | --- |
+| One-shot RAPTOR | top 6 passages, one write, no judge | 0.96 | 0.39 s |
+| RAPTOR plus the loop | judge, maybe refeed, write, cite, ground | 0.94 | 1.44 s |
+
+Retrieval on the same questions:
+
+| Retriever | Recall@5 | Recall@10 | Recall@20 | MRR |
 | --- | --- | --- | --- | --- |
 | Keyword | 0.98 | 0.98 | 1.00 | 0.829 |
 | RAPTOR | 0.96 | 0.98 | 1.00 | 0.861 |
 
-The full loop, one answer per question: 50 of 50 answered, a citation hit rate of 0.94, a mean latency of 1.5 s, and a mean of 0 refeeds.
+The loop is slower and one citation hit worse on this curated set. It fixes `q05`, breaks `q08` and `q29` on citation attribution, and both modes miss `q47`. The failures are in `docs/index.html` and `mds/metrics.md`, not hidden.
 
-RAPTOR ranks the right passage better and finds every gold document by rank 20. The keyword floor wins Recall@5 by one question. The known misses are documented in `docs/index.html`.
+The loop earns its keep on turn 7 of the demo: one-shot answers 67 osprey chicks with two unrelated records, the loop answers 21 with the season report and the drone log after one refeed. The comparison is committed in `evals/script.json`.
+
+The out-of-corpus set has 12 general-knowledge questions. The loop returned "not enough evidence" for all 12, at a mean of 1.1 s.
+
+Calibration: the first sufficiency probability has a Brier score of 0.055 over the 50 questions, with 4 decisions delegated to LFM. The reliability curve is `docs/calibration.html`.
 
 Reproduce it with:
 
 ```bash
-pixi run eval -- --place raptor-reserve --answers --output scratch/answers.json
+pixi run eval-modes
+pixi run eval-unknown
+pixi run eval-script
+pixi run calibrate
 ```
+
+The eval reports are committed under `lab/demos/raptor-reserve/evals/`, with every per-question row.
 
 ## Traces
 

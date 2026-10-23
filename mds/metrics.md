@@ -124,6 +124,10 @@ The bands are a configuration. The eval should show what happens when they move.
 
 A model can be accurate and overconfident. That is the dangerous case, because the loop will trust a wrong judgment. The calibration dashboard is the first place to look when the refeed loop behaves strangely.
 
+On the 50 questions, the first sufficiency probability has a Brier score of 0.055. 43 decisions land in the high band, 3 in the middle, and 4 in the low band. LFM takes over 4 of those decisions. The reliability curve is in `docs/calibration.html`, generated from the committed loop report.
+
+Read that curve with two caveats. Correctness there means the citation hit, not a human grade, so a true sentence that cites another valid record can count as a miss. And 41 of the 50 questions sit in the 0.9 to 1.0 bin, so the curve says little about the middle. A calibration set needs questions with thin evidence to fill that space.
+
 The SearchJev paper reports 41 to 74 percent lower ECE for decision models than for same-size generative models. That is the paper's result, not this lab's. Measure your own.
 
 ## Loop metrics
@@ -252,27 +256,37 @@ The eval is part of the app, not a notebook. It should run on the same commit as
 
 Retrieval on the 50 questions of the eval set:
 
-| Mode | Recall@5 | Recall@10 | Recall@20 | MRR |
+| Retriever | Recall@5 | Recall@10 | Recall@20 | MRR |
 |---|---|---|---|---|
-| Keyword | 0.98 | 0.98 | 1.00 | 0.829 |
-| RAPTOR | 0.96 | 0.98 | 1.00 | 0.861 |
+| Keyword (BM25) | 0.98 | 0.98 | 1.00 | 0.829 |
+| RAPTOR (EmbeddingGemma 2) | 0.96 | 0.98 | 1.00 | 0.861 |
 
-The full loop, same 50 questions, one answer per question:
+Answers on the same 50 questions, one answer per question:
 
-| Measure | Value |
-|---|---|
-| Answered | 50 of 50 |
-| Citation hit rate | 0.94 |
-| Mean refeeds | 0.00 |
-| Mean latency | 1.5 s |
-| Slowest answer | 4.3 s |
+| Mode | Citation hit | Mean latency | Slowest | Mean refeeds |
+|---|---|---|---|---|
+| One-shot RAPTOR | 0.96 | 0.39 s | 1.0 s | 0.00 |
+| RAPTOR plus the loop | 0.94 | 1.44 s | 4.4 s | 0.00 |
 
-The citation hit rate is the share of answers that cite a document that holds the gold answer. It is not a faithfulness score: a faithful answer can cite the wrong document, and an unfaithful answer can cite the right one. The lab measures the first because it is cheap and automatic. A human check of the recorded turns is still the last word.
+The one-shot baseline takes the top 6 passages by embedding score and writes once. It has no relevance judge, no sufficiency gate, no rewrite, and no grounded check. The loop costs about 3.7 times the latency and loses two citation hits on this set:
 
-Reproduce it with:
+- The loop fixes `q05`: the one-shot answer cites `rr-046`, a survival analysis with the 2024 and 2025 counts, while the loop cites `rr-012`, the season report that holds the gold answer.
+- The loop breaks `q08` and `q29`: its answers are supported by the records they cite, but those records are not on the gold list. The citation hit counts gold documents, so both count as misses. This is a metric limitation, not a hallucination.
+- Both modes miss `q47`: they cite `rr-056`, which contains the ferry fact, while the gold list names `rr-071` and `rr-066`. The fact is right and the attribution does not match the gold list.
+
+The eval set says the honest thing: on 50 curated questions about one corpus, the first retrieval is usually enough. The loop earns its latency on a different question. Turn 7 of the demo asks for the osprey count and the ranger who approved a drone flight. One-shot answers "67 osprey chicks" and cites two unrelated records. The loop decomposes the question, refetches, and answers 21 chicks with the osprey season report and the drone log, after one refeed.
+
+The out-of-corpus set is the other half of the contract. It has 12 general-knowledge questions the corpus cannot answer. The loop returned "not enough evidence" for all 12, at a mean of 1.1 s. A RAG system that always answers is not brave, it is unmeasured.
+
+Reproduce the three modes:
 
 ```bash
-pixi run eval -- --place raptor-reserve --answers --output scratch/answers.json
+pixi run eval-modes
+pixi run eval-unknown
+pixi run eval-script
+pixi run calibrate
 ```
 
-The command writes the full report, including the per question rows, so the numbers can be checked one by one.
+The commands write `evals/modes.json`, `evals/unknown.json`, and `evals/script.json` under the place, and the calibration page under `docs/`. The reports keep every per-question row, including the answer, the citations, and the decision data, so the numbers can be checked one by one.
+
+The citation hit rate is the share of answers that cite a document that holds the gold answer. It is not a faithfulness score: a faithful answer can cite the wrong document, and an unfaithful answer can cite the right one. The lab measures the first because it is cheap and automatic. A human check of the recorded turns is still the last word.
