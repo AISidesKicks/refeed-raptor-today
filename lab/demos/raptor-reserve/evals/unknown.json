@@ -1,0 +1,4307 @@
+{
+  "places": [
+    {
+      "place_id": "raptor-reserve",
+      "keyword": {
+        "questions": 50,
+        "recall_at_5": 0.98,
+        "recall_at_10": 0.98,
+        "recall_at_20": 1.0,
+        "mrr": 0.8292,
+        "place_id": "raptor-reserve",
+        "mode": "keyword",
+        "by_type": {
+          "multi": {
+            "questions": 10,
+            "recall_at_5": 1.0,
+            "recall_at_10": 1.0,
+            "recall_at_20": 1.0,
+            "mrr": 0.8833
+          },
+          "single": {
+            "questions": 40,
+            "recall_at_5": 0.975,
+            "recall_at_10": 0.975,
+            "recall_at_20": 1.0,
+            "mrr": 0.8156
+          }
+        },
+        "results": [
+          {
+            "id": "q01",
+            "question": "How many hectares does Raptor Reserve cover?",
+            "type": "single",
+            "gold": [
+              "rr-001"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q02",
+            "question": "Who is the director of Raptor Reserve?",
+            "type": "single",
+            "gold": [
+              "rr-001"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q03",
+            "question": "What is the 2026 operating budget?",
+            "type": "single",
+            "gold": [
+              "rr-003"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q04",
+            "question": "How many full-time staff does the reserve have?",
+            "type": "single",
+            "gold": [
+              "rr-001"
+            ],
+            "first_rank": 4
+          },
+          {
+            "id": "q05",
+            "question": "How many osprey chicks fledged in 2025?",
+            "type": "single",
+            "gold": [
+              "rr-012"
+            ],
+            "first_rank": 2
+          },
+          {
+            "id": "q06",
+            "question": "How many peregrine falcon pairs were monitored in 2025?",
+            "type": "single",
+            "gold": [
+              "rr-011"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q07",
+            "question": "Which species nests on the old radar tower at Granite Ridge?",
+            "type": "single",
+            "gold": [
+              "rr-016"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q08",
+            "question": "What was the peak day of the 2025 fall migration?",
+            "type": "single",
+            "gold": [
+              "rr-041"
+            ],
+            "first_rank": 2
+          },
+          {
+            "id": "q09",
+            "question": "How many raptors were counted in the fall 2025 migration?",
+            "type": "single",
+            "gold": [
+              "rr-041"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q10",
+            "question": "How many raptors were counted in the spring 2026 migration?",
+            "type": "single",
+            "gold": [
+              "rr-042"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q11",
+            "question": "At what wind speed are drone flights cancelled?",
+            "type": "single",
+            "gold": [
+              "rr-032"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q12",
+            "question": "Which ranger approved the drone flight on 12 September 2026?",
+            "type": "single",
+            "gold": [
+              "rr-034"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q13",
+            "question": "What caused the drone crash on 3 August 2025?",
+            "type": "single",
+            "gold": [
+              "rr-035"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q14",
+            "question": "Which storm damaged the South Beach boardwalk in January 2026?",
+            "type": "single",
+            "gold": [
+              "rr-036"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q15",
+            "question": "How much did the South Beach boardwalk repair cost?",
+            "type": "single",
+            "gold": [
+              "rr-036"
+            ],
+            "first_rank": 2
+          },
+          {
+            "id": "q16",
+            "question": "What was the name of the peregrine treated for lead poisoning in 2024?",
+            "type": "single",
+            "gold": [
+              "rr-037"
+            ],
+            "first_rank": 3
+          },
+          {
+            "id": "q17",
+            "question": "What was Juniper's blood lead level?",
+            "type": "single",
+            "gold": [
+              "rr-037"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q18",
+            "question": "How long was Juniper treated before release?",
+            "type": "single",
+            "gold": [
+              "rr-037"
+            ],
+            "first_rank": 2
+          },
+          {
+            "id": "q19",
+            "question": "How many northern harrier pairs were monitored in 2025?",
+            "type": "single",
+            "gold": [
+              "rr-013"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q20",
+            "question": "How many short-eared owl pairs were monitored in 2025?",
+            "type": "single",
+            "gold": [
+              "rr-014"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q21",
+            "question": "What is the reserve's policy on lead ammunition?",
+            "type": "single",
+            "gold": [
+              "rr-023"
+            ],
+            "first_rank": 2
+          },
+          {
+            "id": "q22",
+            "question": "How many camera traps are in the network?",
+            "type": "single",
+            "gold": [
+              "rr-030"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q23",
+            "question": "How many hours of audio did the acoustic array produce in 2025?",
+            "type": "single",
+            "gold": [
+              "rr-031"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q24",
+            "question": "What was the precision of the acoustic classifier?",
+            "type": "single",
+            "gold": [
+              "rr-050"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q25",
+            "question": "What was the recall of the acoustic classifier?",
+            "type": "single",
+            "gold": [
+              "rr-050"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q26",
+            "question": "How many visitors did the visitor center welcome in 2025?",
+            "type": "single",
+            "gold": [
+              "rr-056"
+            ],
+            "first_rank": 2
+          },
+          {
+            "id": "q27",
+            "question": "How many active volunteers does the reserve have?",
+            "type": "single",
+            "gold": [
+              "rr-059"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q28",
+            "question": "When was the North Point lighthouse built?",
+            "type": "single",
+            "gold": [
+              "rr-066"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q29",
+            "question": "How long is the ferry crossing to the island?",
+            "type": "single",
+            "gold": [
+              "rr-071"
+            ],
+            "first_rank": 11
+          },
+          {
+            "id": "q30",
+            "question": "When was Raptor Reserve founded?",
+            "type": "single",
+            "gold": [
+              "rr-076"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q31",
+            "question": "What does RAPTOR stand for?",
+            "type": "single",
+            "gold": [
+              "rr-087"
+            ],
+            "first_rank": 5
+          },
+          {
+            "id": "q32",
+            "question": "What is the arXiv id of the RAPTOR paper?",
+            "type": "single",
+            "gold": [
+              "rr-087"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q33",
+            "question": "What is the arXiv id of the SearchJev paper?",
+            "type": "single",
+            "gold": [
+              "rr-088"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q34",
+            "question": "What are the three System One question types?",
+            "type": "single",
+            "gold": [
+              "rr-088"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q35",
+            "question": "Which model does the reserve use for System 1 decisions?",
+            "type": "single",
+            "gold": [
+              "rr-091"
+            ],
+            "first_rank": 4
+          },
+          {
+            "id": "q36",
+            "question": "How many parameters does EmbeddingGemma 2 have in total?",
+            "type": "single",
+            "gold": [
+              "rr-089"
+            ],
+            "first_rank": 2
+          },
+          {
+            "id": "q37",
+            "question": "What is the native output dimension of EmbeddingGemma 2?",
+            "type": "single",
+            "gold": [
+              "rr-089"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q38",
+            "question": "How many total and active parameters does LFM2.5-8B-A1B have?",
+            "type": "single",
+            "gold": [
+              "rr-090"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q39",
+            "question": "What is the context window of LFM2.5-8B-A1B?",
+            "type": "single",
+            "gold": [
+              "rr-090"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q40",
+            "question": "What does ECE stand for in the calibration metrics?",
+            "type": "single",
+            "gold": [
+              "rr-094"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q41",
+            "question": "A drone flight is planned with a 35 km/h wind. May it proceed?",
+            "type": "multi",
+            "gold": [
+              "rr-032",
+              "rr-034"
+            ],
+            "first_rank": 2
+          },
+          {
+            "id": "q42",
+            "question": "Which storm damaged the South Beach boardwalk, and how much did the repair cost?",
+            "type": "multi",
+            "gold": [
+              "rr-036",
+              "rr-070"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q43",
+            "question": "How many osprey chicks fledged in 2025, and how many osprey pairs were monitored?",
+            "type": "multi",
+            "gold": [
+              "rr-012",
+              "rr-043"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q44",
+            "question": "Which species nests on the old radar tower, and how high is Granite Ridge?",
+            "type": "multi",
+            "gold": [
+              "rr-016",
+              "rr-033"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q45",
+            "question": "What is the reserve's lead ammunition policy, and which peregrine was treated for lead poisoning in 2024?",
+            "type": "multi",
+            "gold": [
+              "rr-023",
+              "rr-037"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q46",
+            "question": "What is the management plan target for occupied raptor territories, and how many territories were occupied in 2025?",
+            "type": "multi",
+            "gold": [
+              "rr-002",
+              "rr-043"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q47",
+            "question": "How long is the ferry crossing, and when are lighthouse tours offered?",
+            "type": "multi",
+            "gold": [
+              "rr-071",
+              "rr-066"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q48",
+            "question": "How many camera traps are in the network, and how many trap nights were logged in 2025?",
+            "type": "multi",
+            "gold": [
+              "rr-030",
+              "rr-052"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q49",
+            "question": "How many acoustic stations are in the array, and how many hours of audio were recorded in 2025?",
+            "type": "multi",
+            "gold": [
+              "rr-031",
+              "rr-050"
+            ],
+            "first_rank": 1
+          },
+          {
+            "id": "q50",
+            "question": "When is the visitor center open in summer, and when do the trails close?",
+            "type": "multi",
+            "gold": [
+              "rr-056",
+              "rr-057"
+            ],
+            "first_rank": 3
+          }
+        ]
+      },
+      "raptor": {
+        "questions": 50,
+        "recall_at_5": 0.96,
+        "recall_at_10": 0.98,
+        "recall_at_20": 1.0,
+        "mrr": 0.8614,
+        "place_id": "raptor-reserve",
+        "mode": "raptor",
+        "by_type": {
+          "multi": {
+            "questions": 10,
+            "recall_at_5": 0.9,
+            "recall_at_10": 0.9,
+            "recall_at_20": 1.0,
+            "mrr": 0.8571
+          },
+          "single": {
+            "questions": 40,
+            "recall_at_5": 0.975,
+            "recall_at_10": 1.0,
+            "recall_at_20": 1.0,
+            "mrr": 0.8625
+          }
+        },
+        "results": [
+          {
+            "id": "q01",
+            "question": "How many hectares does Raptor Reserve cover?",
+            "type": "single",
+            "gold": [
+              "rr-001"
+            ],
+            "first_rank": 1,
+            "first_node": "sum-l1-14",
+            "first_kind": "summary",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "sum-l1-14",
+                "kind": "summary",
+                "level": 1,
+                "score": 0.8198,
+                "doc_ids": [
+                  "rr-001",
+                  "rr-002",
+                  "rr-003",
+                  "rr-004",
+                  "rr-005",
+                  "rr-006",
+                  "rr-007",
+                  "rr-008",
+                  "rr-009",
+                  "rr-010"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "sum-l1-19",
+                "kind": "summary",
+                "level": 1,
+                "score": 0.8034,
+                "doc_ids": [
+                  "rr-076",
+                  "rr-077",
+                  "rr-078",
+                  "rr-080",
+                  "rr-082",
+                  "rr-083",
+                  "rr-085"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-001:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8017,
+                "doc_ids": [
+                  "rr-001"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-058:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7975,
+                "doc_ids": [
+                  "rr-058"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-057:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7845,
+                "doc_ids": [
+                  "rr-057"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q02",
+            "question": "Who is the director of Raptor Reserve?",
+            "type": "single",
+            "gold": [
+              "rr-001"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-001:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-001:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8254,
+                "doc_ids": [
+                  "rr-001"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "sum-l1-14",
+                "kind": "summary",
+                "level": 1,
+                "score": 0.8125,
+                "doc_ids": [
+                  "rr-001",
+                  "rr-002",
+                  "rr-003",
+                  "rr-004",
+                  "rr-005",
+                  "rr-006",
+                  "rr-007",
+                  "rr-008",
+                  "rr-009",
+                  "rr-010"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "sum-l1-19",
+                "kind": "summary",
+                "level": 1,
+                "score": 0.8015,
+                "doc_ids": [
+                  "rr-076",
+                  "rr-077",
+                  "rr-078",
+                  "rr-080",
+                  "rr-082",
+                  "rr-083",
+                  "rr-085"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-076:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7915,
+                "doc_ids": [
+                  "rr-076"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-058:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7758,
+                "doc_ids": [
+                  "rr-058"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q03",
+            "question": "What is the 2026 operating budget?",
+            "type": "single",
+            "gold": [
+              "rr-003"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-003:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-003:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8641,
+                "doc_ids": [
+                  "rr-003"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-003:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7611,
+                "doc_ids": [
+                  "rr-003"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-074:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7502,
+                "doc_ids": [
+                  "rr-074"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "sum-l1-14",
+                "kind": "summary",
+                "level": 1,
+                "score": 0.7384,
+                "doc_ids": [
+                  "rr-001",
+                  "rr-002",
+                  "rr-003",
+                  "rr-004",
+                  "rr-005",
+                  "rr-006",
+                  "rr-007",
+                  "rr-008",
+                  "rr-009",
+                  "rr-010"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-064:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7253,
+                "doc_ids": [
+                  "rr-064"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q04",
+            "question": "How many full-time staff does the reserve have?",
+            "type": "single",
+            "gold": [
+              "rr-001"
+            ],
+            "first_rank": 2,
+            "first_node": "rr-001:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-004:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7737,
+                "doc_ids": [
+                  "rr-004"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-001:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7603,
+                "doc_ids": [
+                  "rr-001"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-071:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7575,
+                "doc_ids": [
+                  "rr-071"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-059:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7517,
+                "doc_ids": [
+                  "rr-059"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "sum-l1-14",
+                "kind": "summary",
+                "level": 1,
+                "score": 0.748,
+                "doc_ids": [
+                  "rr-001",
+                  "rr-002",
+                  "rr-003",
+                  "rr-004",
+                  "rr-005",
+                  "rr-006",
+                  "rr-007",
+                  "rr-008",
+                  "rr-009",
+                  "rr-010"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q05",
+            "question": "How many osprey chicks fledged in 2025?",
+            "type": "single",
+            "gold": [
+              "rr-012"
+            ],
+            "first_rank": 2,
+            "first_node": "rr-012:001",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-043:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8564,
+                "doc_ids": [
+                  "rr-043"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-012:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8478,
+                "doc_ids": [
+                  "rr-012"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-046:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.841,
+                "doc_ids": [
+                  "rr-046"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-044:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8367,
+                "doc_ids": [
+                  "rr-044"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "sum-l1-15",
+                "kind": "summary",
+                "level": 1,
+                "score": 0.8338,
+                "doc_ids": [
+                  "rr-011",
+                  "rr-012",
+                  "rr-013",
+                  "rr-014",
+                  "rr-015",
+                  "rr-016",
+                  "rr-017",
+                  "rr-018",
+                  "rr-019"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q06",
+            "question": "How many peregrine falcon pairs were monitored in 2025?",
+            "type": "single",
+            "gold": [
+              "rr-011"
+            ],
+            "first_rank": 2,
+            "first_node": "sum-l1-15",
+            "first_kind": "summary",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-043:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.833,
+                "doc_ids": [
+                  "rr-043"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "sum-l1-15",
+                "kind": "summary",
+                "level": 1,
+                "score": 0.8261,
+                "doc_ids": [
+                  "rr-011",
+                  "rr-012",
+                  "rr-013",
+                  "rr-014",
+                  "rr-015",
+                  "rr-016",
+                  "rr-017",
+                  "rr-018",
+                  "rr-019"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-041:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8193,
+                "doc_ids": [
+                  "rr-041"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-011:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8193,
+                "doc_ids": [
+                  "rr-011"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-044:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8169,
+                "doc_ids": [
+                  "rr-044"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q07",
+            "question": "Which species nests on the old radar tower at Granite Ridge?",
+            "type": "single",
+            "gold": [
+              "rr-016"
+            ],
+            "first_rank": 2,
+            "first_node": "rr-016:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-079:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8291,
+                "doc_ids": [
+                  "rr-079"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-016:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8169,
+                "doc_ids": [
+                  "rr-016"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-014:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7803,
+                "doc_ids": [
+                  "rr-014"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-033:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7599,
+                "doc_ids": [
+                  "rr-033"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-017:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7579,
+                "doc_ids": [
+                  "rr-017"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q08",
+            "question": "What was the peak day of the 2025 fall migration?",
+            "type": "single",
+            "gold": [
+              "rr-041"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-041:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-041:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8254,
+                "doc_ids": [
+                  "rr-041"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-021:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7991,
+                "doc_ids": [
+                  "rr-021"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-027:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7724,
+                "doc_ids": [
+                  "rr-027"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-027:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7616,
+                "doc_ids": [
+                  "rr-027"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "sum-l1-12",
+                "kind": "summary",
+                "level": 1,
+                "score": 0.7509,
+                "doc_ids": [
+                  "rr-022",
+                  "rr-041",
+                  "rr-042",
+                  "rr-043",
+                  "rr-044",
+                  "rr-047"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q09",
+            "question": "How many raptors were counted in the fall 2025 migration?",
+            "type": "single",
+            "gold": [
+              "rr-041"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-041:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-041:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8707,
+                "doc_ids": [
+                  "rr-041"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "sum-l1-12",
+                "kind": "summary",
+                "level": 1,
+                "score": 0.8313,
+                "doc_ids": [
+                  "rr-022",
+                  "rr-041",
+                  "rr-042",
+                  "rr-043",
+                  "rr-044",
+                  "rr-047"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-043:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.822,
+                "doc_ids": [
+                  "rr-043"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-042:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8193,
+                "doc_ids": [
+                  "rr-042"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "sum-l1-08",
+                "kind": "summary",
+                "level": 1,
+                "score": 0.8137,
+                "doc_ids": [
+                  "rr-020",
+                  "rr-021",
+                  "rr-022",
+                  "rr-023",
+                  "rr-024",
+                  "rr-025"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q10",
+            "question": "How many raptors were counted in the spring 2026 migration?",
+            "type": "single",
+            "gold": [
+              "rr-042"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-042:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-042:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8745,
+                "doc_ids": [
+                  "rr-042"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-041:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8234,
+                "doc_ids": [
+                  "rr-041"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "sum-l1-12",
+                "kind": "summary",
+                "level": 1,
+                "score": 0.8227,
+                "doc_ids": [
+                  "rr-022",
+                  "rr-041",
+                  "rr-042",
+                  "rr-043",
+                  "rr-044",
+                  "rr-047"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "sum-l2-01",
+                "kind": "summary",
+                "level": 2,
+                "score": 0.8129,
+                "doc_ids": [
+                  "rr-011",
+                  "rr-012",
+                  "rr-013",
+                  "rr-014",
+                  "rr-015",
+                  "rr-016",
+                  "rr-017",
+                  "rr-018",
+                  "rr-019",
+                  "rr-020",
+                  "rr-021",
+                  "rr-022",
+                  "rr-023",
+                  "rr-024",
+                  "rr-025",
+                  "rr-026",
+                  "rr-027",
+                  "rr-032",
+                  "rr-033",
+                  "rr-034",
+                  "rr-035",
+                  "rr-036",
+                  "rr-037",
+                  "rr-038",
+                  "rr-039",
+                  "rr-040",
+                  "rr-041",
+                  "rr-042",
+                  "rr-043",
+                  "rr-044",
+                  "rr-045",
+                  "rr-046",
+                  "rr-047",
+                  "rr-048",
+                  "rr-049",
+                  "rr-050",
+                  "rr-051",
+                  "rr-052",
+                  "rr-053",
+                  "rr-054",
+                  "rr-055",
+                  "rr-056",
+                  "rr-057",
+                  "rr-058",
+                  "rr-059",
+                  "rr-060",
+                  "rr-061",
+                  "rr-062",
+                  "rr-063",
+                  "rr-064",
+                  "rr-065"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-053:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8092,
+                "doc_ids": [
+                  "rr-053"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q11",
+            "question": "At what wind speed are drone flights cancelled?",
+            "type": "single",
+            "gold": [
+              "rr-032"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-032:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-032:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7928,
+                "doc_ids": [
+                  "rr-032"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-032:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7736,
+                "doc_ids": [
+                  "rr-032"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-035:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7448,
+                "doc_ids": [
+                  "rr-035"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "sum-l2-01",
+                "kind": "summary",
+                "level": 2,
+                "score": 0.7401,
+                "doc_ids": [
+                  "rr-011",
+                  "rr-012",
+                  "rr-013",
+                  "rr-014",
+                  "rr-015",
+                  "rr-016",
+                  "rr-017",
+                  "rr-018",
+                  "rr-019",
+                  "rr-020",
+                  "rr-021",
+                  "rr-022",
+                  "rr-023",
+                  "rr-024",
+                  "rr-025",
+                  "rr-026",
+                  "rr-027",
+                  "rr-032",
+                  "rr-033",
+                  "rr-034",
+                  "rr-035",
+                  "rr-036",
+                  "rr-037",
+                  "rr-038",
+                  "rr-039",
+                  "rr-040",
+                  "rr-041",
+                  "rr-042",
+                  "rr-043",
+                  "rr-044",
+                  "rr-045",
+                  "rr-046",
+                  "rr-047",
+                  "rr-048",
+                  "rr-049",
+                  "rr-050",
+                  "rr-051",
+                  "rr-052",
+                  "rr-053",
+                  "rr-054",
+                  "rr-055",
+                  "rr-056",
+                  "rr-057",
+                  "rr-058",
+                  "rr-059",
+                  "rr-060",
+                  "rr-061",
+                  "rr-062",
+                  "rr-063",
+                  "rr-064",
+                  "rr-065"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-061:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7287,
+                "doc_ids": [
+                  "rr-061"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q12",
+            "question": "Which ranger approved the drone flight on 12 September 2026?",
+            "type": "single",
+            "gold": [
+              "rr-034"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-034:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-034:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8194,
+                "doc_ids": [
+                  "rr-034"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-038:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7984,
+                "doc_ids": [
+                  "rr-038"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-032:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7924,
+                "doc_ids": [
+                  "rr-032"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-035:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7787,
+                "doc_ids": [
+                  "rr-035"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-034:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7765,
+                "doc_ids": [
+                  "rr-034"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q13",
+            "question": "What caused the drone crash on 3 August 2025?",
+            "type": "single",
+            "gold": [
+              "rr-035"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-035:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-035:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8348,
+                "doc_ids": [
+                  "rr-035"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-035:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7949,
+                "doc_ids": [
+                  "rr-035"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-032:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7216,
+                "doc_ids": [
+                  "rr-032"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-051:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7148,
+                "doc_ids": [
+                  "rr-051"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-072:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7093,
+                "doc_ids": [
+                  "rr-072"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q14",
+            "question": "Which storm damaged the South Beach boardwalk in January 2026?",
+            "type": "single",
+            "gold": [
+              "rr-036"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-036:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-036:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7651,
+                "doc_ids": [
+                  "rr-036"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-074:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7048,
+                "doc_ids": [
+                  "rr-074"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-051:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7003,
+                "doc_ids": [
+                  "rr-051"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-053:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.6937,
+                "doc_ids": [
+                  "rr-053"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-046:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.6932,
+                "doc_ids": [
+                  "rr-046"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q15",
+            "question": "How much did the South Beach boardwalk repair cost?",
+            "type": "single",
+            "gold": [
+              "rr-036"
+            ],
+            "first_rank": 3,
+            "first_node": "rr-036:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-003:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7395,
+                "doc_ids": [
+                  "rr-003"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-070:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7351,
+                "doc_ids": [
+                  "rr-070"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-036:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.727,
+                "doc_ids": [
+                  "rr-036"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-066:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7129,
+                "doc_ids": [
+                  "rr-066"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-051:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7114,
+                "doc_ids": [
+                  "rr-051"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q16",
+            "question": "What was the name of the peregrine treated for lead poisoning in 2024?",
+            "type": "single",
+            "gold": [
+              "rr-037"
+            ],
+            "first_rank": 2,
+            "first_node": "rr-037:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-023:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8437,
+                "doc_ids": [
+                  "rr-023"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-037:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8269,
+                "doc_ids": [
+                  "rr-037"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-011:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8074,
+                "doc_ids": [
+                  "rr-011"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-044:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7819,
+                "doc_ids": [
+                  "rr-044"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-023:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7704,
+                "doc_ids": [
+                  "rr-023"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q17",
+            "question": "What was Juniper's blood lead level?",
+            "type": "single",
+            "gold": [
+              "rr-037"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-037:001",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-037:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7782,
+                "doc_ids": [
+                  "rr-037"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-037:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7779,
+                "doc_ids": [
+                  "rr-037"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-023:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.773,
+                "doc_ids": [
+                  "rr-023"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "sum-l2-01",
+                "kind": "summary",
+                "level": 2,
+                "score": 0.6958,
+                "doc_ids": [
+                  "rr-011",
+                  "rr-012",
+                  "rr-013",
+                  "rr-014",
+                  "rr-015",
+                  "rr-016",
+                  "rr-017",
+                  "rr-018",
+                  "rr-019",
+                  "rr-020",
+                  "rr-021",
+                  "rr-022",
+                  "rr-023",
+                  "rr-024",
+                  "rr-025",
+                  "rr-026",
+                  "rr-027",
+                  "rr-032",
+                  "rr-033",
+                  "rr-034",
+                  "rr-035",
+                  "rr-036",
+                  "rr-037",
+                  "rr-038",
+                  "rr-039",
+                  "rr-040",
+                  "rr-041",
+                  "rr-042",
+                  "rr-043",
+                  "rr-044",
+                  "rr-045",
+                  "rr-046",
+                  "rr-047",
+                  "rr-048",
+                  "rr-049",
+                  "rr-050",
+                  "rr-051",
+                  "rr-052",
+                  "rr-053",
+                  "rr-054",
+                  "rr-055",
+                  "rr-056",
+                  "rr-057",
+                  "rr-058",
+                  "rr-059",
+                  "rr-060",
+                  "rr-061",
+                  "rr-062",
+                  "rr-063",
+                  "rr-064",
+                  "rr-065"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-023:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.6939,
+                "doc_ids": [
+                  "rr-023"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q18",
+            "question": "How long was Juniper treated before release?",
+            "type": "single",
+            "gold": [
+              "rr-037"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-037:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-037:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7284,
+                "doc_ids": [
+                  "rr-037"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-037:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7276,
+                "doc_ids": [
+                  "rr-037"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-023:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7187,
+                "doc_ids": [
+                  "rr-023"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-088:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.6837,
+                "doc_ids": [
+                  "rr-088"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-098:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.6833,
+                "doc_ids": [
+                  "rr-098"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q19",
+            "question": "How many northern harrier pairs were monitored in 2025?",
+            "type": "single",
+            "gold": [
+              "rr-013"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-013:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-013:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8408,
+                "doc_ids": [
+                  "rr-013"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-043:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8255,
+                "doc_ids": [
+                  "rr-043"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "sum-l1-15",
+                "kind": "summary",
+                "level": 1,
+                "score": 0.8155,
+                "doc_ids": [
+                  "rr-011",
+                  "rr-012",
+                  "rr-013",
+                  "rr-014",
+                  "rr-015",
+                  "rr-016",
+                  "rr-017",
+                  "rr-018",
+                  "rr-019"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-041:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8117,
+                "doc_ids": [
+                  "rr-041"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-013:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8113,
+                "doc_ids": [
+                  "rr-013"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q20",
+            "question": "How many short-eared owl pairs were monitored in 2025?",
+            "type": "single",
+            "gold": [
+              "rr-014"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-014:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-014:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8331,
+                "doc_ids": [
+                  "rr-014"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-014:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8309,
+                "doc_ids": [
+                  "rr-014"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-043:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7975,
+                "doc_ids": [
+                  "rr-043"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-015:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7975,
+                "doc_ids": [
+                  "rr-015"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-015:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.789,
+                "doc_ids": [
+                  "rr-015"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q21",
+            "question": "What is the reserve's policy on lead ammunition?",
+            "type": "single",
+            "gold": [
+              "rr-023"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-023:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-023:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7717,
+                "doc_ids": [
+                  "rr-023"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-037:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7708,
+                "doc_ids": [
+                  "rr-037"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-023:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.755,
+                "doc_ids": [
+                  "rr-023"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-073:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7503,
+                "doc_ids": [
+                  "rr-073"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-074:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.75,
+                "doc_ids": [
+                  "rr-074"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q22",
+            "question": "How many camera traps are in the network?",
+            "type": "single",
+            "gold": [
+              "rr-030"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-030:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-030:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7901,
+                "doc_ids": [
+                  "rr-030"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-052:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7639,
+                "doc_ids": [
+                  "rr-052"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-030:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7309,
+                "doc_ids": [
+                  "rr-030"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-052:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7182,
+                "doc_ids": [
+                  "rr-052"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "sum-l1-08",
+                "kind": "summary",
+                "level": 1,
+                "score": 0.7104,
+                "doc_ids": [
+                  "rr-020",
+                  "rr-021",
+                  "rr-022",
+                  "rr-023",
+                  "rr-024",
+                  "rr-025"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q23",
+            "question": "How many hours of audio did the acoustic array produce in 2025?",
+            "type": "single",
+            "gold": [
+              "rr-031"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-031:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-031:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7701,
+                "doc_ids": [
+                  "rr-031"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-050:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7363,
+                "doc_ids": [
+                  "rr-050"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-051:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7169,
+                "doc_ids": [
+                  "rr-051"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-050:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.711,
+                "doc_ids": [
+                  "rr-050"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-067:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7031,
+                "doc_ids": [
+                  "rr-067"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q24",
+            "question": "What was the precision of the acoustic classifier?",
+            "type": "single",
+            "gold": [
+              "rr-050"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-050:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-050:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.776,
+                "doc_ids": [
+                  "rr-050"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-050:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7352,
+                "doc_ids": [
+                  "rr-050"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-100:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7351,
+                "doc_ids": [
+                  "rr-100"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-088:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7194,
+                "doc_ids": [
+                  "rr-088"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-031:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7169,
+                "doc_ids": [
+                  "rr-031"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q25",
+            "question": "What was the recall of the acoustic classifier?",
+            "type": "single",
+            "gold": [
+              "rr-050"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-050:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-050:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7863,
+                "doc_ids": [
+                  "rr-050"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-050:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.748,
+                "doc_ids": [
+                  "rr-050"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-098:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.734,
+                "doc_ids": [
+                  "rr-098"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-097:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7292,
+                "doc_ids": [
+                  "rr-097"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-100:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7242,
+                "doc_ids": [
+                  "rr-100"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q26",
+            "question": "How many visitors did the visitor center welcome in 2025?",
+            "type": "single",
+            "gold": [
+              "rr-056"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-056:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-056:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7923,
+                "doc_ids": [
+                  "rr-056"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-024:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.79,
+                "doc_ids": [
+                  "rr-024"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-024:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7801,
+                "doc_ids": [
+                  "rr-024"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-043:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7794,
+                "doc_ids": [
+                  "rr-043"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-041:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7768,
+                "doc_ids": [
+                  "rr-041"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q27",
+            "question": "How many active volunteers does the reserve have?",
+            "type": "single",
+            "gold": [
+              "rr-059"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-059:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-059:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7991,
+                "doc_ids": [
+                  "rr-059"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-001:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7557,
+                "doc_ids": [
+                  "rr-001"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-068:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7556,
+                "doc_ids": [
+                  "rr-068"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "sum-l1-14",
+                "kind": "summary",
+                "level": 1,
+                "score": 0.7519,
+                "doc_ids": [
+                  "rr-001",
+                  "rr-002",
+                  "rr-003",
+                  "rr-004",
+                  "rr-005",
+                  "rr-006",
+                  "rr-007",
+                  "rr-008",
+                  "rr-009",
+                  "rr-010"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-074:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7501,
+                "doc_ids": [
+                  "rr-074"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q28",
+            "question": "When was the North Point lighthouse built?",
+            "type": "single",
+            "gold": [
+              "rr-066"
+            ],
+            "first_rank": 2,
+            "first_node": "rr-066:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-078:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8279,
+                "doc_ids": [
+                  "rr-078"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-066:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.807,
+                "doc_ids": [
+                  "rr-066"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "sum-l1-13",
+                "kind": "summary",
+                "level": 1,
+                "score": 0.7621,
+                "doc_ids": [
+                  "rr-066",
+                  "rr-067",
+                  "rr-068",
+                  "rr-069",
+                  "rr-070",
+                  "rr-071",
+                  "rr-072",
+                  "rr-073",
+                  "rr-074",
+                  "rr-075"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-081:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7587,
+                "doc_ids": [
+                  "rr-081"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-082:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7446,
+                "doc_ids": [
+                  "rr-082"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q29",
+            "question": "How long is the ferry crossing to the island?",
+            "type": "single",
+            "gold": [
+              "rr-071"
+            ],
+            "first_rank": 6,
+            "first_node": "rr-071:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-062:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7621,
+                "doc_ids": [
+                  "rr-062"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-056:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.761,
+                "doc_ids": [
+                  "rr-056"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-058:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7593,
+                "doc_ids": [
+                  "rr-058"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-057:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7581,
+                "doc_ids": [
+                  "rr-057"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-062:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7531,
+                "doc_ids": [
+                  "rr-062"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q30",
+            "question": "When was Raptor Reserve founded?",
+            "type": "single",
+            "gold": [
+              "rr-076"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-076:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-076:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8513,
+                "doc_ids": [
+                  "rr-076"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "sum-l1-19",
+                "kind": "summary",
+                "level": 1,
+                "score": 0.8466,
+                "doc_ids": [
+                  "rr-076",
+                  "rr-077",
+                  "rr-078",
+                  "rr-080",
+                  "rr-082",
+                  "rr-083",
+                  "rr-085"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-001:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8252,
+                "doc_ids": [
+                  "rr-001"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "sum-l1-14",
+                "kind": "summary",
+                "level": 1,
+                "score": 0.8137,
+                "doc_ids": [
+                  "rr-001",
+                  "rr-002",
+                  "rr-003",
+                  "rr-004",
+                  "rr-005",
+                  "rr-006",
+                  "rr-007",
+                  "rr-008",
+                  "rr-009",
+                  "rr-010"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-058:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8109,
+                "doc_ids": [
+                  "rr-058"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q31",
+            "question": "What does RAPTOR stand for?",
+            "type": "single",
+            "gold": [
+              "rr-087"
+            ],
+            "first_rank": 2,
+            "first_node": "rr-087:001",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-076:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.757,
+                "doc_ids": [
+                  "rr-076"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-087:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7524,
+                "doc_ids": [
+                  "rr-087"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-058:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7463,
+                "doc_ids": [
+                  "rr-058"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "sum-l1-19",
+                "kind": "summary",
+                "level": 1,
+                "score": 0.7438,
+                "doc_ids": [
+                  "rr-076",
+                  "rr-077",
+                  "rr-078",
+                  "rr-080",
+                  "rr-082",
+                  "rr-083",
+                  "rr-085"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-001:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7253,
+                "doc_ids": [
+                  "rr-001"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q32",
+            "question": "What is the arXiv id of the RAPTOR paper?",
+            "type": "single",
+            "gold": [
+              "rr-087"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-087:001",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-087:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7448,
+                "doc_ids": [
+                  "rr-087"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-097:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7237,
+                "doc_ids": [
+                  "rr-097"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-098:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7216,
+                "doc_ids": [
+                  "rr-098"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "sum-l2-00",
+                "kind": "summary",
+                "level": 2,
+                "score": 0.7159,
+                "doc_ids": [
+                  "rr-001",
+                  "rr-002",
+                  "rr-003",
+                  "rr-004",
+                  "rr-005",
+                  "rr-006",
+                  "rr-007",
+                  "rr-008",
+                  "rr-009",
+                  "rr-010",
+                  "rr-026",
+                  "rr-027",
+                  "rr-028",
+                  "rr-029",
+                  "rr-030",
+                  "rr-031",
+                  "rr-032",
+                  "rr-033",
+                  "rr-034",
+                  "rr-036",
+                  "rr-037",
+                  "rr-038",
+                  "rr-039",
+                  "rr-040",
+                  "rr-041",
+                  "rr-042",
+                  "rr-043",
+                  "rr-044",
+                  "rr-047",
+                  "rr-049",
+                  "rr-050",
+                  "rr-051",
+                  "rr-052",
+                  "rr-053",
+                  "rr-054",
+                  "rr-055",
+                  "rr-056",
+                  "rr-057",
+                  "rr-058",
+                  "rr-059",
+                  "rr-060",
+                  "rr-061",
+                  "rr-062",
+                  "rr-063",
+                  "rr-064",
+                  "rr-065",
+                  "rr-066",
+                  "rr-067",
+                  "rr-068",
+                  "rr-069",
+                  "rr-070",
+                  "rr-071",
+                  "rr-072",
+                  "rr-073",
+                  "rr-074",
+                  "rr-075",
+                  "rr-076",
+                  "rr-077",
+                  "rr-078",
+                  "rr-079",
+                  "rr-080",
+                  "rr-081",
+                  "rr-082",
+                  "rr-083",
+                  "rr-084",
+                  "rr-085",
+                  "rr-086",
+                  "rr-087",
+                  "rr-088",
+                  "rr-089",
+                  "rr-090",
+                  "rr-091",
+                  "rr-092",
+                  "rr-093",
+                  "rr-094",
+                  "rr-095",
+                  "rr-096",
+                  "rr-097",
+                  "rr-098",
+                  "rr-099",
+                  "rr-100"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "sum-l1-15",
+                "kind": "summary",
+                "level": 1,
+                "score": 0.7128,
+                "doc_ids": [
+                  "rr-011",
+                  "rr-012",
+                  "rr-013",
+                  "rr-014",
+                  "rr-015",
+                  "rr-016",
+                  "rr-017",
+                  "rr-018",
+                  "rr-019"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q33",
+            "question": "What is the arXiv id of the SearchJev paper?",
+            "type": "single",
+            "gold": [
+              "rr-088"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-088:001",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-088:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7338,
+                "doc_ids": [
+                  "rr-088"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-097:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.731,
+                "doc_ids": [
+                  "rr-097"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-088:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7211,
+                "doc_ids": [
+                  "rr-088"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-098:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7205,
+                "doc_ids": [
+                  "rr-098"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-099:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7145,
+                "doc_ids": [
+                  "rr-099"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q34",
+            "question": "What are the three System One question types?",
+            "type": "single",
+            "gold": [
+              "rr-088"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-088:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-088:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7354,
+                "doc_ids": [
+                  "rr-088"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-099:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7329,
+                "doc_ids": [
+                  "rr-099"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-088:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7318,
+                "doc_ids": [
+                  "rr-088"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-091:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7278,
+                "doc_ids": [
+                  "rr-091"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-099:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7194,
+                "doc_ids": [
+                  "rr-099"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q35",
+            "question": "Which model does the reserve use for System 1 decisions?",
+            "type": "single",
+            "gold": [
+              "rr-091"
+            ],
+            "first_rank": 1,
+            "first_node": "sum-l1-01",
+            "first_kind": "summary",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "sum-l1-01",
+                "kind": "summary",
+                "level": 1,
+                "score": 0.7953,
+                "doc_ids": [
+                  "rr-086",
+                  "rr-087",
+                  "rr-088",
+                  "rr-091",
+                  "rr-093",
+                  "rr-094",
+                  "rr-095",
+                  "rr-096",
+                  "rr-097",
+                  "rr-098",
+                  "rr-099",
+                  "rr-100"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "sum-l2-00",
+                "kind": "summary",
+                "level": 2,
+                "score": 0.7801,
+                "doc_ids": [
+                  "rr-001",
+                  "rr-002",
+                  "rr-003",
+                  "rr-004",
+                  "rr-005",
+                  "rr-006",
+                  "rr-007",
+                  "rr-008",
+                  "rr-009",
+                  "rr-010",
+                  "rr-026",
+                  "rr-027",
+                  "rr-028",
+                  "rr-029",
+                  "rr-030",
+                  "rr-031",
+                  "rr-032",
+                  "rr-033",
+                  "rr-034",
+                  "rr-036",
+                  "rr-037",
+                  "rr-038",
+                  "rr-039",
+                  "rr-040",
+                  "rr-041",
+                  "rr-042",
+                  "rr-043",
+                  "rr-044",
+                  "rr-047",
+                  "rr-049",
+                  "rr-050",
+                  "rr-051",
+                  "rr-052",
+                  "rr-053",
+                  "rr-054",
+                  "rr-055",
+                  "rr-056",
+                  "rr-057",
+                  "rr-058",
+                  "rr-059",
+                  "rr-060",
+                  "rr-061",
+                  "rr-062",
+                  "rr-063",
+                  "rr-064",
+                  "rr-065",
+                  "rr-066",
+                  "rr-067",
+                  "rr-068",
+                  "rr-069",
+                  "rr-070",
+                  "rr-071",
+                  "rr-072",
+                  "rr-073",
+                  "rr-074",
+                  "rr-075",
+                  "rr-076",
+                  "rr-077",
+                  "rr-078",
+                  "rr-079",
+                  "rr-080",
+                  "rr-081",
+                  "rr-082",
+                  "rr-083",
+                  "rr-084",
+                  "rr-085",
+                  "rr-086",
+                  "rr-087",
+                  "rr-088",
+                  "rr-089",
+                  "rr-090",
+                  "rr-091",
+                  "rr-092",
+                  "rr-093",
+                  "rr-094",
+                  "rr-095",
+                  "rr-096",
+                  "rr-097",
+                  "rr-098",
+                  "rr-099",
+                  "rr-100"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-088:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7677,
+                "doc_ids": [
+                  "rr-088"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-091:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7585,
+                "doc_ids": [
+                  "rr-091"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-068:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7557,
+                "doc_ids": [
+                  "rr-068"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q36",
+            "question": "How many parameters does EmbeddingGemma 2 have in total?",
+            "type": "single",
+            "gold": [
+              "rr-089"
+            ],
+            "first_rank": 2,
+            "first_node": "rr-089:001",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-100:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.758,
+                "doc_ids": [
+                  "rr-100"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-089:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7501,
+                "doc_ids": [
+                  "rr-089"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-100:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7375,
+                "doc_ids": [
+                  "rr-100"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-096:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7358,
+                "doc_ids": [
+                  "rr-096"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-096:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7356,
+                "doc_ids": [
+                  "rr-096"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q37",
+            "question": "What is the native output dimension of EmbeddingGemma 2?",
+            "type": "single",
+            "gold": [
+              "rr-089"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-089:001",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-089:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7604,
+                "doc_ids": [
+                  "rr-089"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-100:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.757,
+                "doc_ids": [
+                  "rr-100"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-089:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7417,
+                "doc_ids": [
+                  "rr-089"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-100:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7397,
+                "doc_ids": [
+                  "rr-100"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-096:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7383,
+                "doc_ids": [
+                  "rr-096"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q38",
+            "question": "How many total and active parameters does LFM2.5-8B-A1B have?",
+            "type": "single",
+            "gold": [
+              "rr-090"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-090:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-090:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7437,
+                "doc_ids": [
+                  "rr-090"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-090:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7251,
+                "doc_ids": [
+                  "rr-090"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-091:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7053,
+                "doc_ids": [
+                  "rr-091"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-097:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.6999,
+                "doc_ids": [
+                  "rr-097"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-100:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.6995,
+                "doc_ids": [
+                  "rr-100"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q39",
+            "question": "What is the context window of LFM2.5-8B-A1B?",
+            "type": "single",
+            "gold": [
+              "rr-090"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-090:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-090:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7657,
+                "doc_ids": [
+                  "rr-090"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-090:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7543,
+                "doc_ids": [
+                  "rr-090"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-091:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7328,
+                "doc_ids": [
+                  "rr-091"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-097:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.72,
+                "doc_ids": [
+                  "rr-097"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-098:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7168,
+                "doc_ids": [
+                  "rr-098"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q40",
+            "question": "What does ECE stand for in the calibration metrics?",
+            "type": "single",
+            "gold": [
+              "rr-094"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-094:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-094:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7611,
+                "doc_ids": [
+                  "rr-094"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-094:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7224,
+                "doc_ids": [
+                  "rr-094"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-100:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7091,
+                "doc_ids": [
+                  "rr-100"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-099:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.6948,
+                "doc_ids": [
+                  "rr-099"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-100:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.6922,
+                "doc_ids": [
+                  "rr-100"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q41",
+            "question": "A drone flight is planned with a 35 km/h wind. May it proceed?",
+            "type": "multi",
+            "gold": [
+              "rr-032",
+              "rr-034"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-032:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-032:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7468,
+                "doc_ids": [
+                  "rr-032"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-032:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7197,
+                "doc_ids": [
+                  "rr-032"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-051:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.6892,
+                "doc_ids": [
+                  "rr-051"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-033:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.6882,
+                "doc_ids": [
+                  "rr-033"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-035:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.687,
+                "doc_ids": [
+                  "rr-035"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q42",
+            "question": "Which storm damaged the South Beach boardwalk, and how much did the repair cost?",
+            "type": "multi",
+            "gold": [
+              "rr-036",
+              "rr-070"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-036:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-036:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7604,
+                "doc_ids": [
+                  "rr-036"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-070:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7031,
+                "doc_ids": [
+                  "rr-070"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-070:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7003,
+                "doc_ids": [
+                  "rr-070"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-003:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.6931,
+                "doc_ids": [
+                  "rr-003"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-051:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.692,
+                "doc_ids": [
+                  "rr-051"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q43",
+            "question": "How many osprey chicks fledged in 2025, and how many osprey pairs were monitored?",
+            "type": "multi",
+            "gold": [
+              "rr-012",
+              "rr-043"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-043:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-043:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8558,
+                "doc_ids": [
+                  "rr-043"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "sum-l1-15",
+                "kind": "summary",
+                "level": 1,
+                "score": 0.8471,
+                "doc_ids": [
+                  "rr-011",
+                  "rr-012",
+                  "rr-013",
+                  "rr-014",
+                  "rr-015",
+                  "rr-016",
+                  "rr-017",
+                  "rr-018",
+                  "rr-019"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-012:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8458,
+                "doc_ids": [
+                  "rr-012"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-012:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8409,
+                "doc_ids": [
+                  "rr-012"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-044:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8379,
+                "doc_ids": [
+                  "rr-044"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q44",
+            "question": "Which species nests on the old radar tower, and how high is Granite Ridge?",
+            "type": "multi",
+            "gold": [
+              "rr-016",
+              "rr-033"
+            ],
+            "first_rank": 2,
+            "first_node": "rr-016:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-079:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8372,
+                "doc_ids": [
+                  "rr-079"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-016:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8132,
+                "doc_ids": [
+                  "rr-016"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-033:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7754,
+                "doc_ids": [
+                  "rr-033"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-014:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7716,
+                "doc_ids": [
+                  "rr-014"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-057:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.76,
+                "doc_ids": [
+                  "rr-057"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q45",
+            "question": "What is the reserve's lead ammunition policy, and which peregrine was treated for lead poisoning in 2024?",
+            "type": "multi",
+            "gold": [
+              "rr-023",
+              "rr-037"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-023:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-023:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8538,
+                "doc_ids": [
+                  "rr-023"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-037:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8367,
+                "doc_ids": [
+                  "rr-037"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-011:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8127,
+                "doc_ids": [
+                  "rr-011"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-023:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7998,
+                "doc_ids": [
+                  "rr-023"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-037:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7996,
+                "doc_ids": [
+                  "rr-037"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q46",
+            "question": "What is the management plan target for occupied raptor territories, and how many territories were occupied in 2025?",
+            "type": "multi",
+            "gold": [
+              "rr-002",
+              "rr-043"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-002:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-002:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8249,
+                "doc_ids": [
+                  "rr-002"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-043:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8139,
+                "doc_ids": [
+                  "rr-043"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-045:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8134,
+                "doc_ids": [
+                  "rr-045"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "sum-l1-12",
+                "kind": "summary",
+                "level": 1,
+                "score": 0.8073,
+                "doc_ids": [
+                  "rr-022",
+                  "rr-041",
+                  "rr-042",
+                  "rr-043",
+                  "rr-044",
+                  "rr-047"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "sum-l1-15",
+                "kind": "summary",
+                "level": 1,
+                "score": 0.798,
+                "doc_ids": [
+                  "rr-011",
+                  "rr-012",
+                  "rr-013",
+                  "rr-014",
+                  "rr-015",
+                  "rr-016",
+                  "rr-017",
+                  "rr-018",
+                  "rr-019"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q47",
+            "question": "How long is the ferry crossing, and when are lighthouse tours offered?",
+            "type": "multi",
+            "gold": [
+              "rr-071",
+              "rr-066"
+            ],
+            "first_rank": 14,
+            "first_node": "rr-071:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-056:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7633,
+                "doc_ids": [
+                  "rr-056"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-057:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7603,
+                "doc_ids": [
+                  "rr-057"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-058:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7603,
+                "doc_ids": [
+                  "rr-058"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-062:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7585,
+                "doc_ids": [
+                  "rr-062"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-063:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7573,
+                "doc_ids": [
+                  "rr-063"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q48",
+            "question": "How many camera traps are in the network, and how many trap nights were logged in 2025?",
+            "type": "multi",
+            "gold": [
+              "rr-030",
+              "rr-052"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-030:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-030:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.792,
+                "doc_ids": [
+                  "rr-030"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-052:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7888,
+                "doc_ids": [
+                  "rr-052"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-052:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.744,
+                "doc_ids": [
+                  "rr-052"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-030:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7361,
+                "doc_ids": [
+                  "rr-030"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-022:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7318,
+                "doc_ids": [
+                  "rr-022"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q49",
+            "question": "How many acoustic stations are in the array, and how many hours of audio were recorded in 2025?",
+            "type": "multi",
+            "gold": [
+              "rr-031",
+              "rr-050"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-031:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-031:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.8096,
+                "doc_ids": [
+                  "rr-031"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-050:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7511,
+                "doc_ids": [
+                  "rr-050"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "rr-050:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7333,
+                "doc_ids": [
+                  "rr-050"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-043:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7262,
+                "doc_ids": [
+                  "rr-043"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-022:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7229,
+                "doc_ids": [
+                  "rr-022"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "q50",
+            "question": "When is the visitor center open in summer, and when do the trails close?",
+            "type": "multi",
+            "gold": [
+              "rr-056",
+              "rr-057"
+            ],
+            "first_rank": 1,
+            "first_node": "rr-056:000",
+            "first_kind": "chunk",
+            "top": [
+              {
+                "rank": 1,
+                "node_id": "rr-056:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7891,
+                "doc_ids": [
+                  "rr-056"
+                ]
+              },
+              {
+                "rank": 2,
+                "node_id": "rr-056:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.777,
+                "doc_ids": [
+                  "rr-056"
+                ]
+              },
+              {
+                "rank": 3,
+                "node_id": "sum-l1-04",
+                "kind": "summary",
+                "level": 1,
+                "score": 0.7643,
+                "doc_ids": [
+                  "rr-056",
+                  "rr-057",
+                  "rr-058",
+                  "rr-059",
+                  "rr-060",
+                  "rr-061",
+                  "rr-062",
+                  "rr-063",
+                  "rr-064",
+                  "rr-065"
+                ]
+              },
+              {
+                "rank": 4,
+                "node_id": "rr-063:001",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7605,
+                "doc_ids": [
+                  "rr-063"
+                ]
+              },
+              {
+                "rank": 5,
+                "node_id": "rr-057:000",
+                "kind": "chunk",
+                "level": 0,
+                "score": 0.7541,
+                "doc_ids": [
+                  "rr-057"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "unknown": {
+        "place_id": "raptor-reserve",
+        "mode": "unknown",
+        "questions": 12,
+        "refused": 12,
+        "refusal_rate": 1.0,
+        "mean_latency_ms": 1203,
+        "wall_ms": 14448,
+        "results": [
+          {
+            "id": "u01",
+            "question": "What is the capital of France?",
+            "refused": true,
+            "refeeds": 0,
+            "answer": "I found candidate passages, but the decision model judged none of them relevant enough to answer.",
+            "cited_docs": [],
+            "warning": "all passages below the relevance floor",
+            "total_ms": 966
+          },
+          {
+            "id": "u02",
+            "question": "How many moons does Jupiter have?",
+            "refused": true,
+            "refeeds": 0,
+            "answer": "I found candidate passages, but the decision model judged none of them relevant enough to answer.",
+            "cited_docs": [],
+            "warning": "all passages below the relevance floor",
+            "total_ms": 927
+          },
+          {
+            "id": "u03",
+            "question": "Who wrote Pride and Prejudice?",
+            "refused": true,
+            "refeeds": 0,
+            "answer": "I found candidate passages, but the decision model judged none of them relevant enough to answer.",
+            "cited_docs": [],
+            "warning": "all passages below the relevance floor",
+            "total_ms": 956
+          },
+          {
+            "id": "u04",
+            "question": "What is the boiling point of mercury in Celsius?",
+            "refused": true,
+            "refeeds": 0,
+            "answer": "I found candidate passages, but the decision model judged none of them relevant enough to answer.",
+            "cited_docs": [],
+            "warning": "all passages below the relevance floor",
+            "total_ms": 931
+          },
+          {
+            "id": "u05",
+            "question": "Which country won the 2022 FIFA World Cup?",
+            "refused": true,
+            "refeeds": 2,
+            "answer": "I could not find enough evidence to answer that after 2 refeed(s). The closest records were: Answer Metrics [rr-093:000].",
+            "cited_docs": [],
+            "warning": "evidence stayed insufficient",
+            "total_ms": 4054
+          },
+          {
+            "id": "u06",
+            "question": "How tall is Mount Kilimanjaro?",
+            "refused": true,
+            "refeeds": 0,
+            "answer": "I found candidate passages, but the decision model judged none of them relevant enough to answer.",
+            "cited_docs": [],
+            "warning": "all passages below the relevance floor",
+            "total_ms": 981
+          },
+          {
+            "id": "u07",
+            "question": "What is the population of Tokyo?",
+            "refused": true,
+            "refeeds": 0,
+            "answer": "I found candidate passages, but the decision model judged none of them relevant enough to answer.",
+            "cited_docs": [],
+            "warning": "all passages below the relevance floor",
+            "total_ms": 955
+          },
+          {
+            "id": "u08",
+            "question": "What is the atomic number of gold?",
+            "refused": true,
+            "refeeds": 0,
+            "answer": "I found candidate passages, but the decision model judged none of them relevant enough to answer.",
+            "cited_docs": [],
+            "warning": "all passages below the relevance floor",
+            "total_ms": 873
+          },
+          {
+            "id": "u09",
+            "question": "How do you bake sourdough bread?",
+            "refused": true,
+            "refeeds": 0,
+            "answer": "I found candidate passages, but the decision model judged none of them relevant enough to answer.",
+            "cited_docs": [],
+            "warning": "all passages below the relevance floor",
+            "total_ms": 863
+          },
+          {
+            "id": "u10",
+            "question": "Who painted the Mona Lisa?",
+            "refused": true,
+            "refeeds": 0,
+            "answer": "I found candidate passages, but the decision model judged none of them relevant enough to answer.",
+            "cited_docs": [],
+            "warning": "all passages below the relevance floor",
+            "total_ms": 958
+          },
+          {
+            "id": "u11",
+            "question": "What is the currency of Japan?",
+            "refused": true,
+            "refeeds": 0,
+            "answer": "I found candidate passages, but the decision model judged none of them relevant enough to answer.",
+            "cited_docs": [],
+            "warning": "all passages below the relevance floor",
+            "total_ms": 1023
+          },
+          {
+            "id": "u12",
+            "question": "When did the Berlin Wall fall?",
+            "refused": true,
+            "refeeds": 0,
+            "answer": "I found candidate passages, but the decision model judged none of them relevant enough to answer.",
+            "cited_docs": [],
+            "warning": "all passages below the relevance floor",
+            "total_ms": 955
+          }
+        ]
+      }
+    }
+  ]
+}
